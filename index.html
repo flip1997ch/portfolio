@@ -691,11 +691,16 @@
       section { padding: 3.5rem 1.5rem; }
       .about-grid,
       .cv-columns,
-      .skills-grid,
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
       .modal { margin: 1rem; max-height: 95vh; }
+      /* Option 4: hide desc, tools and hint on mobile cards */
+      .card-desc, .card-tools, .card-hint { display: none; }
+      .card-body { padding: 0.8rem; }
+      .card-employer { font-size: 0.65rem; margin-bottom: 0.2rem; }
+      .card-title { font-size: 0.88rem; margin-bottom: 0; }
     }
   </style>
 </head>
@@ -1184,7 +1189,7 @@
       desc: 'Planung und Verantwortung von Plakatkampagnen sowohl in St.Gallen als auch in Zürich. In Zusammenarbeit mit APG und Goldbach NEO.',
       tools: ['APG Out of Home'],
       stats: [],
-      link: 'https://www.openartmuseum.ch'
+      link: null
     },
     kraeutersalz: {
       employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
@@ -1205,7 +1210,7 @@
       desc: 'Vom Konzept über die Gestaltung bis zur druckfertigen Datei — vollständig in Adobe InDesign umgesetzt. Der Flyer bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft und richtet sich an potenzielle Unterstützer:innen der Organisation.',
       tools: ['Adobe InDesign', 'Konzept', 'Gestaltung', 'Druckdaten'],
       stats: [],
-      link: 'https://www.pstg.ch'
+      link: null
     },
     zeitschrift: {
       employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
@@ -1245,7 +1250,7 @@
         { num: '55%+', label: 'Öffnungsrate' },
         { num: '12%+', label: 'Klickrate' }
       ],
-      link: 'https://www.pstg.ch'
+      link: null
     },
     oamdigital: {
       employer: 'open art museum · Projekt',
@@ -1283,7 +1288,7 @@
         { num: '20\'000+', label: 'Datensätze migriert' },
         { num: '3\'000+', label: 'Kontakte' }
       ],
-      link: 'https://www.openartmuseum.ch'
+      link: null
     },
     websiteoam: {
       employer: 'open art museum · Projekt',
