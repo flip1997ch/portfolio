@@ -673,15 +673,29 @@
     @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
       #hero { grid-template-columns: 1fr; }
-      .hero-image { height: 50vw; order: -1; }
-      .hero-text { padding: 4rem 2rem; }
-      section { padding: 5rem 2rem; }
+      .hero-image {
+        height: 280px;
+        order: -1;
+        padding: 1.5rem;
+      }
+      .hero-image img {
+        width: auto;
+        max-width: 60%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 4px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      }
+      .hero-text { padding: 2rem 1.5rem; }
+      section { padding: 3.5rem 1.5rem; }
       .about-grid,
       .cv-columns,
       .skills-grid,
       .portfolio-grid { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .modal { margin: 1rem; max-height: 95vh; }
     }
   </style>
 </head>
@@ -742,20 +756,20 @@
       </div>
       <div class="about-stats fade-in">
         <div class="stat-card">
-          <div class="stat-number">6+</div>
+          <div class="stat-number">4+</div>
           <div class="stat-label">Jahre Berufserfahrung in Kommunikation</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">400</div>
-          <div class="stat-label">Instagram-Follower in einem Jahr aufgebaut</div>
+          <div class="stat-number">MA</div>
+          <div class="stat-label">Master in Kunstgeschichte und BWL</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">20k+</div>
-          <div class="stat-label">Datensätze bei Datenbankmigration übertragen</div>
+          <div class="stat-number">10'000+</div>
+          <div class="stat-label">Monatliche Aufrufe auf Instagram</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">55%+</div>
-          <div class="stat-label">Newsletter-Öffnungsrate</div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Unterschiedliche Tätigkeitsfelder</div>
         </div>
       </div>
     </div>
@@ -998,6 +1012,22 @@
         </div>
       </div>
 
+      <!-- Animation Logo -->
+      <div class="project-card fade-in" data-id="animationlogo">
+        <div class="card-img">
+          <img src="assets/logo_pstg.png" alt="Logo Pro Senectute Thurgau">
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title">Animation – Logo Pro Senectute Thurgau</h3>
+          <p class="card-desc">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe After Effects</span>
+            <span class="tool-tag">Animation</span>
+          </div>
+        </div>
+      </div>
+
       <!-- oam digital -->
       <div class="project-card fade-in" data-id="oamdigital">
         <div class="card-img">
@@ -1088,22 +1118,6 @@
         </div>
       </div>
 
-      <!-- Animation Logo -->
-      <div class="project-card fade-in" data-id="animationlogo">
-        <div class="card-img">
-          <img src="assets/logo_pstg.png" alt="Logo Pro Senectute Thurgau">
-        </div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Digitale Kommunikation</p>
-          <h3 class="card-title">Animation – Logo Pro Senectute Thurgau</h3>
-          <p class="card-desc">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
-          <div class="card-tools">
-            <span class="tool-tag">Adobe After Effects</span>
-            <span class="tool-tag">Animation</span>
-          </div>
-        </div>
-      </div>
-
     </div>
     <p style="margin-top:2.5rem; font-size:0.82rem; color:var(--mid-gray);">* Weitere Projekte auf Anfrage.</p>
   </div>
@@ -1117,6 +1131,12 @@
     <a href="#about">Über mich</a>
     <a href="#cv">Lebenslauf</a>
     <a href="#portfolio">Portfolio</a>
+  </div>
+  <div style="margin-top: 2rem;">
+    <a href="assets/Lebenslauf_Philipp_Gross.pdf" download class="modal-link">
+      Lebenslauf herunterladen
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M7 10l-3-3M7 10l3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </footer>
 
@@ -1145,7 +1165,7 @@
       link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html'
     },
     animationlogo: {
-      employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+      employer: 'Pro Senectute Thurgau · Digital',
       title: 'Animation – Logo Pro Senectute Thurgau',
       img: 'assets/logo_pstg.png',
       imgAlt: 'Logo Animation Pro Senectute Thurgau',
