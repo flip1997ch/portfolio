@@ -1,1 +1,1303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Philipp Gross – Kommunikation & Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f4f4f0;
+      --light-gray: #e8e8e2;
+      --mid-gray: #6b6b5f;
+      --dark-gray: #2c2c28;
+      --green: #1f4229;
+      --green-light: #2d5a3d;
+      --green-pale: #e8f0eb;
+      --accent: #1f4229;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark-gray);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid-gray);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.05;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero-statement {
+      font-size: 1.1rem;
+      color: var(--mid-gray);
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .tag {
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-image {
+      background: var(--green-pale);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    /* Placeholder when no image */
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--green-light);
+    }
+    .hero-img-placeholder svg { opacity: 0.3; }
+    .hero-img-placeholder span {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      font-family: monospace;
+    }
+    .hero-decoration {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 7rem 4rem; }
+    #cv, #portfolio { background: var(--off-white); }
+    #about { background: var(--white); }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      color: var(--dark-gray);
+      margin-bottom: 3rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-text p:not(.section-label) {
+      color: var(--mid-gray);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      padding: 1.8rem;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--green);
+    }
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--mid-gray);
+      font-weight: 400;
+    }
+
+    /* ── TIMELINE (CV) ── */
+    .cv-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .cv-col-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--dark-gray);
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--green);
+    }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: var(--light-gray);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .tl-item:nth-child(1) { animation-delay: 0.1s; }
+    .tl-item:nth-child(2) { animation-delay: 0.2s; }
+    .tl-item:nth-child(3) { animation-delay: 0.3s; }
+    .tl-item:nth-child(4) { animation-delay: 0.4s; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem; top: 0.4rem;
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+    .tl-date {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .tl-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      margin-bottom: 0.15rem;
+    }
+    .tl-sub {
+      font-size: 0.82rem;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+    .tl-bullets {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      list-style: none;
+    }
+    .tl-bullets li {
+      font-size: 0.82rem;
+      color: var(--mid-gray);
+      line-height: 1.6;
+      position: relative;
+      padding-left: 0.8rem;
+    }
+    .tl-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .skill-group {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+    .skill-group-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      margin-bottom: 1.2rem;
+    }
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--light-gray);
+      font-size: 0.88rem;
+      color: var(--dark-gray);
+    }
+    .skill-item:last-child { border-bottom: none; }
+    .skill-level {
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+      font-weight: 400;
+    }
+
+    /* ── LANGUAGES ── */
+    .lang-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .lang-badge {
+      background: var(--green-pale);
+      border: 1px solid var(--green-light);
+      border-radius: 4px;
+      padding: 0.8rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .lang-name { font-weight: 500; font-size: 0.9rem; color: var(--dark-gray); }
+    .lang-level { font-size: 0.75rem; color: var(--green-light); }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-categories {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .cat-btn {
+      padding: 0.5rem 1.4rem;
+      border: 1px solid var(--light-gray);
+      background: transparent;
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      color: var(--mid-gray);
+      transition: all 0.2s;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(45,90,61,0.1);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--green-pale);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card-img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--green-light);
+      opacity: 0.5;
+      font-size: 0.75rem;
+      font-family: monospace;
+      text-align: center;
+      padding: 1rem;
+    }
+    .card-body { padding: 1.4rem; }
+    .card-employer {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--dark-gray);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--mid-gray);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .card-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tool-tag {
+      background: var(--off-white);
+      color: var(--mid-gray);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-gray);
+      color: var(--mid-gray);
+      text-align: center;
+      padding: 3rem 4rem;
+    }
+    footer .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    footer p { font-size: 0.82rem; }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    footer .footer-links a {
+      color: var(--mid-gray);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--white); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(28, 28, 24, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal {
+      background: var(--white);
+      border-radius: 6px;
+      max-width: 760px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(24px) scale(0.98);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+    .modal-img {
+      width: 100%;
+      aspect-ratio: 16/8;
+      background: var(--green-pale);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--green-light);
+      opacity: 0.4;
+      font-size: 0.8rem;
+      font-family: monospace;
+    }
+    .modal-body { padding: 2.2rem 2.5rem 2.5rem; }
+    .modal-employer {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      color: var(--dark-gray);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    .modal-desc {
+      font-size: 0.92rem;
+      color: var(--mid-gray);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    .modal-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .modal-stat {
+      background: var(--green-pale);
+      border-radius: 4px;
+      padding: 0.7rem 1.1rem;
+    }
+    .modal-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--green);
+      line-height: 1;
+    }
+    .modal-stat-label {
+      font-size: 0.72rem;
+      color: var(--green-light);
+      margin-top: 0.2rem;
+    }
+    .modal-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 2rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .modal-link:hover { background: var(--green-light); }
+    .modal-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--mid-gray);
+      transition: color 0.2s, border-color 0.2s;
+      z-index: 10;
+    }
+    .modal-close:hover { color: var(--dark-gray); border-color: var(--dark-gray); }
+
+    /* card cursor hint */
+    .project-card { cursor: pointer; }
+    .card-hint {
+      font-size: 0.72rem;
+      color: var(--green);
+      font-weight: 500;
+      margin-top: 0.8rem;
+      letter-spacing: 0.04em;
+      opacity: 0.7;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-image { height: 50vw; order: -1; }
+      .hero-text { padding: 4rem 2rem; }
+      section { padding: 5rem 2rem; }
+      .about-grid,
+      .cv-columns,
+      .skills-grid,
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Philipp Gross</a>
+  <ul class="nav-links">
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#cv">Lebenslauf</a></li>
+    <li><a href="#skills">Kenntnisse</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Kommunikation · Design · Projekte</p>
+    <h1 class="hero-name">Philipp<br><em>Gross</em></h1>
+    <p class="hero-statement">
+      Vom Konzept zur Umsetzung – alles aus einer Hand. 
+      Drei Kernbereiche, ein roter Faden: Verantwortung von Anfang bis Ende.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Öffentlichkeitsarbeit</span>
+      <span class="tag">Content Creation</span>
+      <span class="tag">Adobe CC</span>
+      <span class="tag">Projektleitung</span>
+      <span class="tag">Social Media</span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <!-- Portrait -->
+    <img src="assets/portrait.jpg" alt="Philipp Gross" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+    <div class="hero-decoration"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p class="section-label">Über mich</p>
+        <h2 class="section-title">Kunstgeschichte trifft<br>Kommunikation</h2>
+        <p>
+          Als Fachverantwortlicher Öffentlichkeitsarbeit bei Pro Senectute Thurgau 
+          verantworte ich sämtliche externen und internen Kommunikationskanäle – 
+          von der Gestaltung analoger Printmaterialien bis zur Videoproduktion.
+        </p>
+        <p>
+          Mein Hintergrund in Kunstgeschichte und Betriebswirtschaft ermöglicht mir, 
+          ästhetisches Denken mit strategischem Verständnis zu verbinden. 
+          Ich bringe Projekte von der ersten Idee bis zum Go-Live.
+        </p>
+      </div>
+      <div class="about-stats fade-in">
+        <div class="stat-card">
+          <div class="stat-number">6+</div>
+          <div class="stat-label">Jahre Berufserfahrung in Kommunikation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">400</div>
+          <div class="stat-label">Instagram-Follower in einem Jahr aufgebaut</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">20k+</div>
+          <div class="stat-label">Datensätze bei Datenbankmigration übertragen</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">55%+</div>
+          <div class="stat-label">Newsletter-Öffnungsrate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="container">
+    <p class="section-label">Lebenslauf</p>
+    <h2 class="section-title">Erfahrung &amp; Ausbildung</h2>
+    <div class="cv-columns">
+      <!-- BERUFSERFAHRUNG -->
+      <div>
+        <p class="cv-col-title">Berufserfahrung</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <p class="tl-date">01/2025 – heute</p>
+            <p class="tl-title">Fachverantwortlicher Öffentlichkeitsarbeit</p>
+            <p class="tl-sub">Pro Senectute Thurgau, 100%</p>
+            <ul class="tl-bullets">
+              <li>Sämtliche externen Kommunikationskanäle (Inserate, Flyer, Website, Social Media, Newsletter)</li>
+              <li>Interne Kommunikation: Mitarbeitendenzeitschrift</li>
+              <li>Projektleitung Kurssuche 2.0</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">09/2022 – 12/2024</p>
+            <p class="tl-title">Kommunikation und Projekte</p>
+            <p class="tl-sub">open art museum, 80%</p>
+            <ul class="tl-bullets">
+              <li>Sämtliche Kommunikationskanäle (Inserate, Plakate, Website, Social Media, Newsletter)</li>
+              <li>Verantwortlicher IT (Telefonie, MS Office, Datenbank)</li>
+              <li>Projektleitung Transformationsprojekt</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">08/2021 – 08/2022</p>
+            <p class="tl-title">Praktikum</p>
+            <p class="tl-sub">open art museum, 50%</p>
+            <ul class="tl-bullets">
+              <li>Öffentliche Führungen, Inventarisierung, Ausstellungsumbau</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">06/2018 – heute</p>
+            <p class="tl-title">Leitung Lernatelier</p>
+            <p class="tl-sub">Menschen mit Fluchterfahrung, Romanshorn &amp; Weinfelden</p>
+            <ul class="tl-bullets">
+              <li>Unterstützung der Schüler*innen, Organisation des Lernateliers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- AUSBILDUNG -->
+      <div>
+        <p class="cv-col-title">Ausbildung</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <p class="tl-date">08/2020 – 01/2023</p>
+            <p class="tl-title">Master of Arts</p>
+            <p class="tl-sub">Universität Zürich<br>Hauptfach: Kunstgeschichte (Schwerpunkt Moderne & zeitgenössische Kunst)<br>Nebenfach: Betriebswirtschaftslehre<br>Gesamtnote: 4.9</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">09/2017 – 07/2020</p>
+            <p class="tl-title">Bachelor of Arts</p>
+            <p class="tl-sub">Universität Zürich<br>Hauptfach: Kunstgeschichte<br>Nebenfach: Betriebswirtschaftslehre</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">07/2016 – 04/2017</p>
+            <p class="tl-title">Militärdienst – Durchdiener</p>
+            <p class="tl-sub">Katastrophenhilfen Bereitschaftsbataillon<br>Übermittler</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-date">08/2012 – 07/2016</p>
+            <p class="tl-title">Kantonsschule Romanshorn</p>
+            <p class="tl-sub">Schwerpunktfach: Wirtschaft und Recht<br>Maturitätsabschluss</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Kenntnisse</p>
+    <h2 class="section-title">Tools &amp; Sprachen</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <p class="skill-group-title">Design & Content Creation</p>
+        <div class="skill-item"><span>Adobe InDesign</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe Illustrator</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe Premiere Pro</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe After Effects</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Figma</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Canva</span><span class="skill-level">Sehr gut</span></div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Digital & Marketing</p>
+        <div class="skill-item"><span>Magnolia CMS</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>WordPress</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>Brevo / Mailchimp</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>Evalanche / GetResponse</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>Meta Ads / Business Suite</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>SEO / Google Ads Grants</span><span class="skill-level">Gut</span></div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Weitere Kenntnisse</p>
+        <div class="skill-item"><span>MS Office</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>ChatGPT / KI-Tools</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>HTML / CSS</span><span class="skill-level">Grundkenntnisse</span></div>
+        <div class="skill-item"><span>Python</span><span class="skill-level">Grundkenntnisse</span></div>
+        <div class="skill-item"><span>Groovy (Skripting)</span><span class="skill-level">Grundkenntnisse</span></div>
+      </div>
+    </div>
+
+    <div class="skills-grid fade-in" style="margin-top: 2rem;">
+      <div class="skill-group">
+        <p class="skill-group-title">Sprachen</p>
+        <div class="skill-item"><span>Deutsch</span><span class="skill-level">Muttersprache</span></div>
+        <div class="skill-item"><span>Englisch</span><span class="skill-level">C1 Cambridge Advanced</span></div>
+        <div class="skill-item"><span>Français</span><span class="skill-level">Maturitätsniveau</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Ausgewählte Arbeiten</h2>
+
+    <div class="portfolio-grid">
+
+      <!-- Kräutersalz -->
+      <div class="project-card fade-in" data-id="kraeutersalz">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/kraeutersalz.jpg" alt="Kräutersalz Verpackung"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>kraeutersalz.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title">Kundengeschenk – Kräutersalz</h3>
+          <p class="card-desc">Verpackungsdesign für einen Kräutersalz-Gewürzstreuer. Konzept, Gestaltung und druckfertige Umsetzung.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe Illustrator</span>
+            <span class="tool-tag">Verpackungsdesign</span>
+            <span class="tool-tag">Druckdaten</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gönnerflyer -->
+      <div class="project-card fade-in" data-id="goennerflyer">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/goennerflyer.jpg" alt="Gönnerflyer"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>goennerflyer.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title">Flyer – Gönnermitgliedschaft</h3>
+          <p class="card-desc">Vom Konzept über die Gestaltung bis zur druckfertigen Datei. Bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe InDesign</span>
+            <span class="tool-tag">Konzept</span>
+            <span class="tool-tag">Druckdaten</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mitarbeitendenzeitschrift -->
+      <div class="project-card fade-in" data-id="zeitschrift">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/pstg-intern.jpg" alt="PS TG Intern"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>pstg-intern.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title">Zeitschrift – PS TG Intern</h3>
+          <p class="card-desc">Gestaltung und Redaktion der internen Mitarbeitendenzeitschrift. Inhalte, Bildauswahl und Layout in einer Hand.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe InDesign</span>
+            <span class="tool-tag">Redaktion</span>
+            <span class="tool-tag">Druckdaten</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="project-card fade-in" data-id="instagram">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/instagram-pstg.jpg" alt="Instagram Kanal"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>instagram-pstg.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title">Instagram-Kanal Aufbau &amp; Management</h3>
+          <p class="card-desc">Von 0 auf 400 Follower in einem Jahr. Strategie, Redaktionsplanung, Videoproduktion und Community-Aufbau. 10'000+ Aufrufe.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe Premiere Pro</span>
+            <span class="tool-tag">Meta Ads</span>
+            <span class="tool-tag">Canva</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="project-card fade-in" data-id="newsletter">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/newsletter.jpg" alt="Newsletter"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>newsletter.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau / open art museum · Digital</p>
+          <h3 class="card-title">Newsletter – Was läuft</h3>
+          <p class="card-desc">Gestaltung, Redaktion und Versand der monatlichen Newsletter. 2'500+ Kontakte, 55%+ Öffnungsrate, 12%+ Klickrate.</p>
+          <div class="card-tools">
+            <span class="tool-tag">GetResponse</span>
+            <span class="tool-tag">Evalanche</span>
+            <span class="tool-tag">Brevo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- oam digital -->
+      <div class="project-card fade-in" data-id="oamdigital">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/oam-digital.jpg" alt="oam digital"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>oam-digital.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">oam digital – Digitale Erlebniswelt</h3>
+          <p class="card-desc">Projektleitung, Datenbankaufbereitung, Interface-Design und API-Anbindung. 5'248 digitale Werke, 368 Künstler:innen.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">UI/UX</span>
+            <span class="tool-tag">Projektleitung</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kurssuche 2.0 -->
+      <div class="project-card fade-in" data-id="kurssuche">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/kurssuche.jpg" alt="Kurssuche 2.0"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>kurssuche.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title">Kurssuche 2.0</h3>
+          <p class="card-desc">Erneuerung der Kurssuche und -anmeldung. API-Anbindung an Abacus für direkte Online-Anmeldungen. Eigenverantwortliches Konzept und Design.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">UI/UX Design</span>
+            <span class="tool-tag">Abacus</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datenbankmigration -->
+      <div class="project-card fade-in" data-id="datenbank">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/datenbank.jpg" alt="Datenbankmigration"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>datenbank.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">Datenbankmigration</h3>
+          <p class="card-desc">Migration von über 20'000 Datensätzen von Beryll zu MuseumPlus. Qualitätssicherung, Bildbearbeitung und Teamschulung.</p>
+          <div class="card-tools">
+            <span class="tool-tag">MuseumPlus</span>
+            <span class="tool-tag">Groovy</span>
+            <span class="tool-tag">Datenbanken</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Website open art museum -->
+      <div class="project-card fade-in" data-id="websiteoam">
+        <div class="card-img">
+          <!-- PLACEHOLDER: Ersetze mit <img src="assets/website-oam.jpg" alt="Website open art museum"> -->
+          <div class="card-img-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+            <span>website-oam.jpg</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">Website-Relaunch open art museum</h3>
+          <p class="card-desc">Komplette Neugestaltung in Zusammenarbeit mit Kommunikationsagentur. Verantwortlich für Struktur, Inhalt und redaktionelle Umsetzung.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">WordPress</span>
+            <span class="tool-tag">WooCommerce</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:2.5rem; font-size:0.82rem; color:var(--mid-gray);">* Weitere Projekte auf Anfrage.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Philipp Gross</p>
+  <p>Fachverantwortlicher Öffentlichkeitsarbeit · Kommunikation · Design · Projekte</p>
+  <div class="footer-links">
+    <a href="#about">Über mich</a>
+    <a href="#cv">Lebenslauf</a>
+    <a href="#portfolio">Portfolio</a>
+  </div>
+</footer>
+
+<script>
+  // ── SCROLL FADE-IN ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── PROJECT DATA ──
+  const PROJECTS = {
+    kraeutersalz: {
+      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+      title: 'Kundengeschenk – Kräutersalz',
+      img: 'assets/kraeutersalz.jpg',
+      imgAlt: 'Kräutersalz Verpackung',
+      desc: 'Kundengeschenk bestehend aus einem Kräutersalz-Gewürzstreuer mit individuell gestalteter Verpackung. Konzept, Gestaltung und druckfertige Umsetzung vollständig in Adobe Illustrator – von der ersten Idee bis zum druckfertigen Stanzmuster.',
+      tools: ['Adobe Illustrator', 'Verpackungsdesign', 'Werbeartikel', 'Druckdaten'],
+      stats: [],
+      link: null
+    },
+    goennerflyer: {
+      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+      title: 'Flyer – Gönnermitgliedschaft',
+      img: 'assets/goennerflyer.jpg',
+      imgAlt: 'Gönnerflyer',
+      desc: 'Vom Konzept über die Gestaltung bis zur druckfertigen Datei — vollständig in Adobe InDesign umgesetzt. Der Flyer bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft und richtet sich an potenzielle Unterstützer:innen der Organisation.',
+      tools: ['Adobe InDesign', 'Konzept', 'Gestaltung', 'Druckdaten'],
+      stats: [],
+      link: 'https://www.pstg.ch'
+    },
+    zeitschrift: {
+      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+      title: 'Zeitschrift – PS TG Intern',
+      img: 'assets/pstg-intern.jpg',
+      imgAlt: 'PS TG Intern Cover',
+      desc: 'Gestaltung und Redaktion der internen Mitarbeitendenzeitschrift — von der Konzeption bis zur druckfertigen Datei (GZD). Inhalte, Bildauswahl und Layout in einer Hand. Die Zeitschrift erscheint mehrmals jährlich und richtet sich an alle Mitarbeitenden von Pro Senectute Thurgau.',
+      tools: ['Adobe InDesign', 'Redaktion', 'Druckdaten', 'Gestaltung'],
+      stats: [],
+      link: null
+    },
+    instagram: {
+      employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+      title: 'Aufbau & Management Instagram-Kanal',
+      img: 'assets/instagram-pstg.jpg',
+      imgAlt: 'Instagram Reels',
+      desc: 'Den Instagram-Kanal von Grund auf aufgebaut — Strategie, Redaktionsplanung und Community-Aufbau. Von der Idee bis zum fertigen Reel: Verantwortung für den gesamten Produktionsprozess — Konzept, Dreh, Schnitt und Ton. Die Videos richten sich an eine ältere Zielgruppe und erzielten mit Beiträgen wie dem Seniorenorchester-Reel über 10\'000 Aufrufe.',
+      tools: ['Adobe Premiere Pro', 'Meta Ads', 'Meta Business Suite', 'Canva', 'Adobe Firefly', 'Konzept', 'Dreharbeiten'],
+      stats: [
+        { num: '10\'000+', label: 'Aufrufe' },
+        { num: '400', label: 'Follower in einem Jahr' },
+        { num: '4\'300', label: 'Konten erreicht' }
+      ],
+      link: 'https://www.pstg.ch'
+    },
+    newsletter: {
+      employer: 'Pro Senectute Thurgau / open art museum · Digitale Kommunikation',
+      title: 'Newsletter – Was läuft',
+      img: 'assets/newsletter.jpg',
+      imgAlt: 'Newsletter Screenshot',
+      desc: 'Gestaltung, Redaktion und Versand der monatlichen Newsletter für beide Organisationen — gemäss jeweiligem CD/CI. Verantwortlich für die vollständige Produktionskette: Inhalt, Design, technischer Versand und Auswertung. Die aussergewöhnliche Öffnungsrate von über 55% zeigt die Relevanz des Inhalts für die Zielgruppen.',
+      tools: ['GetResponse', 'Evalanche', 'Brevo', 'Mailchimp', 'Redaktion', 'Gestaltung'],
+      stats: [
+        { num: '2\'500+', label: 'Kontakte' },
+        { num: '55%+', label: 'Öffnungsrate' },
+        { num: '12%+', label: 'Klickrate' }
+      ],
+      link: 'https://www.pstg.ch'
+    },
+    oamdigital: {
+      employer: 'open art museum · Projekt',
+      title: 'oam digital – Digitale Erlebniswelt',
+      img: 'assets/oam-digital.jpg',
+      imgAlt: 'oam digital Screenshot',
+      desc: 'Digitale Erlebniswelt für die Sammlung des open art museum. Verantwortlich für Projektleitung, Datenbankaufbereitung, Bildbearbeitung, Interface-Design und die Anbindung der API-Schnittstelle. Das Resultat: ein öffentlich zugängliches digitales Schaufenster der gesamten Museumssammlung.',
+      tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Projektleitung', 'Gestaltung'],
+      stats: [
+        { num: '368', label: 'Künstler:innen' },
+        { num: '5\'248', label: 'Digitale Werke' },
+        { num: '161', label: 'Ausstellungen' },
+        { num: '15\'000+', label: 'Datensätze' }
+      ],
+      link: 'https://www.openartmuseum.ch/oam-digital/'
+    },
+    kurssuche: {
+      employer: 'Pro Senectute Thurgau · Projekt',
+      title: 'Kurssuche 2.0',
+      img: 'assets/kurssuche.jpg',
+      imgAlt: 'Kurssuche 2.0 Screenshot',
+      desc: 'Erneuerung der Kurssuche und -anmeldung auf pstg.ch. API-Anbindung an Abacus für direkte Online-Anmeldungen. Konzept und Design der Suchoberfläche eigenverantwortlich entwickelt — von der Spezifikation der Anforderungen bis zum Go-Live.',
+      tools: ['Figma', 'Abacus', 'Konzeption', 'UI/UX Design', 'Gestaltung'],
+      stats: [],
+      link: 'https://www.pstg.ch/kurse'
+    },
+    datenbank: {
+      employer: 'open art museum · Projekt',
+      title: 'Datenbankmigration',
+      img: 'assets/datenbank.jpg',
+      imgAlt: 'Datenbankmigration',
+      desc: 'Migration der Museumsdatenbank von Beryll zu MuseumPlus. Übertragung von über 20\'000 Datensätzen über mehrere Monate — inklusive Qualitätssicherung, Bildbearbeitung und Schulung des Teams. Nach der Migration Programmierung der Datenbankexports in Groovy.',
+      tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Datenbanken'],
+      stats: [
+        { num: '20\'000+', label: 'Datensätze migriert' },
+        { num: '3\'000+', label: 'Kontakte' }
+      ],
+      link: 'https://www.openartmuseum.ch'
+    },
+    websiteoam: {
+      employer: 'open art museum · Projekt',
+      title: 'Website-Relaunch open art museum',
+      img: 'assets/website-oam.jpg',
+      imgAlt: 'Website open art museum',
+      desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag, St.Gallen, und Lopar Media GmbH. Verantwortlich für Struktur, Inhalt und redaktionelle Umsetzung. Einsatz von Figma für das Interface-Design und WordPress mit WooCommerce für die technische Umsetzung.',
+      tools: ['Figma', 'WordPress', 'WooCommerce', 'Gestaltung', 'Projektmitarbeit'],
+      stats: [],
+      link: 'https://www.openartmuseum.ch'
+    }
+  };
+
+  // ── MODAL MARKUP ──
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal" id="modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close" aria-label="Schliessen">✕</button>
+      <div class="modal-img" id="modal-img"></div>
+      <div class="modal-body">
+        <p class="modal-employer" id="modal-employer"></p>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-stats" id="modal-stats"></div>
+        <div class="modal-tools" id="modal-tools"></div>
+        <div id="modal-link-wrap"></div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  function openModal(id) {
+    const p = PROJECTS[id];
+    if (!p) return;
+
+    // Image
+    const imgEl = document.getElementById('modal-img');
+    imgEl.innerHTML = `
+      <div class="modal-img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+        <span>${p.img}</span>
+      </div>`;
+    // Try real image
+    const img = new Image();
+    img.src = p.img;
+    img.alt = p.imgAlt;
+    img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); };
+
+    document.getElementById('modal-employer').textContent = p.employer;
+    document.getElementById('modal-title').textContent = p.title;
+    document.getElementById('modal-desc').textContent = p.desc;
+
+    // Stats
+    const statsEl = document.getElementById('modal-stats');
+    statsEl.innerHTML = p.stats.map(s => `
+      <div class="modal-stat">
+        <div class="modal-stat-num">${s.num}</div>
+        <div class="modal-stat-label">${s.label}</div>
+      </div>`).join('');
+
+    // Tools
+    document.getElementById('modal-tools').innerHTML =
+      p.tools.map(t => `<span class="tool-tag">${t}</span>`).join('');
+
+    // Link
+    const linkWrap = document.getElementById('modal-link-wrap');
+    linkWrap.innerHTML = p.link
+      ? `<a href="${p.link}" target="_blank" rel="noopener" class="modal-link">
+           Zur Website
+           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H6M12 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+         </a>` : '';
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Card clicks
+  document.querySelectorAll('.project-card[data-id]').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id));
+    // Add hint text
+    const hint = document.createElement('p');
+    hint.className = 'card-hint';
+    hint.textContent = '→ Details ansehen';
+    card.querySelector('.card-body').appendChild(hint);
+  });
+
+  // Close triggers
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
