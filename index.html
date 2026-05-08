@@ -1247,8 +1247,8 @@
       imgEl.style.gridTemplateColumns = '1fr 1fr';
       imgEl.style.gap = '0';
       imgEl.innerHTML = `
-        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:100%;object-fit:cover;">
-        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:100%;object-fit:cover;">`;
+        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:100%;object-fit:contain;object-position:top center;">
+        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:100%;object-fit:contain;object-position:top center;">`;
     } else {
       imgEl.style.display = '';
       imgEl.style.gridTemplateColumns = '';
