@@ -936,11 +936,8 @@
       <!-- Mitarbeitendenzeitschrift -->
       <div class="project-card fade-in" data-id="zeitschrift">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/pstg-intern.jpg" alt="PS TG Intern"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>pstg-intern.jpg</span>
-          </div>
+          <!-- PS TG Intern Cover -->
+          <img src="assets/cover_psintern_1.png" alt="PS TG Intern Cover">
         </div>
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Analog</p>
@@ -1133,7 +1130,8 @@
     zeitschrift: {
       employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
       title: 'Zeitschrift – PS TG Intern',
-      img: 'assets/pstg-intern.jpg',
+      img: 'assets/cover_psintern_1.png',
+      img2: 'assets/cover_psintern_2.png',
       imgAlt: 'PS TG Intern Cover',
       desc: 'Gestaltung und Redaktion der internen Mitarbeitendenzeitschrift — von der Konzeption bis zur druckfertigen Datei (GZD). Inhalte, Bildauswahl und Layout in einer Hand. Die Zeitschrift erscheint mehrmals jährlich und richtet sich an alle Mitarbeitenden von Pro Senectute Thurgau.',
       tools: ['Adobe InDesign', 'Redaktion', 'Druckdaten', 'Gestaltung'],
@@ -1242,16 +1240,27 @@
 
     // Image
     const imgEl = document.getElementById('modal-img');
-    imgEl.innerHTML = `
-      <div class="modal-img-placeholder">
-        <svg width="40" height="40" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-        <span>${p.img}</span>
-      </div>`;
-    // Try real image
-    const img = new Image();
-    img.src = p.img;
-    img.alt = p.imgAlt;
-    img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); };
+    if (p.img2) {
+      imgEl.style.display = 'grid';
+      imgEl.style.gridTemplateColumns = '1fr 1fr';
+      imgEl.style.gap = '0';
+      imgEl.innerHTML = `
+        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:100%;object-fit:cover;">
+        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:100%;object-fit:cover;">`;
+    } else {
+      imgEl.style.display = '';
+      imgEl.style.gridTemplateColumns = '';
+      imgEl.innerHTML = `
+        <div class="modal-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
+          <span>${p.img}</span>
+        </div>`;
+      // Try real image
+      const img = new Image();
+      img.src = p.img;
+      img.alt = p.imgAlt;
+      img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); };
+    }
 
     document.getElementById('modal-employer').textContent = p.employer;
     document.getElementById('modal-title').textContent = p.title;
