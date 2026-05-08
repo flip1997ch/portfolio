@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Philipp Gross – Kommunikation & Design</title>
+  <link rel="icon" type="image/png" href="assets/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -538,7 +539,6 @@
     }
     .modal-img {
       width: 100%;
-      max-height: 420px;
       background: var(--green-pale);
       overflow: hidden;
       position: relative;
@@ -548,9 +548,9 @@
     }
     .modal-img img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain;
-      object-position: top center;
+      display: block;
     }
     .modal-img-placeholder {
       display: flex;
@@ -929,11 +929,8 @@
       <!-- Gönnerflyer -->
       <div class="project-card fade-in" data-id="goennerflyer">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/goennerflyer.jpg" alt="Gönnerflyer"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>goennerflyer.jpg</span>
-          </div>
+          <!-- Gönnerflyer -->
+          <img src="assets/flyer_goenner_1.png" alt="Gönnerflyer">
         </div>
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Analog</p>
@@ -968,11 +965,8 @@
       <!-- Instagram -->
       <div class="project-card fade-in" data-id="instagram">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/instagram-pstg.jpg" alt="Instagram Kanal"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>instagram-pstg.jpg</span>
-          </div>
+          <!-- Instagram -->
+          <img src="assets/instagram_card.png" alt="Instagram Kanal">
         </div>
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Digital</p>
@@ -989,11 +983,8 @@
       <!-- Newsletter -->
       <div class="project-card fade-in" data-id="newsletter">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/newsletter.jpg" alt="Newsletter"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>newsletter.jpg</span>
-          </div>
+          <!-- Newsletter -->
+          <img src="assets/newsletter.png" alt="Newsletter">
         </div>
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau / open art museum · Digital</p>
@@ -1010,11 +1001,8 @@
       <!-- oam digital -->
       <div class="project-card fade-in" data-id="oamdigital">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/oam-digital.jpg" alt="oam digital"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>oam-digital.jpg</span>
-          </div>
+          <!-- oam digital -->
+          <img src="assets/website_oam_digital.png" alt="oam digital">
         </div>
         <div class="card-body">
           <p class="card-employer">open art museum · Projekt</p>
@@ -1031,11 +1019,8 @@
       <!-- Kurssuche 2.0 -->
       <div class="project-card fade-in" data-id="kurssuche">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/kurssuche.jpg" alt="Kurssuche 2.0"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>kurssuche.jpg</span>
-          </div>
+          <!-- Kurssuche -->
+          <img src="assets/kurssuche.png" alt="Kurssuche 2.0">
         </div>
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
@@ -1052,11 +1037,8 @@
       <!-- Datenbankmigration -->
       <div class="project-card fade-in" data-id="datenbank">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/datenbank.jpg" alt="Datenbankmigration"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>datenbank.jpg</span>
-          </div>
+          <!-- Datenbankmigration -->
+          <img src="assets/museumplus.png" alt="Datenbankmigration">
         </div>
         <div class="card-body">
           <p class="card-employer">open art museum · Projekt</p>
@@ -1073,11 +1055,8 @@
       <!-- Website open art museum -->
       <div class="project-card fade-in" data-id="websiteoam">
         <div class="card-img">
-          <!-- PLACEHOLDER: Ersetze mit <img src="assets/website-oam.jpg" alt="Website open art museum"> -->
-          <div class="card-img-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-            <span>website-oam.jpg</span>
-          </div>
+          <!-- Website open art museum -->
+          <img src="assets/website_oam.png" alt="Website open art museum">
         </div>
         <div class="card-body">
           <p class="card-employer">open art museum · Projekt</p>
@@ -1087,6 +1066,40 @@
             <span class="tool-tag">Figma</span>
             <span class="tool-tag">WordPress</span>
             <span class="tool-tag">WooCommerce</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kantonskarte -->
+      <div class="project-card fade-in" data-id="kantonskarte">
+        <div class="card-img">
+          <img src="assets/kantonskarte.png" alt="Interaktive Kantonskarte">
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title">Interaktive Kantonskarte</h3>
+          <p class="card-desc">Mit KI-Unterstützung entwickeltes HTML-Tool zur Erstellung einbettbarer interaktiver Karten. Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Claude AI</span>
+            <span class="tool-tag">HTML</span>
+            <span class="tool-tag">CSS</span>
+            <span class="tool-tag">Magnolia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation Logo -->
+      <div class="project-card fade-in" data-id="animationlogo">
+        <div class="card-img">
+          <img src="assets/logo_pstg.png" alt="Logo Pro Senectute Thurgau">
+        </div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Digitale Kommunikation</p>
+          <h3 class="card-title">Animation – Logo Pro Senectute Thurgau</h3>
+          <p class="card-desc">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
+          <div class="card-tools">
+            <span class="tool-tag">Adobe After Effects</span>
+            <span class="tool-tag">Animation</span>
           </div>
         </div>
       </div>
@@ -1121,6 +1134,27 @@
 
   // ── PROJECT DATA ──
   const PROJECTS = {
+    kantonskarte: {
+      employer: 'Pro Senectute Thurgau · Projekt',
+      title: 'Interaktive Kantonskarte',
+      img: 'assets/kantonskarte.png',
+      imgAlt: 'Interaktive Kantonskarte',
+      desc: 'Mit KI-Unterstützung entwickeltes HTML-Tool zur Erstellung einbettbarer interaktiver Karten. Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS.',
+      tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
+      stats: [],
+      link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html'
+    },
+    animationlogo: {
+      employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+      title: 'Animation – Logo Pro Senectute Thurgau',
+      img: 'assets/logo_pstg.png',
+      imgAlt: 'Logo Animation Pro Senectute Thurgau',
+      video: 'assets/animation_logo.mp4',
+      desc: 'Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.',
+      tools: ['Adobe After Effects', 'Animation'],
+      stats: [],
+      link: null
+    },
     plakatierung: {
       employer: 'open art museum · Analoge Kommunikation',
       title: 'Plakatierung – St.Gallen / Zürich',
@@ -1145,7 +1179,8 @@
     goennerflyer: {
       employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
       title: 'Flyer – Gönnermitgliedschaft',
-      img: 'assets/goennerflyer.jpg',
+      img: 'assets/flyer_goenner_1.png',
+      img2: 'assets/flyer_goenner_2.png',
       imgAlt: 'Gönnerflyer',
       desc: 'Vom Konzept über die Gestaltung bis zur druckfertigen Datei — vollständig in Adobe InDesign umgesetzt. Der Flyer bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft und richtet sich an potenzielle Unterstützer:innen der Organisation.',
       tools: ['Adobe InDesign', 'Konzept', 'Gestaltung', 'Druckdaten'],
@@ -1166,7 +1201,8 @@
     instagram: {
       employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
       title: 'Aufbau & Management Instagram-Kanal',
-      img: 'assets/instagram-pstg.jpg',
+      img: 'assets/instagram_rollator.png',
+      img2: 'assets/instagram_disco.png',
       imgAlt: 'Instagram Reels',
       desc: 'Den Instagram-Kanal von Grund auf aufgebaut — Strategie, Redaktionsplanung und Community-Aufbau. Von der Idee bis zum fertigen Reel: Verantwortung für den gesamten Produktionsprozess — Konzept, Dreh, Schnitt und Ton. Die Videos richten sich an eine ältere Zielgruppe und erzielten mit Beiträgen wie dem Seniorenorchester-Reel über 10\'000 Aufrufe.',
       tools: ['Adobe Premiere Pro', 'Meta Ads', 'Meta Business Suite', 'Canva', 'Adobe Firefly', 'Konzept', 'Dreharbeiten'],
@@ -1175,12 +1211,12 @@
         { num: '400', label: 'Follower in einem Jahr' },
         { num: '4\'300', label: 'Konten erreicht' }
       ],
-      link: 'https://www.pstg.ch'
+      link: 'https://www.instagram.com/p/DWlEnk4iJrf/'
     },
     newsletter: {
       employer: 'Pro Senectute Thurgau / open art museum · Digitale Kommunikation',
       title: 'Newsletter – Was läuft',
-      img: 'assets/newsletter.jpg',
+      img: 'assets/newsletter.png',
       imgAlt: 'Newsletter Screenshot',
       desc: 'Gestaltung, Redaktion und Versand der monatlichen Newsletter für beide Organisationen — gemäss jeweiligem CD/CI. Verantwortlich für die vollständige Produktionskette: Inhalt, Design, technischer Versand und Auswertung. Die aussergewöhnliche Öffnungsrate von über 55% zeigt die Relevanz des Inhalts für die Zielgruppen.',
       tools: ['GetResponse', 'Evalanche', 'Brevo', 'Mailchimp', 'Redaktion', 'Gestaltung'],
@@ -1194,7 +1230,7 @@
     oamdigital: {
       employer: 'open art museum · Projekt',
       title: 'oam digital – Digitale Erlebniswelt',
-      img: 'assets/oam-digital.jpg',
+      img: 'assets/website_oam_digital.png',
       imgAlt: 'oam digital Screenshot',
       desc: 'Digitale Erlebniswelt für die Sammlung des open art museum. Verantwortlich für Projektleitung, Datenbankaufbereitung, Bildbearbeitung, Interface-Design und die Anbindung der API-Schnittstelle. Das Resultat: ein öffentlich zugängliches digitales Schaufenster der gesamten Museumssammlung.',
       tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Projektleitung', 'Gestaltung'],
@@ -1209,7 +1245,7 @@
     kurssuche: {
       employer: 'Pro Senectute Thurgau · Projekt',
       title: 'Kurssuche 2.0',
-      img: 'assets/kurssuche.jpg',
+      img: 'assets/kurssuche.png',
       imgAlt: 'Kurssuche 2.0 Screenshot',
       desc: 'Erneuerung der Kurssuche und -anmeldung auf pstg.ch. API-Anbindung an Abacus für direkte Online-Anmeldungen. Konzept und Design der Suchoberfläche eigenverantwortlich entwickelt — von der Spezifikation der Anforderungen bis zum Go-Live.',
       tools: ['Figma', 'Abacus', 'Konzeption', 'UI/UX Design', 'Gestaltung'],
@@ -1219,7 +1255,7 @@
     datenbank: {
       employer: 'open art museum · Projekt',
       title: 'Datenbankmigration',
-      img: 'assets/datenbank.jpg',
+      img: 'assets/museumplus.png',
       imgAlt: 'Datenbankmigration',
       desc: 'Migration der Museumsdatenbank von Beryll zu MuseumPlus. Übertragung von über 20\'000 Datensätzen über mehrere Monate — inklusive Qualitätssicherung, Bildbearbeitung und Schulung des Teams. Nach der Migration Programmierung der Datenbankexports in Groovy.',
       tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Datenbanken'],
@@ -1232,7 +1268,7 @@
     websiteoam: {
       employer: 'open art museum · Projekt',
       title: 'Website-Relaunch open art museum',
-      img: 'assets/website-oam.jpg',
+      img: 'assets/website_oam.png',
       imgAlt: 'Website open art museum',
       desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag, St.Gallen, und Lopar Media GmbH. Verantwortlich für Struktur, Inhalt und redaktionelle Umsetzung. Einsatz von Figma für das Interface-Design und WordPress mit WooCommerce für die technische Umsetzung.',
       tools: ['Figma', 'WordPress', 'WooCommerce', 'Gestaltung', 'Projektmitarbeit'],
@@ -1265,13 +1301,19 @@
 
     // Image
     const imgEl = document.getElementById('modal-img');
-    if (p.img2) {
+    if (p.video) {
+      imgEl.style.display = '';
+      imgEl.style.gridTemplateColumns = '';
+      imgEl.innerHTML = `
+        <video src="${p.video}" autoplay loop muted playsinline
+          style="width:100%;height:auto;display:block;"></video>`;
+    } else if (p.img2) {
       imgEl.style.display = 'grid';
       imgEl.style.gridTemplateColumns = '1fr 1fr';
       imgEl.style.gap = '0';
       imgEl.innerHTML = `
-        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:100%;object-fit:contain;object-position:top center;">
-        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:100%;object-fit:contain;object-position:top center;">`;
+        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:auto;object-fit:contain;display:block;">
+        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:auto;object-fit:contain;display:block;">`;
     } else {
       imgEl.style.display = '';
       imgEl.style.gridTemplateColumns = '';
