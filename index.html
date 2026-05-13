@@ -224,17 +224,22 @@
       height: 100%;
       background: var(--green);
     }
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.4rem;
+    .stat-icon {
       color: var(--green);
-      line-height: 1;
-      margin-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .stat-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--dark-gray);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
     }
     .stat-label {
       font-size: 0.82rem;
       color: var(--mid-gray);
       font-weight: 400;
+      line-height: 1.5;
     }
 
     /* ── TIMELINE (CV) ── */
@@ -775,20 +780,51 @@
       </div>
       <div class="about-stats fade-in">
         <div class="stat-card">
-          <div class="stat-number">4+</div>
-          <div class="stat-label">Jahre vielseitige Berufserfahrung</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 14h20M4 7h20M4 21h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M20 18l4 3-4 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="stat-title">Vom Konzept bis zur Umsetzung</div>
+          <div class="stat-label">Projekte eigenverantwortlich von der Idee bis zum Go-Live</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">MA</div>
-          <div class="stat-label">Master in Kunstgeschichte und BWL</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5 16.5l5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M8.5 13.5l-2 2a4.243 4.243 0 006 6l2-2a4.243 4.243 0 000-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.5 14.5l2-2a4.243 4.243 0 00-6-6l-2 2a4.243 4.243 0 000 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="stat-title">Schnittstelle Inhalt & Technik</div>
+          <div class="stat-label">Anforderungen verstehen, übersetzen und koordinieren</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">10'000+</div>
-          <div class="stat-label">Monatliche Aufrufe auf Instagram</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="14" cy="4" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="14" cy="24" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="4" cy="14" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="24" cy="14" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="22" cy="22" r="2" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M14 11V6M14 17v3M11 14H6M17 14h3M11.8 11.8L7.4 7.4M16.2 16.2l2.8 2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="stat-title">Externe Partner koordinieren</div>
+          <div class="stat-label">Agenturen, Entwickler und Stakeholder zusammenführen</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">3</div>
-          <div class="stat-label">Unterschiedliche Tätigkeitsfelder</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 4v10M14 4l-4 4M14 4l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 14H4a1 1 0 00-1 1v7a1 1 0 001 1h20a1 1 0 001-1v-7a1 1 0 00-1-1h-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="stat-title">Wissenschaftlich fundiert</div>
+          <div class="stat-label">Analytisches Denken durch Studium in Kunstgeschichte & BWL</div>
         </div>
       </div>
     </div>
@@ -924,6 +960,71 @@
     <p class="section-label">Portfolio</p>
     <h2 class="section-title">Ausgewählte Arbeiten</h2>
 
+    <!-- PROJEKTE -->
+    <div class="portfolio-group-label">Projekte</div>
+    <div class="portfolio-grid">
+      <!-- oam digital -->
+      <div class="project-card fade-in" data-id="oamdigital">
+        <div class="card-img"><img src="assets/website_oam_digital.png" alt="oam digital"></div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">oam digital – Digitale Erlebniswelt</h3>
+          <p class="card-desc">Digitale Sammlung des open art museum – API-Anbindung an die Museumsdatenbank, Interface-Design in Figma, Projektleitung über 1 Jahr.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX</span><span class="tool-tag">Projektleitung</span></div>
+        </div>
+      </div>
+      <!-- Kunstvermittlung -->
+      <div class="project-card fade-in" data-id="kunstvermittlung">
+        <div class="card-img"><img src="assets/kunstvermittlung_oam.png" alt="Kunstvermittlung open art museum"></div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">Angebotsstruktur – Kunstvermittlung</h3>
+          <p class="card-desc">Neustrukturierung des Kulturvermittlungsangebots für Schulen – modular nach Klassenstufen und Lehrplan-21-Zielen aufgebaut, gestaltet und aktiv an Lehrpersonen kommuniziert.</p>
+          <div class="card-tools"><span class="tool-tag">Konzept</span><span class="tool-tag">Redaktion</span><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Lehrplan 21</span></div>
+        </div>
+      </div>
+      <!-- Kurssuche 2.0 -->
+      <div class="project-card fade-in" data-id="kurssuche">
+        <div class="card-img"><img src="assets/kurssuche.png" alt="Kurssuche 2.0"></div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title">Kurssuche 2.0</h3>
+          <p class="card-desc">Erneuerung der Kurssuche und Online-Anmeldung – vollautomatische Abacus-Anbindung, UX-Design und Projektleitung über 8 Monate. Budget: CHF 30'000.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX Design</span><span class="tool-tag">Abacus</span></div>
+        </div>
+      </div>
+      <!-- Datenbankmigration -->
+      <div class="project-card fade-in" data-id="datenbank">
+        <div class="card-img"><img src="assets/museumplus.png" alt="Datenbankmigration"></div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">Datenbankmigration</h3>
+          <p class="card-desc">Migration der Museumsdatenbank von Beryll/Arja zu MuseumPlus – Anforderungsanalyse, Datenmigration, Programmierung der Exports und Teamschulung. Laufzeit: ~1 Jahr.</p>
+          <div class="card-tools"><span class="tool-tag">MuseumPlus</span><span class="tool-tag">Groovy</span><span class="tool-tag">Datenbanken</span></div>
+        </div>
+      </div>
+      <!-- Website open art museum -->
+      <div class="project-card fade-in" data-id="websiteoam">
+        <div class="card-img"><img src="assets/website_oam.png" alt="Website open art museum"></div>
+        <div class="card-body">
+          <p class="card-employer">open art museum · Projekt</p>
+          <h3 class="card-title">Website-Relaunch open art museum</h3>
+          <p class="card-desc">Mitarbeit am Website-Relaunch – Verantwortung für Inhalte, Struktur und Anforderungsmanagement gegenüber der Entwicklung.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">WordPress</span><span class="tool-tag">WooCommerce</span></div>
+        </div>
+      </div>
+      <!-- Kantonskarte -->
+      <div class="project-card fade-in" data-id="kantonskarte">
+        <div class="card-img"><img src="assets/kantonskarte.png" alt="Interaktive Kantonskarte"></div>
+        <div class="card-body">
+          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title">Interaktive Kantonskarte</h3>
+          <p class="card-desc">Interaktive SVG-Karte zur Navigation zu Freiwilligenstellen – mit KI-Unterstützung entwickelt, in Magnolia CMS eingebettet. Laufzeit: 1 Monat, live seit 2025.</p>
+          <div class="card-tools"><span class="tool-tag">Claude AI</span><span class="tool-tag">HTML</span><span class="tool-tag">CSS</span><span class="tool-tag">Magnolia</span></div>
+        </div>
+      </div>
+    </div>
+
     <!-- ANALOGE KOMMUNIKATION -->
     <div class="portfolio-group-label">Analoge Kommunikation</div>
     <div class="portfolio-grid">
@@ -933,7 +1034,7 @@
         <div class="card-body">
           <p class="card-employer">open art museum · Analog</p>
           <h3 class="card-title">Plakatierung – St.Gallen / Zürich</h3>
-          <p class="card-desc">Planung und Verantwortung von Plakatkampagnen sowohl in St.Gallen als auch in Zürich. In Zusammenarbeit mit APG und Goldbach NEO.</p>
+          <p class="card-desc">Planung und Koordination von Plakatkampagnen in St.Gallen und Zürich – in Zusammenarbeit mit APG und städtischen Stellen.</p>
           <div class="card-tools"><span class="tool-tag">APG Out of Home</span></div>
         </div>
       </div>
@@ -943,7 +1044,7 @@
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Analog</p>
           <h3 class="card-title">Kundengeschenk – Kräutersalz</h3>
-          <p class="card-desc">Verpackungsdesign für einen Kräutersalz-Gewürzstreuer. Konzept, Gestaltung und druckfertige Umsetzung.</p>
+          <p class="card-desc">Verpackungsdesign für ein Kundengeschenk – Konzept, Gestaltung und druckfertige Umsetzung in Adobe Illustrator. Von der Idee bis zur GZD.</p>
           <div class="card-tools"><span class="tool-tag">Adobe Illustrator</span><span class="tool-tag">Verpackungsdesign</span><span class="tool-tag">Druckdaten</span></div>
         </div>
       </div>
@@ -963,7 +1064,7 @@
         <div class="card-body">
           <p class="card-employer">Pro Senectute Thurgau · Analog</p>
           <h3 class="card-title">Zeitschrift – PS TG Intern</h3>
-          <p class="card-desc">Gestaltung und Redaktion der internen Mitarbeitendenzeitschrift. Inhalte, Bildauswahl und Layout in einer Hand.</p>
+          <p class="card-desc">Kompletter Neuaufbau der internen Mitarbeitendenzeitschrift – von Word zu InDesign, mit festen Rubriken und professionellem Layout. 2× jährlich, Auflage 500.</p>
           <div class="card-tools"><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Redaktion</span><span class="tool-tag">Druckdaten</span></div>
         </div>
       </div>
@@ -1000,72 +1101,6 @@
           <h3 class="card-title">Animation – Logo Pro Senectute Thurgau</h3>
           <p class="card-desc">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
           <div class="card-tools"><span class="tool-tag">Adobe After Effects</span><span class="tool-tag">Animation</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJEKTE -->
-    <div class="portfolio-group-label">Projekte</div>
-    <div class="portfolio-grid">
-      <!-- oam digital -->
-      <div class="project-card fade-in" data-id="oamdigital">
-        <div class="card-img"><img src="assets/website_oam_digital.png" alt="oam digital"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">oam digital – Digitale Erlebniswelt</h3>
-          <p class="card-desc">Projektleitung, Datenbankaufbereitung, Interface-Design und API-Anbindung. 5'248 digitale Werke, 368 Künstler:innen.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX</span><span class="tool-tag">Projektleitung</span></div>
-        </div>
-      </div>
-      <!-- Kunstvermittlung -->
-      <div class="project-card fade-in" data-id="kunstvermittlung">
-        <div class="card-img"><img src="assets/kunstvermittlung_oam.png" alt="Kunstvermittlung open art museum"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Angebotsstruktur – Kunstvermittlung</h3>
-          <p class="card-desc">Überarbeitung der Vermittlungsangebote mit klarer Ausrichtung auf Klassenstufen und Lehrziele – damit Lehrpersonen einen Museumsbesuch leichter planen und rechtfertigen können.</p>
-          <div class="card-tools"><span class="tool-tag">Konzept</span><span class="tool-tag">Redaktion</span><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Lehrplan 21</span></div>
-        </div>
-      </div>
-
-      <!-- Kurssuche 2.0 -->
-      <div class="project-card fade-in" data-id="kurssuche">
-        <div class="card-img"><img src="assets/kurssuche.png" alt="Kurssuche 2.0"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
-          <h3 class="card-title">Kurssuche 2.0</h3>
-          <p class="card-desc">Erneuerung der Kurssuche und -anmeldung. API-Anbindung an Abacus für direkte Online-Anmeldungen. Eigenverantwortliches Konzept und Design.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX Design</span><span class="tool-tag">Abacus</span></div>
-        </div>
-      </div>
-      <!-- Datenbankmigration -->
-      <div class="project-card fade-in" data-id="datenbank">
-        <div class="card-img"><img src="assets/museumplus.png" alt="Datenbankmigration"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Datenbankmigration</h3>
-          <p class="card-desc">Migration von über 20'000 Datensätzen von Beryll zu MuseumPlus. Qualitätssicherung, Bildbearbeitung und Teamschulung.</p>
-          <div class="card-tools"><span class="tool-tag">MuseumPlus</span><span class="tool-tag">Groovy</span><span class="tool-tag">Datenbanken</span></div>
-        </div>
-      </div>
-      <!-- Website open art museum -->
-      <div class="project-card fade-in" data-id="websiteoam">
-        <div class="card-img"><img src="assets/website_oam.png" alt="Website open art museum"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Website-Relaunch open art museum</h3>
-          <p class="card-desc">Komplette Neugestaltung in Zusammenarbeit mit Kommunikationsagentur. Verantwortlich für Struktur, Inhalt und redaktionelle Umsetzung.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">WordPress</span><span class="tool-tag">WooCommerce</span></div>
-        </div>
-      </div>
-      <!-- Kantonskarte -->
-      <div class="project-card fade-in" data-id="kantonskarte">
-        <div class="card-img"><img src="assets/kantonskarte.png" alt="Interaktive Kantonskarte"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
-          <h3 class="card-title">Interaktive Kantonskarte</h3>
-          <p class="card-desc">Mit KI-Unterstützung entwickeltes HTML-Tool zur Erstellung einbettbarer interaktiver Karten.</p>
-          <div class="card-tools"><span class="tool-tag">Claude AI</span><span class="tool-tag">HTML</span><span class="tool-tag">CSS</span><span class="tool-tag">Magnolia</span></div>
         </div>
       </div>
     </div>
@@ -1109,7 +1144,7 @@
       title: 'Interaktive Kantonskarte',
       img: 'assets/kantonskarte.png',
       imgAlt: 'Interaktive Kantonskarte',
-      desc: 'Mit KI-Unterstützung entwickeltes HTML-Tool zur Erstellung einbettbarer interaktiver Karten. Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS.',
+      desc: 'Ziel war eine intuitivere Navigation zu den regionalen Freiwilligenstellen von Pro Senectute Thurgau. Die bisherige Lösung mit klassischen Links bot keine visuelle Orientierung. In Zusammenarbeit mit den Verantwortlichen der Freiwilligenarbeit entwickelte ich eine interaktive Kantonskarte mit direkten Call-to-Actions. Die Karte wurde in Adobe Illustrator gestaltet und mit Unterstützung von Claude AI als einbettbares HTML-Tool umgesetzt – Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS. Laufzeit: 1 Monat, live seit 2025.',
       tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
       stats: [],
       link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html'
@@ -1131,7 +1166,7 @@
       img: 'assets/plakatierung_1.jpg',
       img2: 'assets/plakatierung_2.jpg',
       imgAlt: 'Plakatierung St.Gallen / Zürich',
-      desc: 'Planung und Verantwortung von Plakatkampagnen sowohl in St.Gallen als auch in Zürich. In Zusammenarbeit mit APG und Goldbach NEO.',
+      desc: 'Verantwortung für die Planung und operative Umsetzung von Plakatkampagnen des open art museum in St.Gallen und Zürich. Ich koordinierte die Kampagnen mit APG/Goldbach NEO sowie den zuständigen Stellen der Stadt. Aufgaben umfassten Bestellung, Terminplanung und Kontrolle der Hängung.',
       tools: ['APG Out of Home'],
       stats: [],
       link: null
@@ -1141,7 +1176,7 @@
       title: 'Kundengeschenk – Kräutersalz',
       img: 'assets/krautersalz_1.png',
       imgAlt: 'Kräutersalz Verpackung',
-      desc: 'Kundengeschenk bestehend aus einem Kräutersalz-Gewürzstreuer mit individuell gestalteter Verpackung. Konzept, Gestaltung und druckfertige Umsetzung vollständig in Adobe Illustrator – von der ersten Idee bis zum druckfertigen Stanzmuster.',
+      desc: 'Pro Senectute Thurgau besucht Rentner:innen zum Geburtstag und überreicht ein persönliches Geschenk. Ich verantwortete Konzept, Gestaltung und druckfertige Umsetzung der Verpackung sowie der Etikette des Kräutersalz-Gewürzstreuers – vollständig in Adobe Illustrator, von der ersten Idee bis zur druckfertigen GZD.',
       tools: ['Adobe Illustrator', 'Verpackungsdesign', 'Werbeartikel', 'Druckdaten'],
       stats: [],
       link: null
@@ -1163,7 +1198,7 @@
       img: 'assets/cover_psintern_1.png',
       img2: 'assets/cover_psintern_2.png',
       imgAlt: 'PS TG Intern Cover',
-      desc: 'Gestaltung und Redaktion der internen Mitarbeitendenzeitschrift — von der Konzeption bis zur druckfertigen Datei (GZD). Inhalte, Bildauswahl und Layout in einer Hand. Die Zeitschrift erscheint mehrmals jährlich und richtet sich an alle Mitarbeitenden von Pro Senectute Thurgau.',
+      desc: 'Die interne Mitarbeitendenzeitschrift von Pro Senectute Thurgau wurde von Grund auf neu aufgebaut – von einer Word-Vorlage zu einem professionellen InDesign-Layout mit festen Rubriken und wiederkehrenden Themen. Im Redaktionsteam verantworte ich Konzept, Gestaltung und druckfertige Umsetzung. Die Zeitschrift erscheint 2× jährlich und wird an alle rund 500 Mitarbeitenden von Pro Senectute Thurgau versandt.',
       tools: ['Adobe InDesign', 'Redaktion', 'Druckdaten', 'Gestaltung'],
       stats: [],
       link: null
@@ -1202,7 +1237,7 @@
       title: 'Angebotsstruktur – Kunstvermittlung',
       img: 'assets/kunstvermittlung_oam.png',
       imgAlt: 'Kunstvermittlung open art museum',
-      desc: 'Überarbeitung der Vermittlungsangebote des open art museum. Die Workshops wurden so strukturiert, dass Lehrpersonen auf einen Blick sehen, welche Klassenstufen angesprochen werden und welche Lehrziele abgedeckt sind. Ziel war es, Lehrpersonen konkrete Argumente zu liefern um einen Museumsbesuch zu rechtfertigen und einfacher in den Stundenplan einzubauen.',
+      desc: 'Das bestehende Vermittlungsangebot des open art museum wurde neu strukturiert und visuell aufbereitet. Ich bündelte die vorhandenen Workshops und Führungen in ein modulares System, das Lehrpersonen auf einen Blick zeigt, welche Angebote für ihre Klassenstufe geeignet sind und welche Lernziele gemäss Lehrplan 21 abgedeckt werden. Die Gestaltung erfolgte gemäss CD in enger Zusammenarbeit mit der Verantwortlichen für Kulturvermittlung. Zusätzlich präsentierte ich das Angebot aktiv: bei Ausstellungseröffnungen direkt an Lehrpersonen im Kanton sowie an den Netzwerktreffen von kklick – Kulturvermittlung Ostschweiz.',
       tools: ['Konzept', 'Redaktion', 'Adobe InDesign', 'Lehrplan 21'],
       stats: [],
       link: 'https://openartmuseum.ch/kunstvermittlung/',
@@ -1216,7 +1251,7 @@
       title: 'oam digital – Digitale Erlebniswelt',
       img: 'assets/website_oam_digital.png',
       imgAlt: 'oam digital Screenshot',
-      desc: 'Digitale Erlebniswelt für die Sammlung des open art museum. Verantwortlich für Projektleitung, Datenbankaufbereitung, Bildbearbeitung, Interface-Design und die Anbindung der API-Schnittstelle. Das Resultat: ein öffentlich zugängliches digitales Schaufenster der gesamten Museumssammlung.',
+      desc: 'Projektverantwortung für eine öffentlich zugängliche Webplattform, die per API-Schnittstelle auf die interne Museumsdatenbank zugreift und Informationen zu Kunstwerken, Ausstellungen und Künstlerbiografien zugänglich macht. Ich leitete das Projekt eigenverantwortlich: Anforderungsanalyse mit Stakeholdern, Interface-Design gemäss CD in Figma sowie Koordination der externen Entwicklungspartnerin Lopar Media GmbH. Eine mir unterstellte Praktikantin unterstützte mich bei der Aufbereitung von über 15\'000 Datensätzen. Projektdauer: 1 Jahr.',
       tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Projektleitung', 'Gestaltung'],
       stats: [
         { num: '368', label: 'Künstler:innen' },
@@ -1231,7 +1266,7 @@
       title: 'Kurssuche 2.0',
       img: 'assets/kurssuche.png',
       imgAlt: 'Kurssuche 2.0 Screenshot',
-      desc: 'Erneuerung der Kurssuche und -anmeldung auf pstg.ch. API-Anbindung an Abacus für direkte Online-Anmeldungen. Konzept und Design der Suchoberfläche eigenverantwortlich entwickelt — von der Spezifikation der Anforderungen bis zum Go-Live.',
+      desc: 'Die bestehende Kurssuche war veraltet und unübersichtlich; Anmeldeprozesse erforderten manuelle Nachbearbeitung im ERP. Ich verantwortete das Projekt eigenständig von der Anforderungsanalyse über das UX/UI-Design in Figma bis zur Abnahme. Neu erfolgen Anmeldungen vollautomatisch mit Adressabgleich und übersichtlichen Dashboards – ohne manuelle Eingriffe im ERP. Externe Partner waren Inware AG (Webshop-Programmierung) und ein Abacus-Partner (ERP-Customizing). Projektdauer: 8 Monate, Budget: CHF 30\'000, Go-Live: Mai 2026.',
       tools: ['Figma', 'Abacus', 'Konzeption', 'UI/UX Design', 'Gestaltung'],
       stats: [],
       link: 'https://www.pstg.ch/kurse'
@@ -1241,7 +1276,7 @@
       title: 'Datenbankmigration',
       img: 'assets/museumplus.png',
       imgAlt: 'Datenbankmigration',
-      desc: 'Migration der Museumsdatenbank von Beryll zu MuseumPlus. Übertragung von über 20\'000 Datensätzen über mehrere Monate — inklusive Qualitätssicherung, Bildbearbeitung und Schulung des Teams. Nach der Migration Programmierung der Datenbankexports in Groovy.',
+      desc: 'Das veraltete und kostenintensive Datenbanksystem Beryll/Arja wurde durch MuseumPlus (Zetcom) abgelöst. Ich sammelte die Anforderungen der Stakeholder aus Administration, Sammlung und Archiv und bildete diese im neuen System ab. Anschliessend bereitete ich die Datensätze auf, kontrollierte das Mapping und bereinigte die Daten nach der Migration weiter. Eine mir unterstellte Praktikantin unterstützte dabei. Die eigentliche Migration dauerte rund 3 Monate, die vollständige Datenbereinigung knapp 1 Jahr. Nach Abschluss programmierte ich die Datenbankexports eigenständig in Groovy und führte Schulungen für alle betroffenen Mitarbeitenden durch.',
       tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Datenbanken'],
       stats: [
         { num: '20\'000+', label: 'Datensätze migriert' },
@@ -1254,7 +1289,7 @@
       title: 'Website-Relaunch open art museum',
       img: 'assets/website_oam.png',
       imgAlt: 'Website open art museum',
-      desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag, St.Gallen, und Lopar Media GmbH. Verantwortlich für Struktur, Inhalt und redaktionelle Umsetzung. Einsatz von Figma für das Interface-Design und WordPress mit WooCommerce für die technische Umsetzung.',
+      desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag AG (Projektleitung) und Lopar Media GmbH (Entwicklung). Ich verantwortete die inhaltliche Seite: Strukturentwicklung, Content-Erstellung und -Abfüllung in Absprache mit Museumsleitung und Stiftungsrat. Zusätzlich übernahm ich das Anforderungsmanagement zwischen Inhalt und Entwicklung. Eine mir unterstellte Praktikantin unterstützte bei der Umsetzung.',
       tools: ['Figma', 'WordPress', 'WooCommerce', 'Gestaltung', 'Projektmitarbeit'],
       stats: [],
       link: 'https://www.openartmuseum.ch'
