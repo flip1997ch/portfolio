@@ -70,6 +70,37 @@
     }
     .nav-links a:hover { color: var(--green); }
 
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-left: 2.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--mid-gray);
+      padding: 0.2rem 0.4rem;
+      transition: color 0.2s;
+    }
+    .lang-toggle button.active {
+      color: var(--green);
+      font-weight: 700;
+    }
+    .lang-toggle button:hover { color: var(--green); }
+    .lang-toggle .divider { color: var(--light-gray); }
+    @media (max-width: 900px) {
+      .lang-toggle { margin-left: 0; }
+    }
+
     /* ── HERO ── */
     #hero {
       min-height: auto;
@@ -727,27 +758,32 @@
 <nav>
   <a href="#hero" class="nav-logo">Philipp Gross</a>
   <ul class="nav-links">
-    <li><a href="#about">Über mich</a></li>
-    <li><a href="#cv">Lebenslauf</a></li>
-    <li><a href="#skills">Kenntnisse</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about" data-en="About me">Über mich</a></li>
+    <li><a href="#cv" data-en="CV">Lebenslauf</a></li>
+    <li><a href="#skills" data-en="Skills">Kenntnisse</a></li>
+    <li><a href="#portfolio" data-en="Portfolio">Portfolio</a></li>
   </ul>
+  <div class="lang-toggle" role="group" aria-label="Sprache wählen">
+    <button type="button" id="lang-de" class="active">DE</button>
+    <span class="divider">/</span>
+    <button type="button" id="lang-en">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">Projekte · Kommunikation · Gestaltung</p>
+    <p class="hero-eyebrow" data-en="Projects · Communication · Design">Projekte · Kommunikation · Gestaltung</p>
     <h1 class="hero-name">Philipp<br><em>Gross</em></h1>
-    <p class="hero-statement">
+    <p class="hero-statement" data-en="From concept to execution – all from a single source. Three core areas, one common thread: ownership from start to finish.">
       Vom Konzept zur Umsetzung – alles aus einer Hand. 
       Drei Kernbereiche, ein roter Faden: Verantwortung von Anfang bis Ende.
     </p>
     <div class="hero-tags">
-      <span class="tag">Öffentlichkeitsarbeit</span>
+      <span class="tag" data-en="Public Relations">Öffentlichkeitsarbeit</span>
       <span class="tag">Content Creation</span>
       <span class="tag">Adobe CC</span>
-      <span class="tag">Projektleitung</span>
+      <span class="tag" data-en="Project Management">Projektleitung</span>
       <span class="tag">Social Media</span>
     </div>
   </div>
@@ -763,14 +799,14 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text fade-in">
-        <p class="section-label">Über mich</p>
-        <h2 class="section-title">Kunstgeschichte trifft<br>Projekte, Kommunikation<br>und Gestaltung</h2>
-        <p>
+        <p class="section-label" data-en="About me">Über mich</p>
+        <h2 class="section-title" data-en="Art history meets<br>projects, communication<br>and design">Kunstgeschichte trifft<br>Projekte, Kommunikation<br>und Gestaltung</h2>
+        <p data-en="As Head of Public Relations at Pro Senectute Thurgau, I am responsible for all external and internal communication channels – from the design of analog print materials to video production.">
           Als Fachverantwortlicher Öffentlichkeitsarbeit bei Pro Senectute Thurgau 
           verantworte ich sämtliche externen und internen Kommunikationskanäle – 
           von der Gestaltung analoger Printmaterialien bis zur Videoproduktion.
         </p>
-        <p>
+        <p data-en="My studies in art history and business administration taught me not only analytical and scientific working methods, but also the ability to make complex content accessible. In projects with various specialists, I bring perspectives together – as the interface between content, design and execution.">
           Mein Studium in Kunstgeschichte und Betriebswirtschaft hat mir nicht nur 
           analytisches und wissenschaftliches Arbeiten beigebracht, sondern auch die 
           Fähigkeit, komplexe Inhalte verständlich aufzubereiten. In Projekten mit 
@@ -786,8 +822,8 @@
               <path d="M20 18l4 3-4 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="stat-title">Vom Konzept bis zur Umsetzung</div>
-          <div class="stat-label">Projekte eigenverantwortlich von der Idee bis zum Go-Live</div>
+          <div class="stat-title" data-en="From concept to execution">Vom Konzept bis zur Umsetzung</div>
+          <div class="stat-label" data-en="Projects owned independently from idea to go-live">Projekte eigenverantwortlich von der Idee bis zum Go-Live</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">
@@ -797,8 +833,8 @@
               <path d="M19.5 14.5l2-2a4.243 4.243 0 00-6-6l-2 2a4.243 4.243 0 000 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="stat-title">Schnittstelle Inhalt & Technik</div>
-          <div class="stat-label">Anforderungen verstehen, übersetzen und koordinieren</div>
+          <div class="stat-title" data-en="Interface of content & technology">Schnittstelle Inhalt & Technik</div>
+          <div class="stat-label" data-en="Understanding, translating and coordinating requirements">Anforderungen verstehen, übersetzen und koordinieren</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">
@@ -813,8 +849,8 @@
               <path d="M14 11V6M14 17v3M11 14H6M17 14h3M11.8 11.8L7.4 7.4M16.2 16.2l2.8 2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="stat-title">Externe Partner koordinieren</div>
-          <div class="stat-label">Agenturen, Entwickler und Stakeholder zusammenführen</div>
+          <div class="stat-title" data-en="Coordinating external partners">Externe Partner koordinieren</div>
+          <div class="stat-label" data-en="Bringing together agencies, developers and stakeholders">Agenturen, Entwickler und Stakeholder zusammenführen</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">
@@ -823,8 +859,8 @@
               <path d="M6 14H4a1 1 0 00-1 1v7a1 1 0 001 1h20a1 1 0 001-1v-7a1 1 0 00-1-1h-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="stat-title">Wissenschaftlich fundiert</div>
-          <div class="stat-label">Analytisches Denken durch Studium in Kunstgeschichte & BWL</div>
+          <div class="stat-title" data-en="Scientifically grounded">Wissenschaftlich fundiert</div>
+          <div class="stat-label" data-en="Analytical thinking through studies in art history & business">Analytisches Denken durch Studium in Kunstgeschichte & BWL</div>
         </div>
       </div>
     </div>
@@ -834,75 +870,76 @@
 <!-- CV -->
 <section id="cv">
   <div class="container">
-    <p class="section-label">Lebenslauf</p>
-    <h2 class="section-title">Erfahrung &amp; Ausbildung</h2>
+    <p class="section-label" data-en="CV">Lebenslauf</p>
+    <h2 class="section-title" data-en="Experience &amp; Education">Erfahrung &amp; Ausbildung</h2>
     <div class="cv-columns">
       <!-- BERUFSERFAHRUNG -->
       <div>
-        <p class="cv-col-title">Berufserfahrung</p>
+        <p class="cv-col-title" data-en="Work Experience">Berufserfahrung</p>
         <div class="timeline">
           <div class="tl-item">
-            <p class="tl-date">01/2025 – heute</p>
-            <p class="tl-title">Fachverantwortlicher Öffentlichkeitsarbeit</p>
+            <p class="tl-date" data-en="01/2025 – present">01/2025 – heute</p>
+            <p class="tl-title" data-en="Head of Public Relations">Fachverantwortlicher Öffentlichkeitsarbeit</p>
             <p class="tl-sub">Pro Senectute Thurgau, 100%</p>
             <ul class="tl-bullets">
-              <li>Sämtliche externen Kommunikationskanäle (Inserate, Flyer, Website, Social Media, Newsletter)</li>
-              <li>Interne Kommunikation: Mitarbeitendenzeitschrift</li>
-              <li>Projektleitung Kurssuche 2.0</li>
+              <li data-en="All external communication channels (ads, flyers, website, social media, newsletter)">Sämtliche externen Kommunikationskanäle (Inserate, Flyer, Website, Social Media, Newsletter)</li>
+              <li data-en="Internal communication: staff magazine">Interne Kommunikation: Mitarbeitendenzeitschrift</li>
+              <li data-en="Project lead: Kurssuche 2.0 (course search platform)">Projektleitung Kurssuche 2.0</li>
             </ul>
           </div>
           <div class="tl-item">
-            <p class="tl-date">09/2022 – 12/2024</p>
-            <p class="tl-title">Kommunikation und Projekte</p>
+            <p class="tl-date" data-en="09/2022 – 12/2024">09/2022 – 12/2024</p>
+            <p class="tl-title" data-en="Communication and Projects">Kommunikation und Projekte</p>
             <p class="tl-sub">open art museum, 80%</p>
             <ul class="tl-bullets">
-              <li>Sämtliche Kommunikationskanäle (Inserate, Plakate, Website, Social Media, Newsletter)</li>
-              <li>Verantwortlicher IT (Telefonie, MS Office, Datenbank)</li>
-              <li>Projektleitung Transformationsprojekt</li>
+              <li data-en="All communication channels (ads, posters, website, social media, newsletter)">Sämtliche Kommunikationskanäle (Inserate, Plakate, Website, Social Media, Newsletter)</li>
+              <li data-en="IT responsibility (telephony, MS Office, database)">Verantwortlicher IT (Telefonie, MS Office, Datenbank)</li>
+              <li data-en="Project lead: transformation project">Projektleitung Transformationsprojekt</li>
             </ul>
           </div>
           <div class="tl-item">
-            <p class="tl-date">08/2021 – 08/2022</p>
-            <p class="tl-title">Praktikum</p>
+            <p class="tl-date" data-en="08/2021 – 08/2022">08/2021 – 08/2022</p>
+            <p class="tl-title" data-en="Internship">Praktikum</p>
             <p class="tl-sub">open art museum, 50%</p>
             <ul class="tl-bullets">
-              <li>Öffentliche Führungen, Inventarisierung, Ausstellungsumbau</li>
+              <li data-en="Public tours, inventory management, exhibition changeovers">Öffentliche Führungen, Inventarisierung, Ausstellungsumbau</li>
             </ul>
           </div>
           <div class="tl-item">
-            <p class="tl-date">06/2018 – heute</p>
-            <p class="tl-title">Leitung Lernatelier</p>
-            <p class="tl-sub">Menschen mit Fluchterfahrung, Romanshorn &amp; Weinfelden</p>
+            <p class="tl-date" data-en="06/2018 – present">06/2018 – heute</p>
+            <p class="tl-title" data-en="Head of Learning Studio">Leitung Lernatelier</p>
+            <p class="tl-sub" data-en="People with refugee experience, Romanshorn &amp; Weinfelden">Menschen mit Fluchterfahrung, Romanshorn &amp; Weinfelden</p>
             <ul class="tl-bullets">
-              <li>Unterstützung der Schüler*innen, Organisation des Lernateliers</li>
+              <li data-en="Supporting students, organizing the learning studio">Unterstützung der Schüler*innen, Organisation des Lernateliers</li>
             </ul>
           </div>
         </div>
       </div>
       <!-- AUSBILDUNG -->
       <div>
-        <p class="cv-col-title">Ausbildung</p>
+        <p class="cv-col-title" data-en="Education">Ausbildung</p>
         <div class="timeline">
           <div class="tl-item">
-            <p class="tl-date">08/2020 – 01/2023</p>
+            <p class="tl-date" data-en="08/2020 – 01/2023">08/2020 – 01/2023</p>
             <p class="tl-title">Master of Arts</p>
-            <p class="tl-sub">Universität Zürich<br>Hauptfach: Kunstgeschichte (Schwerpunkt Moderne & zeitgenössische Kunst)<br>Nebenfach: Betriebswirtschaftslehre<br>Gesamtnote: 4.9</p>
+            <p class="tl-sub" data-en="University of Zurich<br>Major: Art History (focus on modern & contemporary art)<br>Minor: Business Administration<br>Overall grade: 4.9">Universität Zürich<br>Hauptfach: Kunstgeschichte (Schwerpunkt Moderne & zeitgenössische Kunst)<br>Nebenfach: Betriebswirtschaftslehre<br>Gesamtnote: 4.9</p>
           </div>
           <div class="tl-item">
-            <p class="tl-date">09/2017 – 07/2020</p>
+            <p class="tl-date" data-en="09/2017 – 07/2020">09/2017 – 07/2020</p>
             <p class="tl-title">Bachelor of Arts</p>
-            <p class="tl-sub">Universität Zürich<br>Hauptfach: Kunstgeschichte<br>Nebenfach: Betriebswirtschaftslehre</p>
+            <p class="tl-sub" data-en="University of Zurich<br>Major: Art History<br>Minor: Business Administration">Universität Zürich<br>Hauptfach: Kunstgeschichte<br>Nebenfach: Betriebswirtschaftslehre</p>
           </div>
           <div class="tl-item">
-            <p class="tl-date">07/2016 – 04/2017</p>
-            <p class="tl-title">Militärdienst – Durchdiener</p>
-            <p class="tl-sub">Katastrophenhilfen Bereitschaftsbataillon<br>Übermittler</p>
+            <p class="tl-date" data-en="07/2016 – 04/2017">07/2016 – 04/2017</p>
+            <p class="tl-title" data-en="Military Service – Full-time recruit">Militärdienst – Durchdiener</p>
+            <p class="tl-sub" data-en="Disaster Relief Ready Battalion<br>Signaller">Katastrophenhilfen Bereitschaftsbataillon<br>Übermittler</p>
           </div>
           <div class="tl-item">
-            <p class="tl-date">08/2012 – 07/2016</p>
+            <p class="tl-date" data-en="08/2012 – 07/2016">08/2012 – 07/2016</p>
             <p class="tl-title">Kantonsschule Romanshorn</p>
-            <p class="tl-sub">Schwerpunktfach: Wirtschaft und Recht<br>Maturitätsabschluss</p>
+            <p class="tl-sub" data-en="Focus subject: Economics and Law<br>Matura (Swiss upper-secondary diploma)">Schwerpunktfach: Wirtschaft und Recht<br>Maturitätsabschluss</p>
           </div>
+
         </div>
       </div>
     </div>
@@ -912,43 +949,43 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <p class="section-label">Kenntnisse</p>
-    <h2 class="section-title">Tools &amp; Sprachen</h2>
+    <p class="section-label" data-en="Skills">Kenntnisse</p>
+    <h2 class="section-title" data-en="Tools &amp; Languages">Tools &amp; Sprachen</h2>
     <div class="skills-grid fade-in">
       <div class="skill-group">
         <p class="skill-group-title">Design & Content Creation</p>
-        <div class="skill-item"><span>Adobe InDesign</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>Adobe Illustrator</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>Adobe Premiere Pro</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>Adobe After Effects</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>Figma</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>Canva</span><span class="skill-level">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe InDesign</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe Illustrator</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe Premiere Pro</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>Adobe After Effects</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>Figma</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>Canva</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
       </div>
       <div class="skill-group">
         <p class="skill-group-title">Digital & Marketing</p>
-        <div class="skill-item"><span>Magnolia CMS</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>WordPress</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>Brevo / Mailchimp</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>Evalanche / GetResponse</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>Meta Ads / Business Suite</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>SEO / Google Ads Grants</span><span class="skill-level">Gut</span></div>
+        <div class="skill-item"><span>Magnolia CMS</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>WordPress</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>Brevo / Mailchimp</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>Evalanche / GetResponse</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>Meta Ads / Business Suite</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>SEO / Google Ads Grants</span><span class="skill-level" data-en="Good">Gut</span></div>
       </div>
       <div class="skill-group">
-        <p class="skill-group-title">Weitere Kenntnisse</p>
-        <div class="skill-item"><span>MS Office</span><span class="skill-level">Sehr gut</span></div>
-        <div class="skill-item"><span>ChatGPT / KI-Tools</span><span class="skill-level">Gut</span></div>
-        <div class="skill-item"><span>HTML / CSS</span><span class="skill-level">Grundkenntnisse</span></div>
-        <div class="skill-item"><span>Python</span><span class="skill-level">Grundkenntnisse</span></div>
-        <div class="skill-item"><span>Groovy (Skripting)</span><span class="skill-level">Grundkenntnisse</span></div>
+        <p class="skill-group-title" data-en="Additional Skills">Weitere Kenntnisse</p>
+        <div class="skill-item"><span>MS Office</span><span class="skill-level" data-en="Excellent">Sehr gut</span></div>
+        <div class="skill-item"><span>ChatGPT / KI-Tools</span><span class="skill-level" data-en="Good">Gut</span></div>
+        <div class="skill-item"><span>HTML / CSS</span><span class="skill-level" data-en="Basic knowledge">Grundkenntnisse</span></div>
+        <div class="skill-item"><span>Python</span><span class="skill-level" data-en="Basic knowledge">Grundkenntnisse</span></div>
+        <div class="skill-item"><span>Groovy (Skripting)</span><span class="skill-level" data-en="Basic knowledge">Grundkenntnisse</span></div>
       </div>
     </div>
 
     <div class="skills-grid fade-in" style="margin-top: 2rem;">
       <div class="skill-group">
-        <p class="skill-group-title">Sprachen</p>
-        <div class="skill-item"><span>Deutsch</span><span class="skill-level">Muttersprache</span></div>
-        <div class="skill-item"><span>Englisch</span><span class="skill-level">C1 Cambridge Advanced</span></div>
-        <div class="skill-item"><span>Français</span><span class="skill-level">Maturitätsniveau</span></div>
+        <p class="skill-group-title" data-en="Languages">Sprachen</p>
+        <div class="skill-item"><span data-en="German">Deutsch</span><span class="skill-level" data-en="Native language">Muttersprache</span></div>
+        <div class="skill-item"><span data-en="English">Englisch</span><span class="skill-level">C1 Cambridge Advanced</span></div>
+        <div class="skill-item"><span>Français</span><span class="skill-level" data-en="Upper-secondary level">Maturitätsniveau</span></div>
       </div>
     </div>
   </div>
@@ -958,138 +995,58 @@
 <section id="portfolio">
   <div class="container">
     <p class="section-label">Portfolio</p>
-    <h2 class="section-title">Ausgewählte Arbeiten</h2>
-
-    <!-- PROJEKTE -->
-    <div class="portfolio-group-label">Projekte</div>
-    <div class="portfolio-grid">
-      <!-- oam digital -->
-      <div class="project-card fade-in" data-id="oamdigital">
-        <div class="card-img"><img src="assets/website_oam_digital.png" alt="oam digital"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">oam digital – Digitale Erlebniswelt</h3>
-          <p class="card-desc">Digitale Sammlung des open art museum – API-Anbindung an die Museumsdatenbank, Interface-Design in Figma, Projektleitung über 1 Jahr.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX</span><span class="tool-tag">Projektleitung</span></div>
-        </div>
-      </div>
-      <!-- Kunstvermittlung -->
-      <div class="project-card fade-in" data-id="kunstvermittlung">
-        <div class="card-img"><img src="assets/kunstvermittlung_oam.png" alt="Kunstvermittlung open art museum"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Angebotsstruktur – Kunstvermittlung</h3>
-          <p class="card-desc">Neustrukturierung des Kulturvermittlungsangebots für Schulen – modular nach Klassenstufen und Lehrplan-21-Zielen aufgebaut, gestaltet und aktiv an Lehrpersonen kommuniziert.</p>
-          <div class="card-tools"><span class="tool-tag">Konzept</span><span class="tool-tag">Redaktion</span><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Lehrplan 21</span></div>
-        </div>
-      </div>
-      <!-- Kurssuche 2.0 -->
-      <div class="project-card fade-in" data-id="kurssuche">
-        <div class="card-img"><img src="assets/kurssuche.png" alt="Kurssuche 2.0"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
-          <h3 class="card-title">Kurssuche 2.0</h3>
-          <p class="card-desc">Erneuerung der Kurssuche und Online-Anmeldung – vollautomatische Abacus-Anbindung, UX-Design und Projektleitung über 8 Monate. Budget: CHF 30'000.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX Design</span><span class="tool-tag">Abacus</span></div>
-        </div>
-      </div>
-      <!-- Datenbankmigration -->
-      <div class="project-card fade-in" data-id="datenbank">
-        <div class="card-img"><img src="assets/museumplus.png" alt="Datenbankmigration"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Datenbankmigration</h3>
-          <p class="card-desc">Migration der Museumsdatenbank von Beryll/Arja zu MuseumPlus – Anforderungsanalyse, Datenmigration, Programmierung der Exports und Teamschulung. Laufzeit: ~1 Jahr.</p>
-          <div class="card-tools"><span class="tool-tag">MuseumPlus</span><span class="tool-tag">Groovy</span><span class="tool-tag">Datenbanken</span></div>
-        </div>
-      </div>
-      <!-- Website open art museum -->
-      <div class="project-card fade-in" data-id="websiteoam">
-        <div class="card-img"><img src="assets/website_oam.png" alt="Website open art museum"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Projekt</p>
-          <h3 class="card-title">Website-Relaunch open art museum</h3>
-          <p class="card-desc">Mitarbeit am Website-Relaunch – Verantwortung für Inhalte, Struktur und Anforderungsmanagement gegenüber der Entwicklung.</p>
-          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">WordPress</span><span class="tool-tag">WooCommerce</span></div>
-        </div>
-      </div>
-      <!-- Kantonskarte -->
-      <div class="project-card fade-in" data-id="kantonskarte">
-        <div class="card-img"><img src="assets/kantonskarte.png" alt="Interaktive Kantonskarte"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Projekt</p>
-          <h3 class="card-title">Interaktive Kantonskarte</h3>
-          <p class="card-desc">Interaktive SVG-Karte zur Navigation zu Freiwilligenstellen – mit KI-Unterstützung entwickelt, in Magnolia CMS eingebettet. Laufzeit: 1 Monat, live seit 2025.</p>
-          <div class="card-tools"><span class="tool-tag">Claude AI</span><span class="tool-tag">HTML</span><span class="tool-tag">CSS</span><span class="tool-tag">Magnolia</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ANALOGE KOMMUNIKATION -->
-    <div class="portfolio-group-label">Analoge Kommunikation</div>
-    <div class="portfolio-grid">
-      <!-- Plakatierung -->
-      <div class="project-card fade-in" data-id="plakatierung">
-        <div class="card-img"><img src="assets/plakatierung_1.jpg" alt="Plakatierung St.Gallen"></div>
-        <div class="card-body">
-          <p class="card-employer">open art museum · Analog</p>
-          <h3 class="card-title">Plakatierung – St.Gallen / Zürich</h3>
-          <p class="card-desc">Planung und Koordination von Plakatkampagnen in St.Gallen und Zürich – in Zusammenarbeit mit APG und städtischen Stellen.</p>
-          <div class="card-tools"><span class="tool-tag">APG Out of Home</span></div>
-        </div>
-      </div>
-      <!-- Kräutersalz -->
-      <div class="project-card fade-in" data-id="kraeutersalz">
-        <div class="card-img"><img src="assets/krautersalz_1.png" alt="Kräutersalz Verpackung"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
-          <h3 class="card-title">Kundengeschenk – Kräutersalz</h3>
-          <p class="card-desc">Verpackungsdesign für ein Kundengeschenk – Konzept, Gestaltung und druckfertige Umsetzung in Adobe Illustrator. Von der Idee bis zur GZD.</p>
-          <div class="card-tools"><span class="tool-tag">Adobe Illustrator</span><span class="tool-tag">Verpackungsdesign</span><span class="tool-tag">Druckdaten</span></div>
-        </div>
-      </div>
-      <!-- Gönnerflyer -->
-      <div class="project-card fade-in" data-id="goennerflyer">
-        <div class="card-img"><img src="assets/flyer_goenner_1.png" alt="Gönnerflyer"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
-          <h3 class="card-title">Flyer – Gönnermitgliedschaft</h3>
-          <p class="card-desc">Vom Konzept über die Gestaltung bis zur druckfertigen Datei. Bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft.</p>
-          <div class="card-tools"><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Konzept</span><span class="tool-tag">Druckdaten</span></div>
-        </div>
-      </div>
-      <!-- Zeitschrift -->
-      <div class="project-card fade-in" data-id="zeitschrift">
-        <div class="card-img"><img src="assets/cover_psintern_1.png" alt="PS TG Intern Cover"></div>
-        <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Analog</p>
-          <h3 class="card-title">Zeitschrift – PS TG Intern</h3>
-          <p class="card-desc">Kompletter Neuaufbau der internen Mitarbeitendenzeitschrift – von Word zu InDesign, mit festen Rubriken und professionellem Layout. 2× jährlich, Auflage 500.</p>
-          <div class="card-tools"><span class="tool-tag">Adobe InDesign</span><span class="tool-tag">Redaktion</span><span class="tool-tag">Druckdaten</span></div>
-        </div>
-      </div>
-    </div>
+    <h2 class="section-title" data-en="Selected Work">Ausgewählte Arbeiten</h2>
 
     <!-- DIGITALE KOMMUNIKATION -->
-    <div class="portfolio-group-label">Digitale Kommunikation</div>
+    <div class="portfolio-group-label" data-en="Digital Communication">Digitale Kommunikation</div>
     <div class="portfolio-grid">
       <!-- Instagram -->
       <div class="project-card fade-in" data-id="instagram">
         <div class="card-img"><img src="assets/instagram_card.png" alt="Instagram Kanal"></div>
         <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Digital</p>
-          <h3 class="card-title">Instagram-Kanal Aufbau &amp; Management</h3>
-          <p class="card-desc">Von 0 auf 400 Follower in einem Jahr. Strategie, Redaktionsplanung, Videoproduktion und Community-Aufbau. 10'000+ Aufrufe.</p>
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title" data-en="Instagram Channel Build &amp; Management">Instagram-Kanal Aufbau &amp; Management</h3>
+          <p class="card-desc" data-en="From 0 to 400 followers in one year. Strategy, content planning, video production and community building. 10,000+ views.">Von 0 auf 400 Follower in einem Jahr. Strategie, Redaktionsplanung, Videoproduktion und Community-Aufbau. 10'000+ Aufrufe.</p>
           <div class="card-tools"><span class="tool-tag">Adobe Premiere Pro</span><span class="tool-tag">Meta Ads</span><span class="tool-tag">Canva</span></div>
+        </div>
+      </div>
+      <!-- Reel Was ist FitGym -->
+      <div class="project-card fade-in" data-id="reelfitgym">
+        <div class="card-img"><img src="assets/was_ist_fitgym.png" alt="Reel Was ist FitGym"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title" data-en="Reel – What is FitGym?">Reel – Was ist FitGym?</h3>
+          <p class="card-desc" data-en="Explainer reel for FitGym, Pro Senectute Thurgau's movement and fitness program for seniors – concept, filming and editing for Instagram.">Erklär-Reel zum Bewegungs- und Fitnessangebot FitGym von Pro Senectute Thurgau – Konzept, Dreh und Schnitt für Instagram.</p>
+          <div class="card-tools"><span class="tool-tag">Adobe Premiere Pro</span><span class="tool-tag" data-en="Concept">Konzept</span><span class="tool-tag" data-en="Filming">Dreharbeiten</span></div>
+        </div>
+      </div>
+      <!-- Reel Rollator Tuning -->
+      <div class="project-card fade-in" data-id="reelrollator">
+        <div class="card-img"><img src="assets/rollatortuning.png" alt="Reel Rollator Tuning"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title" data-en="Reel – Rollator Tuning (April Fools')">Reel – Rollator Tuning (1. April)</h3>
+          <p class="card-desc" data-en="Fully AI-generated April Fools' reel imagining a 'tuned' walking frame – idea, prompting and post-production for Instagram.">Vollständig KI-generiertes 1.-April-Reel mit einem «getunten» Rollator – Idee, Prompting und Postproduktion für Instagram.</p>
+          <div class="card-tools"><span class="tool-tag" data-en="AI Video">KI-Video</span><span class="tool-tag" data-en="Concept">Konzept</span><span class="tool-tag">Adobe Premiere Pro</span></div>
+        </div>
+      </div>
+      <!-- Reel Crossfit 60+ Interview -->
+      <div class="project-card fade-in" data-id="reelcrossfit">
+        <div class="card-img"><img src="assets/crossfit.png" alt="Reel Interview Crossfit 60+"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title" data-en="Reel – Crossfit 60+ Interview">Reel – Interview Crossfit 60+</h3>
+          <p class="card-desc" data-en="Interview reel with a senior 'granfluencer' about her experience at the Crossfit 60+ course – concept, filming and editing for Instagram.">Interview-Reel mit einer Granfluencerin über ihre Erfahrungen im Kurs Crossfit 60+ – Konzept, Dreh und Schnitt für Instagram.</p>
+          <div class="card-tools"><span class="tool-tag">Adobe Premiere Pro</span><span class="tool-tag" data-en="Interview">Interview</span><span class="tool-tag" data-en="Filming">Dreharbeiten</span></div>
         </div>
       </div>
       <!-- Newsletter -->
       <div class="project-card fade-in" data-id="newsletter">
         <div class="card-img"><img src="assets/newsletter.png" alt="Newsletter"></div>
         <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau / open art museum · Digital</p>
+          <p class="card-employer" data-en="Pro Senectute Thurgau / open art museum · Digital">Pro Senectute Thurgau / open art museum · Digital</p>
           <h3 class="card-title">Newsletter – Was läuft</h3>
-          <p class="card-desc">Gestaltung, Redaktion und Versand der monatlichen Newsletter. 2'500+ Kontakte, 55%+ Öffnungsrate, 12%+ Klickrate.</p>
+          <p class="card-desc" data-en="Design, editing and distribution of the monthly newsletters. 2,500+ contacts, 55%+ open rate, 12%+ click rate.">Gestaltung, Redaktion und Versand der monatlichen Newsletter. 2'500+ Kontakte, 55%+ Öffnungsrate, 12%+ Klickrate.</p>
           <div class="card-tools"><span class="tool-tag">GetResponse</span><span class="tool-tag">Evalanche</span><span class="tool-tag">Brevo</span></div>
         </div>
       </div>
@@ -1097,29 +1054,143 @@
       <div class="project-card fade-in" data-id="animationlogo">
         <div class="card-img"><img src="assets/logo_pstg.png" alt="Logo Pro Senectute Thurgau"></div>
         <div class="card-body">
-          <p class="card-employer">Pro Senectute Thurgau · Digital</p>
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
           <h3 class="card-title">Animation – Logo Pro Senectute Thurgau</h3>
-          <p class="card-desc">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
+          <p class="card-desc" data-en="Animation of the Pro Senectute Thurgau logo in Adobe After Effects, implemented according to Pro Senectute Switzerland's corporate design guidelines.">Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.</p>
           <div class="card-tools"><span class="tool-tag">Adobe After Effects</span><span class="tool-tag">Animation</span></div>
         </div>
       </div>
     </div>
-    <p style="margin-top:2.5rem; font-size:0.82rem; color:var(--mid-gray);">* Weitere Projekte auf Anfrage.</p>
+
+    <!-- ANALOGE KOMMUNIKATION -->
+    <div class="portfolio-group-label" data-en="Analog Communication">Analoge Kommunikation</div>
+    <div class="portfolio-grid">
+      <!-- Plakatierung -->
+      <div class="project-card fade-in" data-id="plakatierung">
+        <div class="card-img"><img src="assets/plakatierung_1.jpg" alt="Plakatierung St.Gallen"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Analog">open art museum · Analog</p>
+          <h3 class="card-title" data-en="Poster Campaigns – St.Gallen / Zurich">Plakatierung – St.Gallen / Zürich</h3>
+          <p class="card-desc" data-en="Planning and coordination of poster campaigns in St.Gallen and Zurich – in collaboration with APG and municipal authorities.">Planung und Koordination von Plakatkampagnen in St.Gallen und Zürich – in Zusammenarbeit mit APG und städtischen Stellen.</p>
+          <div class="card-tools"><span class="tool-tag">APG Out of Home</span></div>
+        </div>
+      </div>
+      <!-- Kräutersalz -->
+      <div class="project-card fade-in" data-id="kraeutersalz">
+        <div class="card-img"><img src="assets/krautersalz_1.png" alt="Kräutersalz Verpackung"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Analog">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title" data-en="Client Gift – Herb Salt">Kundengeschenk – Kräutersalz</h3>
+          <p class="card-desc" data-en="Packaging design for a client gift – concept, design and print-ready execution in Adobe Illustrator. From idea to final print files.">Verpackungsdesign für ein Kundengeschenk – Konzept, Gestaltung und druckfertige Umsetzung in Adobe Illustrator. Von der Idee bis zur GZD.</p>
+          <div class="card-tools"><span class="tool-tag">Adobe Illustrator</span><span class="tool-tag" data-en="Packaging Design">Verpackungsdesign</span><span class="tool-tag" data-en="Print Files">Druckdaten</span></div>
+        </div>
+      </div>
+      <!-- Gönnerflyer -->
+      <div class="project-card fade-in" data-id="goennerflyer">
+        <div class="card-img"><img src="assets/flyer_goenner_1.png" alt="Gönnerflyer"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Analog">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title" data-en="Flyer – Patron Membership">Flyer – Gönnermitgliedschaft</h3>
+          <p class="card-desc" data-en="From concept through design to print-ready file. Promotes the «Pro Vielfalt Alter» patron membership.">Vom Konzept über die Gestaltung bis zur druckfertigen Datei. Bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft.</p>
+          <div class="card-tools"><span class="tool-tag">Adobe InDesign</span><span class="tool-tag" data-en="Concept">Konzept</span><span class="tool-tag" data-en="Print Files">Druckdaten</span></div>
+        </div>
+      </div>
+      <!-- Zeitschrift -->
+      <div class="project-card fade-in" data-id="zeitschrift">
+        <div class="card-img"><img src="assets/cover_psintern_1.png" alt="PS TG Intern Cover"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Analog">Pro Senectute Thurgau · Analog</p>
+          <h3 class="card-title" data-en="Magazine – PS TG Intern">Zeitschrift – PS TG Intern</h3>
+          <p class="card-desc" data-en="Complete rebuild of the internal staff magazine – from Word to InDesign, with fixed sections and professional layout. 2× a year, circulation 500.">Kompletter Neuaufbau der internen Mitarbeitendenzeitschrift – von Word zu InDesign, mit festen Rubriken und professionellem Layout. 2× jährlich, Auflage 500.</p>
+          <div class="card-tools"><span class="tool-tag">Adobe InDesign</span><span class="tool-tag" data-en="Editing">Redaktion</span><span class="tool-tag" data-en="Print Files">Druckdaten</span></div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- PROJEKTE -->
+    <div class="portfolio-group-label" data-en="Projects">Projekte</div>
+    <div class="portfolio-grid">
+      <!-- oam digital -->
+      <div class="project-card fade-in" data-id="oamdigital">
+        <div class="card-img"><img src="assets/website_oam_digital.png" alt="oam digital"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Project">open art museum · Projekt</p>
+          <h3 class="card-title" data-en="oam digital – Digital Experience World">oam digital – Digitale Erlebniswelt</h3>
+          <p class="card-desc" data-en="Digital collection of the open art museum – API connection to the museum database, interface design in Figma, project lead over 1 year.">Digitale Sammlung des open art museum – API-Anbindung an die Museumsdatenbank, Interface-Design in Figma, Projektleitung über 1 Jahr.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX</span><span class="tool-tag">Projektleitung</span></div>
+        </div>
+      </div>
+      <!-- Kunstvermittlung -->
+      <div class="project-card fade-in" data-id="kunstvermittlung">
+        <div class="card-img"><img src="assets/kunstvermittlung_oam.png" alt="Kunstvermittlung open art museum"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Project">open art museum · Projekt</p>
+          <h3 class="card-title" data-en="Program Structure – Art Education">Angebotsstruktur – Kunstvermittlung</h3>
+          <p class="card-desc" data-en="Restructuring of the art education program for schools – organized in modules by grade level and Lehrplan-21 learning goals, designed and actively communicated to teachers.">Neustrukturierung des Kulturvermittlungsangebots für Schulen – modular nach Klassenstufen und Lehrplan-21-Zielen aufgebaut, gestaltet und aktiv an Lehrpersonen kommuniziert.</p>
+          <div class="card-tools"><span class="tool-tag" data-en="Concept">Konzept</span><span class="tool-tag" data-en="Editing">Redaktion</span><span class="tool-tag">Adobe InDesign</span><span class="tool-tag" data-en="Curriculum 21">Lehrplan 21</span></div>
+        </div>
+      </div>
+      <!-- Kurssuche 2.0 -->
+      <div class="project-card fade-in" data-id="kurssuche">
+        <div class="card-img"><img src="assets/kurssuche.png" alt="Kurssuche 2.0"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Project">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title">Kurssuche 2.0</h3>
+          <p class="card-desc" data-en="Renewal of the course search and online registration – fully automated Abacus integration, UX design and project lead over 8 months. Budget: CHF 30,000.">Erneuerung der Kurssuche und Online-Anmeldung – vollautomatische Abacus-Anbindung, UX-Design und Projektleitung über 8 Monate. Budget: CHF 30'000.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">UI/UX Design</span><span class="tool-tag">Abacus</span></div>
+        </div>
+      </div>
+      <!-- Datenbankmigration -->
+      <div class="project-card fade-in" data-id="datenbank">
+        <div class="card-img"><img src="assets/museumplus.png" alt="Datenbankmigration"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Project">open art museum · Projekt</p>
+          <h3 class="card-title" data-en="Database Migration">Datenbankmigration</h3>
+          <p class="card-desc" data-en="Migration of the museum database from Beryll/Arja to MuseumPlus – requirements analysis, data migration, export programming and team training. Duration: ~1 year.">Migration der Museumsdatenbank von Beryll/Arja zu MuseumPlus – Anforderungsanalyse, Datenmigration, Programmierung der Exports und Teamschulung. Laufzeit: ~1 Jahr.</p>
+          <div class="card-tools"><span class="tool-tag">MuseumPlus</span><span class="tool-tag">Groovy</span><span class="tool-tag" data-en="Databases">Datenbanken</span></div>
+        </div>
+      </div>
+      <!-- Website open art museum -->
+      <div class="project-card fade-in" data-id="websiteoam">
+        <div class="card-img"><img src="assets/website_oam.png" alt="Website open art museum"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Project">open art museum · Projekt</p>
+          <h3 class="card-title" data-en="Website Relaunch open art museum">Website-Relaunch open art museum</h3>
+          <p class="card-desc" data-en="Collaboration on the website relaunch – responsible for content, structure and requirements management toward development.">Mitarbeit am Website-Relaunch – Verantwortung für Inhalte, Struktur und Anforderungsmanagement gegenüber der Entwicklung.</p>
+          <div class="card-tools"><span class="tool-tag">Figma</span><span class="tool-tag">WordPress</span><span class="tool-tag">WooCommerce</span></div>
+        </div>
+      </div>
+      <!-- Kantonskarte -->
+      <div class="project-card fade-in" data-id="kantonskarte">
+        <div class="card-img"><img src="assets/kantonskarte.png" alt="Interaktive Kantonskarte"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Project">Pro Senectute Thurgau · Projekt</p>
+          <h3 class="card-title" data-en="Interactive Cantonal Map">Interaktive Kantonskarte</h3>
+          <p class="card-desc" data-en="Interactive SVG map for navigating to volunteer offices – developed with AI assistance, embedded in Magnolia CMS. Duration: 1 month, live since 2025.">Interaktive SVG-Karte zur Navigation zu Freiwilligenstellen – mit KI-Unterstützung entwickelt, in Magnolia CMS eingebettet. Laufzeit: 1 Monat, live seit 2025.</p>
+          <div class="card-tools"><span class="tool-tag">Claude AI</span><span class="tool-tag">HTML</span><span class="tool-tag">CSS</span><span class="tool-tag">Magnolia</span></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <p style="margin-top:2.5rem; font-size:0.82rem; color:var(--mid-gray);" data-en="* Additional projects available on request.">* Weitere Projekte auf Anfrage.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p class="footer-name">Philipp Gross</p>
-  <p>Fachverantwortlicher Öffentlichkeitsarbeit · Projekte · Kommunikation · Gestaltung</p>
+  <p data-en="Head of Public Relations · Projects · Communication · Design">Fachverantwortlicher Öffentlichkeitsarbeit · Projekte · Kommunikation · Gestaltung</p>
   <div class="footer-links">
-    <a href="#about">Über mich</a>
-    <a href="#cv">Lebenslauf</a>
+    <a href="#about" data-en="About me">Über mich</a>
+    <a href="#cv" data-en="CV">Lebenslauf</a>
     <a href="#portfolio">Portfolio</a>
   </div>
   <div style="margin-top: 2rem;">
-    <a href="assets/Lebenslauf_Philipp_Gross.pdf" download class="modal-link">
-      Lebenslauf herunterladen
+    <a href="assets/Lebenslauf_Philipp_Gross.pdf" download class="modal-link" id="footer-cv-link">
+      <span data-en="Download CV">Lebenslauf herunterladen</span>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M7 10l-3-3M7 10l3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -1137,164 +1208,377 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ── PROJECT DATA ──
+  // ── PROJECT DATA (bilingual: shared fields + de/en) ──
   const PROJECTS = {
     kantonskarte: {
-      employer: 'Pro Senectute Thurgau · Projekt',
-      title: 'Interaktive Kantonskarte',
       img: 'assets/kantonskarte.png',
-      imgAlt: 'Interaktive Kantonskarte',
-      desc: 'Ziel war eine intuitivere Navigation zu den regionalen Freiwilligenstellen von Pro Senectute Thurgau. Die bisherige Lösung mit klassischen Links bot keine visuelle Orientierung. In Zusammenarbeit mit den Verantwortlichen der Freiwilligenarbeit entwickelte ich eine interaktive Kantonskarte mit direkten Call-to-Actions. Die Karte wurde in Adobe Illustrator gestaltet und mit Unterstützung von Claude AI als einbettbares HTML-Tool umgesetzt – Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS. Laufzeit: 1 Monat, live seit 2025.',
-      tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
-      stats: [],
-      link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html'
+      link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html',
+      de: {
+        employer: 'Pro Senectute Thurgau · Projekt',
+        title: 'Interaktive Kantonskarte',
+        imgAlt: 'Interaktive Kantonskarte',
+        desc: 'Ziel war eine intuitivere Navigation zu den regionalen Freiwilligenstellen von Pro Senectute Thurgau. Die bisherige Lösung mit klassischen Links bot keine visuelle Orientierung. In Zusammenarbeit mit den Verantwortlichen der Freiwilligenarbeit entwickelte ich eine interaktive Kantonskarte mit direkten Call-to-Actions. Die Karte wurde in Adobe Illustrator gestaltet und mit Unterstützung von Claude AI als einbettbares HTML-Tool umgesetzt – Nutzer:innen laden SVG-Dateien hoch, beschriften Elemente und generieren ausführbaren Code für Magnolia CMS. Laufzeit: 1 Monat, live seit 2025.',
+        tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Project',
+        title: 'Interactive Cantonal Map',
+        imgAlt: 'Interactive Cantonal Map',
+        desc: 'The goal was more intuitive navigation to Pro Senectute Thurgau\'s regional volunteer offices. The previous solution with plain text links offered no visual orientation. Together with those responsible for volunteer work, I developed an interactive cantonal map with direct calls-to-action. The map was designed in Adobe Illustrator and implemented with the help of Claude AI as an embeddable HTML tool – users upload SVG files, label elements and generate executable code for Magnolia CMS. Duration: 1 month, live since 2025.',
+        tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
+        stats: []
+      }
     },
     animationlogo: {
-      employer: 'Pro Senectute Thurgau · Digital',
-      title: 'Animation – Logo Pro Senectute Thurgau',
       img: 'assets/logo_pstg.png',
-      imgAlt: 'Logo Animation Pro Senectute Thurgau',
       video: 'assets/animation_logo.mp4',
-      desc: 'Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.',
-      tools: ['Adobe After Effects', 'Animation'],
-      stats: [],
-      link: null
+      link: null,
+      de: {
+        employer: 'Pro Senectute Thurgau · Digital',
+        title: 'Animation – Logo Pro Senectute Thurgau',
+        imgAlt: 'Logo Animation Pro Senectute Thurgau',
+        desc: 'Animation des Logos von Pro Senectute Thurgau in Adobe After Effects, umgesetzt nach den CD-Vorgaben von Pro Senectute Schweiz.',
+        tools: ['Adobe After Effects', 'Animation'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital',
+        title: 'Animation – Logo Pro Senectute Thurgau',
+        imgAlt: 'Logo Animation Pro Senectute Thurgau',
+        desc: 'Animation of the Pro Senectute Thurgau logo in Adobe After Effects, implemented according to Pro Senectute Switzerland\'s corporate design guidelines.',
+        tools: ['Adobe After Effects', 'Animation'],
+        stats: []
+      }
     },
     plakatierung: {
-      employer: 'open art museum · Analoge Kommunikation',
-      title: 'Plakatierung – St.Gallen / Zürich',
       img: 'assets/plakatierung_1.jpg',
       img2: 'assets/plakatierung_2.jpg',
-      imgAlt: 'Plakatierung St.Gallen / Zürich',
-      desc: 'Verantwortung für die Planung und operative Umsetzung von Plakatkampagnen des open art museum in St.Gallen und Zürich. Ich koordinierte die Kampagnen mit APG/Goldbach NEO sowie den zuständigen Stellen der Stadt. Aufgaben umfassten Bestellung, Terminplanung und Kontrolle der Hängung.',
-      tools: ['APG Out of Home'],
-      stats: [],
-      link: null
+      link: null,
+      de: {
+        employer: 'open art museum · Analoge Kommunikation',
+        title: 'Plakatierung – St.Gallen / Zürich',
+        imgAlt: 'Plakatierung St.Gallen / Zürich',
+        desc: 'Verantwortung für die Planung und operative Umsetzung von Plakatkampagnen des open art museum in St.Gallen und Zürich. Ich koordinierte die Kampagnen mit APG/Goldbach NEO sowie den zuständigen Stellen der Stadt. Aufgaben umfassten Bestellung, Terminplanung und Kontrolle der Hängung.',
+        tools: ['APG Out of Home'],
+        stats: []
+      },
+      en: {
+        employer: 'open art museum · Analog Communication',
+        title: 'Poster Campaigns – St.Gallen / Zurich',
+        imgAlt: 'Poster Campaign St.Gallen / Zurich',
+        desc: 'Responsible for planning and operational execution of the open art museum\'s poster campaigns in St.Gallen and Zurich. I coordinated the campaigns with APG/Goldbach NEO as well as the responsible municipal authorities. Tasks included ordering, scheduling and checking the installation.',
+        tools: ['APG Out of Home'],
+        stats: []
+      }
     },
     kraeutersalz: {
-      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
-      title: 'Kundengeschenk – Kräutersalz',
       img: 'assets/krautersalz_1.png',
-      imgAlt: 'Kräutersalz Verpackung',
-      desc: 'Pro Senectute Thurgau besucht Rentner:innen zum Geburtstag und überreicht ein persönliches Geschenk. Ich verantwortete Konzept, Gestaltung und druckfertige Umsetzung der Verpackung sowie der Etikette des Kräutersalz-Gewürzstreuers – vollständig in Adobe Illustrator, von der ersten Idee bis zur druckfertigen GZD.',
-      tools: ['Adobe Illustrator', 'Verpackungsdesign', 'Werbeartikel', 'Druckdaten'],
-      stats: [],
-      link: null
+      link: null,
+      de: {
+        employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+        title: 'Kundengeschenk – Kräutersalz',
+        imgAlt: 'Kräutersalz Verpackung',
+        desc: 'Pro Senectute Thurgau besucht Rentner:innen zum Geburtstag und überreicht ein persönliches Geschenk. Ich verantwortete Konzept, Gestaltung und druckfertige Umsetzung der Verpackung sowie der Etikette des Kräutersalz-Gewürzstreuers – vollständig in Adobe Illustrator, von der ersten Idee bis zur druckfertigen GZD.',
+        tools: ['Adobe Illustrator', 'Verpackungsdesign', 'Werbeartikel', 'Druckdaten'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Analog Communication',
+        title: 'Client Gift – Herb Salt',
+        imgAlt: 'Herb Salt Packaging',
+        desc: 'Pro Senectute Thurgau visits retirees on their birthday and presents a personal gift. I was responsible for the concept, design and print-ready execution of the packaging and label of the herb salt shaker – entirely in Adobe Illustrator, from the first idea to the final print file.',
+        tools: ['Adobe Illustrator', 'Packaging Design', 'Promotional Items', 'Print Files'],
+        stats: []
+      }
     },
     goennerflyer: {
-      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
-      title: 'Flyer – Gönnermitgliedschaft',
       img: 'assets/flyer_goenner_1.png',
       img2: 'assets/flyer_goenner_2.png',
-      imgAlt: 'Gönnerflyer',
-      desc: 'Vom Konzept über die Gestaltung bis zur druckfertigen Datei — vollständig in Adobe InDesign umgesetzt. Der Flyer bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft und richtet sich an potenzielle Unterstützer:innen der Organisation.',
-      tools: ['Adobe InDesign', 'Konzept', 'Gestaltung', 'Druckdaten'],
-      stats: [],
-      link: null
+      link: null,
+      de: {
+        employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+        title: 'Flyer – Gönnermitgliedschaft',
+        imgAlt: 'Gönnerflyer',
+        desc: 'Vom Konzept über die Gestaltung bis zur druckfertigen Datei — vollständig in Adobe InDesign umgesetzt. Der Flyer bewirbt die «Pro Vielfalt Alter» Gönnermitgliedschaft und richtet sich an potenzielle Unterstützer:innen der Organisation.',
+        tools: ['Adobe InDesign', 'Konzept', 'Gestaltung', 'Druckdaten'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Analog Communication',
+        title: 'Flyer – Patron Membership',
+        imgAlt: 'Patron Flyer',
+        desc: 'From concept through design to the print-ready file — fully implemented in Adobe InDesign. The flyer promotes the «Pro Vielfalt Alter» patron membership and targets potential supporters of the organization.',
+        tools: ['Adobe InDesign', 'Concept', 'Design', 'Print Files'],
+        stats: []
+      }
     },
     zeitschrift: {
-      employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
-      title: 'Zeitschrift – PS TG Intern',
       img: 'assets/cover_psintern_1.png',
       img2: 'assets/cover_psintern_2.png',
-      imgAlt: 'PS TG Intern Cover',
-      desc: 'Die interne Mitarbeitendenzeitschrift von Pro Senectute Thurgau wurde von Grund auf neu aufgebaut – von einer Word-Vorlage zu einem professionellen InDesign-Layout mit festen Rubriken und wiederkehrenden Themen. Im Redaktionsteam verantworte ich Konzept, Gestaltung und druckfertige Umsetzung. Die Zeitschrift erscheint 2× jährlich und wird an alle rund 500 Mitarbeitenden von Pro Senectute Thurgau versandt.',
-      tools: ['Adobe InDesign', 'Redaktion', 'Druckdaten', 'Gestaltung'],
-      stats: [],
-      link: null
+      link: null,
+      de: {
+        employer: 'Pro Senectute Thurgau · Analoge Kommunikation',
+        title: 'Zeitschrift – PS TG Intern',
+        imgAlt: 'PS TG Intern Cover',
+        desc: 'Die interne Mitarbeitendenzeitschrift von Pro Senectute Thurgau wurde von Grund auf neu aufgebaut – von einer Word-Vorlage zu einem professionellen InDesign-Layout mit festen Rubriken und wiederkehrenden Themen. Im Redaktionsteam verantworte ich Konzept, Gestaltung und druckfertige Umsetzung. Die Zeitschrift erscheint 2× jährlich und wird an alle rund 500 Mitarbeitenden von Pro Senectute Thurgau versandt.',
+        tools: ['Adobe InDesign', 'Redaktion', 'Druckdaten', 'Gestaltung'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Analog Communication',
+        title: 'Magazine – PS TG Intern',
+        imgAlt: 'PS TG Intern Cover',
+        desc: 'Pro Senectute Thurgau\'s internal staff magazine was rebuilt from the ground up – from a Word template to a professional InDesign layout with fixed sections and recurring themes. As part of the editorial team, I am responsible for concept, design and print-ready execution. The magazine is published twice a year and sent to all around 500 Pro Senectute Thurgau employees.',
+        tools: ['Adobe InDesign', 'Editing', 'Print Files', 'Design'],
+        stats: []
+      }
     },
     instagram: {
-      employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
-      title: 'Aufbau & Management Instagram-Kanal',
       img: 'assets/instagram_rollator.png',
       img2: 'assets/instagram_disco.png',
-      imgAlt: 'Instagram Reels',
-      desc: 'Den Instagram-Kanal von Grund auf aufgebaut — Strategie, Redaktionsplanung und Community-Aufbau. Von der Idee bis zum fertigen Reel: Verantwortung für den gesamten Produktionsprozess — Konzept, Dreh, Schnitt und Ton. Die Videos richten sich an eine ältere Zielgruppe und erzielten mit Beiträgen wie dem Seniorenorchester-Reel über 10\'000 Aufrufe.',
-      tools: ['Adobe Premiere Pro', 'Meta Ads', 'Meta Business Suite', 'Canva', 'Adobe Firefly', 'Konzept', 'Dreharbeiten'],
-      stats: [
-        { num: '10\'000+', label: 'Aufrufe' },
-        { num: '400', label: 'Follower in einem Jahr' },
-        { num: '4\'300', label: 'Konten erreicht' }
-      ],
-      link: 'https://www.instagram.com/p/DWlEnk4iJrf/'
+      link: 'https://www.instagram.com/p/DWlEnk4iJrf/',
+      de: {
+        employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+        title: 'Aufbau & Management Instagram-Kanal',
+        imgAlt: 'Instagram Reels',
+        desc: 'Den Instagram-Kanal von Grund auf aufgebaut — Strategie, Redaktionsplanung und Community-Aufbau. Von der Idee bis zum fertigen Reel: Verantwortung für den gesamten Produktionsprozess — Konzept, Dreh, Schnitt und Ton. Die Videos richten sich an eine ältere Zielgruppe und erzielten mit Beiträgen wie dem Seniorenorchester-Reel über 10\'000 Aufrufe.',
+        tools: ['Adobe Premiere Pro', 'Meta Ads', 'Meta Business Suite', 'Canva', 'Adobe Firefly', 'Konzept', 'Dreharbeiten'],
+        stats: [
+          { num: '10\'000+', label: 'Aufrufe' },
+          { num: '400', label: 'Follower in einem Jahr' },
+          { num: '4\'300', label: 'Konten erreicht' }
+        ]
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital Communication',
+        title: 'Instagram Channel Build & Management',
+        imgAlt: 'Instagram Reels',
+        desc: 'Built the Instagram channel from the ground up — strategy, content planning and community building. From idea to finished reel: responsible for the entire production process — concept, filming, editing and sound. The videos target an older audience, and posts like the senior orchestra reel achieved over 10,000 views.',
+        tools: ['Adobe Premiere Pro', 'Meta Ads', 'Meta Business Suite', 'Canva', 'Adobe Firefly', 'Concept', 'Filming'],
+        stats: [
+          { num: '10,000+', label: 'Views' },
+          { num: '400', label: 'Followers in one year' },
+          { num: '4,300', label: 'Accounts reached' }
+        ]
+      }
+    },
+    reelfitgym: {
+      img: 'assets/was_ist_fitgym.png',
+      link: 'https://www.instagram.com/p/DZE0dV6onlA/',
+      de: {
+        employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+        title: 'Reel – Was ist FitGym?',
+        imgAlt: 'Reel Was ist FitGym',
+        desc: 'Kurzes Erklär-Reel zum Bewegungs- und Fitnessangebot FitGym von Pro Senectute Thurgau, produziert für Instagram. Ziel war es, Senior:innen niederschwellig über Inhalt und Ablauf des Kursangebots zu informieren und zur Teilnahme zu motivieren. Verantwortung für Konzept, Dreh, Schnitt und Textgestaltung.',
+        tools: ['Adobe Premiere Pro', 'Konzept', 'Dreharbeiten', 'Canva'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital Communication',
+        title: 'Reel – What is FitGym?',
+        imgAlt: 'Reel What is FitGym',
+        desc: 'Short explainer reel about FitGym, Pro Senectute Thurgau\'s movement and fitness program for seniors, produced for Instagram. The goal was to give seniors an easy, low-threshold introduction to the course content and format, and to motivate them to take part. Responsible for concept, filming, editing and on-screen text.',
+        tools: ['Adobe Premiere Pro', 'Concept', 'Filming', 'Canva'],
+        stats: []
+      }
+    },
+    reelrollator: {
+      img: 'assets/rollatortuning.png',
+      link: 'https://www.instagram.com/p/DWlEnk4iJrf/',
+      de: {
+        employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+        title: 'Reel – Rollator Tuning (1. April)',
+        imgAlt: 'Reel Rollator Tuning',
+        desc: 'Humorvolles 1.-April-Reel, das einen fiktiven «getunten» Rollator mit Flammen-Lackierung und LED-Beleuchtung zeigt. Das gesamte Video wurde vollständig mit KI generiert – von der Bildidee über das Prompting bis zur Postproduktion. Ziel war ein augenzwinkernder Aprilscherz für die Community, der zugleich zeigt, wie kreativ sich KI-Tools für Social-Media-Content einsetzen lassen.',
+        tools: ['KI-Video', 'Konzept', 'Adobe Premiere Pro'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital Communication',
+        title: 'Reel – Rollator Tuning (April Fools\')',
+        imgAlt: 'Reel Rollator Tuning',
+        desc: 'Humorous April Fools\' reel showing a fictional "tuned" walking frame with flame paintwork and LED lighting. The entire video was fully AI-generated – from the visual concept through prompting to post-production. The goal was a tongue-in-cheek joke for the community that also showcases how creatively AI tools can be used for social media content.',
+        tools: ['AI Video', 'Concept', 'Adobe Premiere Pro'],
+        stats: []
+      }
+    },
+    reelcrossfit: {
+      img: 'assets/crossfit.png',
+      link: 'https://www.instagram.com/p/DUz-fY7jsas/',
+      de: {
+        employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+        title: 'Reel – Interview Crossfit 60+',
+        imgAlt: 'Reel Interview Crossfit 60+',
+        desc: 'Interview-Reel mit einer Granfluencerin, die kurz zuvor den Kurs «CrossFit Quivelda» (CrossFit 60+) von Pro Senectute Thurgau in Weinfelden besucht hatte. Sie schildert authentisch ihre Eindrücke zum Kraftprogramm, das unter anderem Gewichtheben, Sprinten, Eigengewichtsübungen und Turnen kombiniert. Verantwortung für Konzept, Interviewführung, Dreh und Schnitt.',
+        tools: ['Adobe Premiere Pro', 'Interview', 'Dreharbeiten'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital Communication',
+        title: 'Reel – Crossfit 60+ Interview',
+        imgAlt: 'Reel Interview Crossfit 60+',
+        desc: 'Interview reel with a senior "granfluencer" who had just attended the "CrossFit Quivelda" (Crossfit 60+) course run by Pro Senectute Thurgau in Weinfelden. She shares an authentic account of the strength program, which combines weightlifting, sprinting, bodyweight exercises and gymnastics. Responsible for concept, interviewing, filming and editing.',
+        tools: ['Adobe Premiere Pro', 'Interview', 'Filming'],
+        stats: []
+      }
     },
     newsletter: {
-      employer: 'Pro Senectute Thurgau / open art museum · Digitale Kommunikation',
-      title: 'Newsletter – Was läuft',
       img: 'assets/newsletter.png',
-      imgAlt: 'Newsletter Screenshot',
-      desc: 'Gestaltung, Redaktion und Versand der monatlichen Newsletter für beide Organisationen — gemäss jeweiligem CD/CI. Verantwortlich für die vollständige Produktionskette: Inhalt, Design, technischer Versand und Auswertung. Die aussergewöhnliche Öffnungsrate von über 55% zeigt die Relevanz des Inhalts für die Zielgruppen.',
-      tools: ['GetResponse', 'Evalanche', 'Brevo', 'Mailchimp', 'Redaktion', 'Gestaltung'],
-      stats: [
-        { num: '2\'500+', label: 'Kontakte' },
-        { num: '55%+', label: 'Öffnungsrate' },
-        { num: '12%+', label: 'Klickrate' }
-      ],
-      link: null
+      link: null,
+      de: {
+        employer: 'Pro Senectute Thurgau / open art museum · Digitale Kommunikation',
+        title: 'Newsletter – Was läuft',
+        imgAlt: 'Newsletter Screenshot',
+        desc: 'Gestaltung, Redaktion und Versand der monatlichen Newsletter für beide Organisationen — gemäss jeweiligem CD/CI. Verantwortlich für die vollständige Produktionskette: Inhalt, Design, technischer Versand und Auswertung. Die aussergewöhnliche Öffnungsrate von über 55% zeigt die Relevanz des Inhalts für die Zielgruppen.',
+        tools: ['GetResponse', 'Evalanche', 'Brevo', 'Mailchimp', 'Redaktion', 'Gestaltung'],
+        stats: [
+          { num: '2\'500+', label: 'Kontakte' },
+          { num: '55%+', label: 'Öffnungsrate' },
+          { num: '12%+', label: 'Klickrate' }
+        ]
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau / open art museum · Digital Communication',
+        title: 'Newsletter – Was läuft',
+        imgAlt: 'Newsletter Screenshot',
+        desc: 'Design, editing and distribution of the monthly newsletters for both organizations — according to their respective corporate design/identity. Responsible for the full production chain: content, design, technical distribution and evaluation. The exceptional open rate of over 55% shows the relevance of the content to the target audiences.',
+        tools: ['GetResponse', 'Evalanche', 'Brevo', 'Mailchimp', 'Editing', 'Design'],
+        stats: [
+          { num: '2,500+', label: 'Contacts' },
+          { num: '55%+', label: 'Open rate' },
+          { num: '12%+', label: 'Click rate' }
+        ]
+      }
     },
     kunstvermittlung: {
-      employer: 'open art museum · Projekt',
-      title: 'Angebotsstruktur – Kunstvermittlung',
       img: 'assets/kunstvermittlung_oam.png',
-      imgAlt: 'Kunstvermittlung open art museum',
-      desc: 'Das bestehende Vermittlungsangebot des open art museum wurde neu strukturiert und visuell aufbereitet. Ich bündelte die vorhandenen Workshops und Führungen in ein modulares System, das Lehrpersonen auf einen Blick zeigt, welche Angebote für ihre Klassenstufe geeignet sind und welche Lernziele gemäss Lehrplan 21 abgedeckt werden. Die Gestaltung erfolgte gemäss CD in enger Zusammenarbeit mit der Verantwortlichen für Kulturvermittlung. Zusätzlich präsentierte ich das Angebot aktiv: bei Ausstellungseröffnungen direkt an Lehrpersonen im Kanton sowie an den Netzwerktreffen von kklick – Kulturvermittlung Ostschweiz.',
-      tools: ['Konzept', 'Redaktion', 'Adobe InDesign', 'Lehrplan 21'],
-      stats: [],
       link: 'https://openartmuseum.ch/kunstvermittlung/',
-      download: {
-        file: 'assets/260324_oam_Vermittlungsangebote.pdf',
-        label: 'Angebotsübersicht herunterladen'
+      download: { file: 'assets/260324_oam_Vermittlungsangebote.pdf' },
+      de: {
+        employer: 'open art museum · Projekt',
+        title: 'Angebotsstruktur – Kunstvermittlung',
+        imgAlt: 'Kunstvermittlung open art museum',
+        desc: 'Das bestehende Vermittlungsangebot des open art museum wurde neu strukturiert und visuell aufbereitet. Ich bündelte die vorhandenen Workshops und Führungen in ein modulares System, das Lehrpersonen auf einen Blick zeigt, welche Angebote für ihre Klassenstufe geeignet sind und welche Lernziele gemäss Lehrplan 21 abgedeckt werden. Die Gestaltung erfolgte gemäss CD in enger Zusammenarbeit mit der Verantwortlichen für Kulturvermittlung. Zusätzlich präsentierte ich das Angebot aktiv: bei Ausstellungseröffnungen direkt an Lehrpersonen im Kanton sowie an den Netzwerktreffen von kklick – Kulturvermittlung Ostschweiz.',
+        tools: ['Konzept', 'Redaktion', 'Adobe InDesign', 'Lehrplan 21'],
+        stats: [],
+        downloadLabel: 'Angebotsübersicht herunterladen'
+      },
+      en: {
+        employer: 'open art museum · Project',
+        title: 'Program Structure – Art Education',
+        imgAlt: 'Art Education open art museum',
+        desc: 'The open art museum\'s existing art education offering was restructured and visually redesigned. I consolidated the existing workshops and tours into a modular system that shows teachers at a glance which programs suit their grade level and which learning goals under Lehrplan 21 are covered. The design followed the corporate design in close collaboration with the person responsible for art education. I also actively presented the offering: directly to teachers across the canton at exhibition openings, as well as at the network meetings of kklick – Kulturvermittlung Ostschweiz.',
+        tools: ['Concept', 'Editing', 'Adobe InDesign', 'Curriculum 21'],
+        stats: [],
+        downloadLabel: 'Download program overview'
       }
     },
     oamdigital: {
-      employer: 'open art museum · Projekt',
-      title: 'oam digital – Digitale Erlebniswelt',
       img: 'assets/website_oam_digital.png',
-      imgAlt: 'oam digital Screenshot',
-      desc: 'Projektverantwortung für eine öffentlich zugängliche Webplattform, die per API-Schnittstelle auf die interne Museumsdatenbank zugreift und Informationen zu Kunstwerken, Ausstellungen und Künstlerbiografien zugänglich macht. Ich leitete das Projekt eigenverantwortlich: Anforderungsanalyse mit Stakeholdern, Interface-Design gemäss CD in Figma sowie Koordination der externen Entwicklungspartnerin Lopar Media GmbH. Eine mir unterstellte Praktikantin unterstützte mich bei der Aufbereitung von über 15\'000 Datensätzen. Projektdauer: 1 Jahr.',
-      tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Projektleitung', 'Gestaltung'],
-      stats: [
-        { num: '368', label: 'Künstler:innen' },
-        { num: '5\'248', label: 'Digitale Werke' },
-        { num: '161', label: 'Ausstellungen' },
-        { num: '15\'000+', label: 'Datensätze' }
-      ],
-      link: 'https://www.openartmuseum.ch/oam-digital/'
+      link: 'https://www.openartmuseum.ch/oam-digital/',
+      de: {
+        employer: 'open art museum · Projekt',
+        title: 'oam digital – Digitale Erlebniswelt',
+        imgAlt: 'oam digital Screenshot',
+        desc: 'Projektverantwortung für eine öffentlich zugängliche Webplattform, die per API-Schnittstelle auf die interne Museumsdatenbank zugreift und Informationen zu Kunstwerken, Ausstellungen und Künstlerbiografien zugänglich macht. Ich leitete das Projekt eigenverantwortlich: Anforderungsanalyse mit Stakeholdern, Interface-Design gemäss CD in Figma sowie Koordination der externen Entwicklungspartnerin Lopar Media GmbH. Eine mir unterstellte Praktikantin unterstützte mich bei der Aufbereitung von über 15\'000 Datensätzen. Projektdauer: 1 Jahr.',
+        tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Projektleitung', 'Gestaltung'],
+        stats: [
+          { num: '368', label: 'Künstler:innen' },
+          { num: '5\'248', label: 'Digitale Werke' },
+          { num: '161', label: 'Ausstellungen' },
+          { num: '15\'000+', label: 'Datensätze' }
+        ]
+      },
+      en: {
+        employer: 'open art museum · Project',
+        title: 'oam digital – Digital Experience World',
+        imgAlt: 'oam digital Screenshot',
+        desc: 'Project responsibility for a publicly accessible web platform that accesses the internal museum database via an API interface and makes information on artworks, exhibitions and artist biographies accessible. I led the project independently: requirements analysis with stakeholders, interface design according to corporate design in Figma, and coordination with the external development partner Lopar Media GmbH. An intern reporting to me helped process over 15,000 records. Project duration: 1 year.',
+        tools: ['Adobe Illustrator', 'Figma', 'UI/UX', 'Project Management', 'Design'],
+        stats: [
+          { num: '368', label: 'Artists' },
+          { num: '5,248', label: 'Digital works' },
+          { num: '161', label: 'Exhibitions' },
+          { num: '15,000+', label: 'Records' }
+        ]
+      }
     },
     kurssuche: {
-      employer: 'Pro Senectute Thurgau · Projekt',
-      title: 'Kurssuche 2.0',
       img: 'assets/kurssuche.png',
-      imgAlt: 'Kurssuche 2.0 Screenshot',
-      desc: 'Die bestehende Kurssuche war veraltet und unübersichtlich; Anmeldeprozesse erforderten manuelle Nachbearbeitung im ERP. Ich verantwortete das Projekt eigenständig von der Anforderungsanalyse über das UX/UI-Design in Figma bis zur Abnahme. Neu erfolgen Anmeldungen vollautomatisch mit Adressabgleich und übersichtlichen Dashboards – ohne manuelle Eingriffe im ERP. Externe Partner waren Inware AG (Webshop-Programmierung) und ein Abacus-Partner (ERP-Customizing). Projektdauer: 8 Monate, Budget: CHF 30\'000, Go-Live: Mai 2026.',
-      tools: ['Figma', 'Abacus', 'Konzeption', 'UI/UX Design', 'Gestaltung'],
-      stats: [],
-      link: 'https://www.pstg.ch/kurse'
+      link: 'https://www.pstg.ch/kurse',
+      de: {
+        employer: 'Pro Senectute Thurgau · Projekt',
+        title: 'Kurssuche 2.0',
+        imgAlt: 'Kurssuche 2.0 Screenshot',
+        desc: 'Die bestehende Kurssuche war veraltet und unübersichtlich; Anmeldeprozesse erforderten manuelle Nachbearbeitung im ERP. Ich verantwortete das Projekt eigenständig von der Anforderungsanalyse über das UX/UI-Design in Figma bis zur Abnahme. Neu erfolgen Anmeldungen vollautomatisch mit Adressabgleich und übersichtlichen Dashboards – ohne manuelle Eingriffe im ERP. Externe Partner waren Inware AG (Webshop-Programmierung) und ein Abacus-Partner (ERP-Customizing). Projektdauer: 8 Monate, Budget: CHF 30\'000, Go-Live: Mai 2026.',
+        tools: ['Figma', 'Abacus', 'Konzeption', 'UI/UX Design', 'Gestaltung'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Project',
+        title: 'Kurssuche 2.0',
+        imgAlt: 'Kurssuche 2.0 Screenshot',
+        desc: 'The existing course search was outdated and confusing; registration processes required manual follow-up in the ERP. I was solely responsible for the project, from requirements analysis through UX/UI design in Figma to final approval. Registrations are now fully automated with address matching and clear dashboards – without manual intervention in the ERP. External partners were Inware AG (webshop programming) and an Abacus partner (ERP customizing). Project duration: 8 months, budget: CHF 30,000, go-live: May 2026.',
+        tools: ['Figma', 'Abacus', 'Concept', 'UI/UX Design', 'Design'],
+        stats: []
+      }
     },
     datenbank: {
-      employer: 'open art museum · Projekt',
-      title: 'Datenbankmigration',
       img: 'assets/museumplus.png',
-      imgAlt: 'Datenbankmigration',
-      desc: 'Das veraltete und kostenintensive Datenbanksystem Beryll/Arja wurde durch MuseumPlus (Zetcom) abgelöst. Ich sammelte die Anforderungen der Stakeholder aus Administration, Sammlung und Archiv und bildete diese im neuen System ab. Anschliessend bereitete ich die Datensätze auf, kontrollierte das Mapping und bereinigte die Daten nach der Migration weiter. Eine mir unterstellte Praktikantin unterstützte dabei. Die eigentliche Migration dauerte rund 3 Monate, die vollständige Datenbereinigung knapp 1 Jahr. Nach Abschluss programmierte ich die Datenbankexports eigenständig in Groovy und führte Schulungen für alle betroffenen Mitarbeitenden durch.',
-      tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Datenbanken'],
-      stats: [
-        { num: '20\'000+', label: 'Datensätze migriert' },
-        { num: '3\'000+', label: 'Kontakte' }
-      ],
-      link: null
+      link: null,
+      de: {
+        employer: 'open art museum · Projekt',
+        title: 'Datenbankmigration',
+        imgAlt: 'Datenbankmigration',
+        desc: 'Das veraltete und kostenintensive Datenbanksystem Beryll/Arja wurde durch MuseumPlus (Zetcom) abgelöst. Ich sammelte die Anforderungen der Stakeholder aus Administration, Sammlung und Archiv und bildete diese im neuen System ab. Anschliessend bereitete ich die Datensätze auf, kontrollierte das Mapping und bereinigte die Daten nach der Migration weiter. Eine mir unterstellte Praktikantin unterstützte dabei. Die eigentliche Migration dauerte rund 3 Monate, die vollständige Datenbereinigung knapp 1 Jahr. Nach Abschluss programmierte ich die Datenbankexports eigenständig in Groovy und führte Schulungen für alle betroffenen Mitarbeitenden durch.',
+        tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Datenbanken'],
+        stats: [
+          { num: '20\'000+', label: 'Datensätze migriert' },
+          { num: '3\'000+', label: 'Kontakte' }
+        ]
+      },
+      en: {
+        employer: 'open art museum · Project',
+        title: 'Database Migration',
+        imgAlt: 'Database Migration',
+        desc: 'The outdated and costly Beryll/Arja database system was replaced by MuseumPlus (Zetcom). I gathered requirements from stakeholders in administration, collections and archive and mapped them into the new system. I then prepared the data records, checked the mapping and continued cleaning up the data after migration. An intern reporting to me assisted with this. The actual migration took about 3 months, the complete data cleanup nearly 1 year. Afterward, I independently programmed the database exports in Groovy and conducted training for all affected staff.',
+        tools: ['MuseumPlus', 'Beryll', 'Groovy', 'Adobe Illustrator', 'Databases'],
+        stats: [
+          { num: '20,000+', label: 'Records migrated' },
+          { num: '3,000+', label: 'Contacts' }
+        ]
+      }
     },
     websiteoam: {
-      employer: 'open art museum · Projekt',
-      title: 'Website-Relaunch open art museum',
       img: 'assets/website_oam.png',
-      imgAlt: 'Website open art museum',
-      desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag AG (Projektleitung) und Lopar Media GmbH (Entwicklung). Ich verantwortete die inhaltliche Seite: Strukturentwicklung, Content-Erstellung und -Abfüllung in Absprache mit Museumsleitung und Stiftungsrat. Zusätzlich übernahm ich das Anforderungsmanagement zwischen Inhalt und Entwicklung. Eine mir unterstellte Praktikantin unterstützte bei der Umsetzung.',
-      tools: ['Figma', 'WordPress', 'WooCommerce', 'Gestaltung', 'Projektmitarbeit'],
-      stats: [],
-      link: 'https://www.openartmuseum.ch'
+      link: 'https://www.openartmuseum.ch',
+      de: {
+        employer: 'open art museum · Projekt',
+        title: 'Website-Relaunch open art museum',
+        imgAlt: 'Website open art museum',
+        desc: 'Komplette Neugestaltung der Website in Zusammenarbeit mit der Kommunikationsagentur Alltag AG (Projektleitung) und Lopar Media GmbH (Entwicklung). Ich verantwortete die inhaltliche Seite: Strukturentwicklung, Content-Erstellung und -Abfüllung in Absprache mit Museumsleitung und Stiftungsrat. Zusätzlich übernahm ich das Anforderungsmanagement zwischen Inhalt und Entwicklung. Eine mir unterstellte Praktikantin unterstützte bei der Umsetzung.',
+        tools: ['Figma', 'WordPress', 'WooCommerce', 'Gestaltung', 'Projektmitarbeit'],
+        stats: []
+      },
+      en: {
+        employer: 'open art museum · Project',
+        title: 'Website Relaunch open art museum',
+        imgAlt: 'Website open art museum',
+        desc: 'Complete redesign of the website in collaboration with the communications agency Alltag AG (project lead) and Lopar Media GmbH (development). I was responsible for the content side: structural development, content creation and population, in coordination with museum management and the board of trustees. I also took on requirements management between content and development. An intern reporting to me assisted with implementation.',
+        tools: ['Figma', 'WordPress', 'WooCommerce', 'Design', 'Project Collaboration'],
+        stats: []
+      }
     }
   };
+
+  // ── SPRACHE (DE / EN) ──
+  const UI = {
+    de: { close: 'Schliessen', visit: 'Zur Website', hint: '→ Details ansehen' },
+    en: { close: 'Close', visit: 'Visit website', hint: '→ View details' }
+  };
+  let currentLang = localStorage.getItem('lang') || 'de';
+  let currentModalId = null;
 
   // ── MODAL MARKUP ──
   const overlay = document.createElement('div');
@@ -1315,35 +1599,37 @@
   document.body.appendChild(overlay);
 
   function openModal(id) {
-    const p = PROJECTS[id];
-    if (!p) return;
+    const base = PROJECTS[id];
+    if (!base) return;
+    currentModalId = id;
+    const p = base[currentLang];
 
     // Image
     const imgEl = document.getElementById('modal-img');
-    if (p.video) {
+    if (base.video) {
       imgEl.style.display = '';
       imgEl.style.gridTemplateColumns = '';
       imgEl.innerHTML = `
-        <video src="${p.video}" autoplay loop muted playsinline
+        <video src="${base.video}" autoplay loop muted playsinline
           style="width:100%;height:auto;display:block;"></video>`;
-    } else if (p.img2) {
+    } else if (base.img2) {
       imgEl.style.display = 'grid';
       imgEl.style.gridTemplateColumns = '1fr 1fr';
       imgEl.style.gap = '0';
       imgEl.innerHTML = `
-        <img src="${p.img}" alt="${p.imgAlt}" style="width:100%;height:auto;object-fit:contain;display:block;">
-        <img src="${p.img2}" alt="${p.imgAlt} 2" style="width:100%;height:auto;object-fit:contain;display:block;">`;
+        <img src="${base.img}" alt="${p.imgAlt}" style="width:100%;height:auto;object-fit:contain;display:block;">
+        <img src="${base.img2}" alt="${p.imgAlt} 2" style="width:100%;height:auto;object-fit:contain;display:block;">`;
     } else {
       imgEl.style.display = '';
       imgEl.style.gridTemplateColumns = '';
       imgEl.innerHTML = `
         <div class="modal-img-placeholder">
           <svg width="40" height="40" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="#4a7c5e" stroke-width="1.5"/><path d="M4 12h24" stroke="#4a7c5e" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#4a7c5e" stroke-width="1.5"/></svg>
-          <span>${p.img}</span>
+          <span>${base.img}</span>
         </div>`;
       // Try real image
       const img = new Image();
-      img.src = p.img;
+      img.src = base.img;
       img.alt = p.imgAlt;
       img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); };
     }
@@ -1367,12 +1653,12 @@
     // Link
     const linkWrap = document.getElementById('modal-link-wrap');
     let linkHTML = '';
-    if (p.link) linkHTML += `<a href="${p.link}" target="_blank" rel="noopener" class="modal-link">
-      Zur Website
+    if (base.link) linkHTML += `<a href="${base.link}" target="_blank" rel="noopener" class="modal-link">
+      ${UI[currentLang].visit}
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H6M12 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>`;
-    if (p.download) linkHTML += ` <a href="${p.download.file}" download class="modal-link" style="background:var(--green-light); margin-left:0.5rem;">
-      ${p.download.label}
+    if (base.download) linkHTML += ` <a href="${base.download.file}" download class="modal-link" style="background:var(--green-light); margin-left:0.5rem;">
+      ${p.downloadLabel}
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M7 10l-3-3M7 10l3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>`;
     linkWrap.innerHTML = linkHTML;
@@ -1392,7 +1678,7 @@
     // Add hint text
     const hint = document.createElement('p');
     hint.className = 'card-hint';
-    hint.textContent = '→ Details ansehen';
+    hint.textContent = UI[currentLang].hint;
     card.querySelector('.card-body').appendChild(hint);
   });
 
@@ -1400,6 +1686,39 @@
   document.getElementById('modal-close').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── SPRACHUMSCHALTUNG ──
+  // Store original German text once so we can always restore it exactly.
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.dataset.de = el.innerHTML;
+  });
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+
+    document.getElementById('lang-de').classList.toggle('active', lang === 'de');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.de;
+    });
+
+    document.getElementById('modal-close').setAttribute('aria-label', UI[lang].close);
+    document.querySelectorAll('.card-hint').forEach(h => { h.textContent = UI[lang].hint; });
+
+    // Re-render modal if currently open, and refresh CV-download link label consistency
+    if (overlay.classList.contains('open') && currentModalId) {
+      openModal(currentModalId);
+    }
+  }
+
+  document.getElementById('lang-de').addEventListener('click', () => applyLanguage('de'));
+  document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
+
+  // Apply stored/default language on load
+  applyLanguage(currentLang);
 </script>
 
 </body>
