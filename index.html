@@ -1023,6 +1023,19 @@
     <!-- DIGITALE KOMMUNIKATION -->
     <div class="portfolio-group-label" data-en="Digital Communication">Digitale Kommunikation</div>
     <div class="portfolio-grid">
+      <!-- Herbstsammlung HESA26 -->
+      <div class="project-card fade-in" data-id="hesa26">
+        <div class="card-img">
+          <img src="assets/hesa26.jpg" alt="Herbstsammlung Thurgau 2026" loading="lazy">
+          <div class="video-badge" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2.5v9l8-4.5-8-4.5z" fill="white"/></svg></div>
+        </div>
+        <div class="card-body">
+          <p class="card-employer" data-en="Pro Senectute Thurgau · Digital">Pro Senectute Thurgau · Digital</p>
+          <h3 class="card-title" data-en="Campaign – Herbstsammlung Thurgau (HESA26)">Kampagne – Herbstsammlung Thurgau (HESA26)</h3>
+          <p class="card-desc" data-en="Cross-channel donation campaign: Instagram, landing page and paid ads, tracked via GA4. AI-assisted video production with ElevenLabs and Nano Banana, edited in Adobe Premiere Pro.">Kanalübergreifende Spendenkampagne: Instagram, Landingpage und Paid Ads, Tracking via GA4. KI-gestützte Videoproduktion mit ElevenLabs und Nano Banana, Schnitt in Adobe Premiere Pro.</p>
+          <div class="card-tools"><span class="tool-tag">Meta Ads</span><span class="tool-tag">GA4</span><span class="tool-tag">ElevenLabs</span><span class="tool-tag">Adobe Premiere Pro</span></div>
+        </div>
+      </div>
       <!-- Instagram -->
       <div class="project-card fade-in" data-id="instagram">
         <div class="card-img">
@@ -1210,6 +1223,16 @@
           <div class="card-tools"><span class="tool-tag">Claude AI</span><span class="tool-tag">HTML</span><span class="tool-tag">CSS</span><span class="tool-tag">Magnolia</span></div>
         </div>
       </div>
+      <!-- EOA Conference -->
+      <div class="project-card fade-in" data-id="eoaconference">
+        <div class="card-img"><img src="assets/eoa_conference.jpg" alt="EOA Conference 2023" loading="lazy"></div>
+        <div class="card-body">
+          <p class="card-employer" data-en="open art museum · Project">open art museum · Projekt</p>
+          <h3 class="card-title" data-en="Co-organisation – EOA Conference &quot;Outsider Art and Tradition&quot;">Mitorganisation – EOA-Tagung «Outsider Art and Tradition»</h3>
+          <p class="card-desc" data-en="Co-organised the international annual conference of the European Outsider Art Association (80 guests, 15 countries): ticketing, participant/speaker management, livestream hosting and excursion logistics.">Mitorganisation der internationalen Jahrestagung der European Outsider Art Association (80 Gäste aus 15 Ländern): Ticketing, Teilnehmer- und Referentenmanagement, Livestream-Hosting und Ausflugslogistik.</p>
+          <div class="card-tools"><span class="tool-tag" data-en="Event Management">Eventmanagement</span><span class="tool-tag">Ticketing</span><span class="tool-tag" data-en="Livestream Hosting">Livestream-Hosting</span></div>
+        </div>
+      </div>
     </div>
 
     
@@ -1248,6 +1271,27 @@
 
   // ── PROJECT DATA (bilingual: shared fields + de/en) ──
   const PROJECTS = {
+    hesa26: {
+      img: 'assets/hesa26.jpg',
+      video: 'assets/hesa26.mp4',
+      link: 'https://tg.prosenectute.ch/de/engagement/spenden1/Herbstsammlung-Thurgau-insta.html',
+      de: {
+        employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
+        title: 'Kampagne – Herbstsammlung Thurgau (HESA26)',
+        imgAlt: 'Herbstsammlung Thurgau 2026',
+        desc: 'Begleitung der Herbstsammlung 2026 (HESA26) von Pro Senectute Thurgau mit einer kanalübergreifenden Spendenkampagne: Instagram-Kampagne, dedizierte Landingpage mit Spendenaufruf und Paid Ads. Erfolgsmessung via Google Analytics 4. Für den Kampagnenfilm kamen KI-Tools zum Einsatz – ElevenLabs für die Vertonung und Nano Banana für KI-generierte Videosequenzen, Schnitt und Postproduktion in Adobe Premiere Pro.',
+        tools: ['Meta Ads', 'Instagram', 'Google Analytics 4', 'ElevenLabs', 'Nano Banana', 'Adobe Premiere Pro'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Digital Communication',
+        title: 'Campaign – Herbstsammlung Thurgau (HESA26)',
+        imgAlt: 'Herbstsammlung Thurgau 2026',
+        desc: 'Supported Pro Senectute Thurgau\'s 2026 autumn fundraising campaign (HESA26) with a cross-channel donation campaign: Instagram campaign, a dedicated landing page with donation call-to-action, and paid ads. Performance tracked via Google Analytics 4. AI tools were used for the campaign film – ElevenLabs for voiceover and Nano Banana for AI-generated video sequences, edited and finished in Adobe Premiere Pro.',
+        tools: ['Meta Ads', 'Instagram', 'Google Analytics 4', 'ElevenLabs', 'Nano Banana', 'Adobe Premiere Pro'],
+        stats: []
+      }
+    },
     kantonskarte: {
       img: 'assets/kantonskarte.png',
       link: 'https://tg.prosenectute.ch/de/engagement/freiwilligenarbeit/ov.html',
@@ -1266,6 +1310,32 @@
         desc: 'The goal was more intuitive navigation to Pro Senectute Thurgau\'s regional volunteer offices. The previous solution with plain text links offered no visual orientation. Together with those responsible for volunteer work, I developed an interactive cantonal map with direct calls-to-action. The map was designed in Adobe Illustrator and implemented with the help of Claude AI as an embeddable HTML tool – users upload SVG files, label elements and generate executable code for Magnolia CMS. Duration: 1 month, live since 2025.',
         tools: ['Claude AI', 'HTML', 'CSS', 'Adobe Illustrator', 'Magnolia'],
         stats: []
+      }
+    },
+    eoaconference: {
+      img: 'assets/eoa_conference.jpg',
+      link: 'https://openartmuseum.ch/wp-content/uploads/2023/05/EOA_Programme.pdf',
+      de: {
+        employer: 'open art museum · Projekt',
+        title: 'Mitorganisation – EOA-Tagung «Outsider Art and Tradition»',
+        imgAlt: 'EOA Conference 2023',
+        desc: 'Mitorganisation der internationalen Jahrestagung der European Outsider Art Association, «Outsider Art and Tradition», 11.–14. Mai 2023, am open art museum St.Gallen (80 Gäste aus 15 Ländern). Verantwortlich für Ticketing, Teilnehmer- und Referentenmanagement, Hosting des Livestreams, Ansprechperson vor Ort sowie Organisation einzelner Ausflugsteile (u.a. Bustransfers).',
+        tools: ['Eventmanagement', 'Ticketing', 'Livestream-Hosting', 'Referentenmanagement'],
+        stats: [
+          { num: '80', label: 'Gäste aus 15 Ländern' },
+          { num: '4', label: 'Konferenztage' }
+        ]
+      },
+      en: {
+        employer: 'open art museum · Project',
+        title: 'Co-organisation – EOA Conference "Outsider Art and Tradition"',
+        imgAlt: 'EOA Conference 2023',
+        desc: 'Co-organised the European Outsider Art Association\'s international annual conference, "Outsider Art and Tradition," 11–14 May 2023, at the open art museum St.Gallen (80 guests from 15 countries). Responsible for ticketing, participant and speaker management, livestream hosting, on-site point of contact, and logistics for excursion segments (incl. bus transfers).',
+        tools: ['Event Management', 'Ticketing', 'Livestream Hosting', 'Speaker Management'],
+        stats: [
+          { num: '80', label: 'Guests from 15 countries' },
+          { num: '4', label: 'Conference days' }
+        ]
       }
     },
     animationlogo: {
