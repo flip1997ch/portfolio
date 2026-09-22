@@ -79,6 +79,59 @@
     }
     .nav-links a:hover { color: var(--green); }
 
+    .nav-contact { position: relative; margin-left: 1.2rem; }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 1.1rem;
+      border-radius: 2rem;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: var(--green-light); }
+    .contact-popover {
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .contact-popover.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .contact-popover a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.7rem;
+      border-radius: 5px;
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-size: 0.85rem;
+      transition: background 0.15s;
+    }
+    .contact-popover a:hover { background: var(--green-pale); }
+
     .lang-toggle {
       display: flex;
       align-items: center;
@@ -768,6 +821,9 @@
       .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .contact-btn { padding: 0.45rem 0.85rem; font-size: 0.75rem; }
+      .nav-contact { margin-left: 0.6rem; }
+      .contact-popover { min-width: 180px; }
       .modal { margin: 0; max-height: 100vh; width: 100%; max-width: 100%; height: 100%; border-radius: 0; }
       .modal-overlay { padding: 0; }
       /* Option 4: hide desc, tools and hint on mobile cards */
@@ -794,6 +850,23 @@
     <span class="divider">/</span>
     <button type="button" id="lang-en">EN</button>
   </div>
+  <div class="nav-contact">
+    <button type="button" class="contact-btn" id="contact-toggle" aria-expanded="false" data-en="Contact">Kontakt</button>
+    <div class="contact-popover" id="contact-popover">
+      <a href="#" class="contact-email" data-en="Email">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M2 5.5l8 5.5 8-5.5M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>E-Mail</span>
+      </a>
+      <a href="#" class="contact-phone" data-en="Phone">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M4 3h3l2 5-2.5 1.5a11 11 0 005 5L13 12l5 2v3a2 2 0 01-2 2C8.5 19 1 11.5 1 5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Telefon</span>
+      </a>
+      <a href="https://www.linkedin.com/in/philipp-gross-41510a234/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 8.5v6M6.5 6v.01M10 14.5v-3.7c0-1.1.7-1.9 2-1.9s2 .8 2 2v3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -817,7 +890,7 @@
   </div>
   <div class="hero-image">
     <!-- Portrait -->
-    <img src="assets/portrait.jpg" alt="Philipp Gross" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+    <img src="assets/portrait.jpg" alt="Philipp Gross">
     <div class="hero-decoration"></div>
   </div>
 </section>
@@ -1249,6 +1322,11 @@
     <a href="#cv" data-en="CV">Lebenslauf</a>
     <a href="#portfolio">Portfolio</a>
   </div>
+  <div class="footer-links" style="margin-top: 0.8rem;">
+    <a href="#" class="contact-email" data-en="Email">E-Mail</a>
+    <a href="#" class="contact-phone" data-en="Phone">Telefon</a>
+    <a href="https://www.linkedin.com/in/philipp-gross-41510a234/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
   <div style="margin-top: 2rem;">
     <a href="assets/Lebenslauf_Philipp_Gross.pdf" data-href-en="assets/CV_and_Portfolio_PhilippGross_ENG.pdf" download class="modal-link" id="footer-cv-link">
       <span data-en="Download CV">Lebenslauf herunterladen</span>
@@ -1258,6 +1336,38 @@
 </footer>
 
 <script>
+  // ── CONTACT (assembled at runtime to reduce scraping) ──
+  (function () {
+    const eu = ['philipp', '.', 'gross'].join('');
+    const ed = ['bluewin', '.', 'ch'].join('');
+    document.querySelectorAll('.contact-email').forEach(el => { el.href = 'mailto:' + eu + '@' + ed; });
+
+    const digits = ['076', '724', '29', '49'];
+    document.querySelectorAll('.contact-phone').forEach(el => { el.href = 'tel:+41' + digits.join('').slice(1); });
+
+    const toggle = document.getElementById('contact-toggle');
+    const popover = document.getElementById('contact-popover');
+    if (toggle && popover) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = popover.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      document.addEventListener('click', (e) => {
+        if (!popover.contains(e.target) && e.target !== toggle) {
+          popover.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          popover.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  })();
+
   // ── SCROLL FADE-IN ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
