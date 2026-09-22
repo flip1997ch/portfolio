@@ -1026,7 +1026,7 @@
       <!-- Herbstsammlung HESA26 -->
       <div class="project-card fade-in" data-id="hesa26">
         <div class="card-img">
-          <img src="assets/hesa26.jpg" alt="Herbstsammlung Thurgau 2026" loading="lazy">
+          <img src="assets/hesa26.png" alt="Herbstsammlung Thurgau 2026" loading="lazy">
           <div class="video-badge" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2.5v9l8-4.5-8-4.5z" fill="white"/></svg></div>
         </div>
         <div class="card-body">
@@ -1272,8 +1272,8 @@
   // ── PROJECT DATA (bilingual: shared fields + de/en) ──
   const PROJECTS = {
     hesa26: {
-      img: 'assets/hesa26.jpg',
-      video: 'assets/hesa26.mp4',
+      img: 'assets/hesa26.png',
+      youtube: 'Xcu5rWPAE8U',
       link: 'https://tg.prosenectute.ch/de/engagement/spenden1/Herbstsammlung-Thurgau-insta.html',
       de: {
         employer: 'Pro Senectute Thurgau · Digitale Kommunikation',
@@ -1714,7 +1714,17 @@
 
     // Image
     const imgEl = document.getElementById('modal-img');
-    if (base.video) {
+    if (base.youtube) {
+      imgEl.style.display = '';
+      imgEl.style.gridTemplateColumns = '';
+      imgEl.innerHTML = `
+        <div style="position:relative;width:100%;padding-top:56.25%;">
+          <iframe src="https://www.youtube.com/embed/${base.youtube}" title="${p.title}" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+            style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;"></iframe>
+        </div>`;
+    } else if (base.video) {
       imgEl.style.display = '';
       imgEl.style.gridTemplateColumns = '';
       imgEl.innerHTML = `
