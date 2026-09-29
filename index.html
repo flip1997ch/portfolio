@@ -16,10 +16,12 @@
   <meta name="twitter:description" content="Kampagnen, Video & Animation, Print und Digitalprojekte an der Schnittstelle zur Technik." />
   <meta name="twitter:image" content="https://flip1997ch.github.io/portfolio/assets/portrait.jpg" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:opsz,wght@14..32,400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="assets/fonts/InterTight.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
   <style>
+    /* Schriften lokal im Repo – unabhängig von Google Fonts und Tracking-Schutz */
+    @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
     :root {
       --ink: #1F4229;          /* Waldgrün aus Lebenslauf – Hauptfläche */
       --ink-2: #264E32;        /* erhöhte Fläche */
@@ -80,7 +82,7 @@
     .nav-cta:hover { background: #ffd366; }
 
     /* ── HERO ── */
-    .hero { min-height: 100svh; display: grid; align-items: end; padding: 7rem 0 clamp(2.5rem, 6vw, 5rem); position: relative; overflow: hidden; }
+    .hero { min-height: min(100svh, 1000px); display: grid; align-items: center; padding: 6.5rem 0 clamp(2.5rem, 5vw, 4rem); position: relative; overflow: hidden; }
     .hero > .wrap { width: 100%; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(220px, 28vw, 400px); gap: clamp(1.5rem, 4vw, 4rem); align-items: end; }
     .hero h1 {
@@ -296,7 +298,7 @@
 
     /* ── HORIZONTALER PROJEKT-SLIDER ── */
     #arbeiten { padding-bottom: clamp(3rem, 6vw, 5rem); }
-    .hs { margin-top: clamp(2rem, 4vw, 3rem); }
+    .hs { margin-top: clamp(2rem, 4vw, 3rem); --slide-w: min(1640px, 86vw); }
     .hs-bar { width: 100%; display: flex; align-items: center; gap: 1.5rem; margin-bottom: clamp(1.25rem, 3vh, 2rem); }
     .hs-count { font-weight: 700; font-size: 1.1rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.2rem; }
     .hs-count b { color: var(--on-ink); }
@@ -308,11 +310,17 @@
     .hs-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
     .hs-viewport::-webkit-scrollbar { display: none; }
     .hs-track {
-      display: flex; gap: clamp(1.25rem, 4vw, 4rem); width: max-content;
+      /* Abstand wächst mit der Bildschirmbreite: Nachbarprojekte ragen nur knapp ins Bild (inkl. Verkleinerung) */
+      display: flex; width: max-content;
+      gap: max(clamp(1.25rem, 4vw, 4rem), calc((100vw - var(--slide-w)) / 2 - 5.5rem));
       padding: .5rem var(--pad) 1rem max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad)));
     }
-    .hs .case { flex: none; width: min(1240px, 86vw); grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); scroll-snap-align: center; }
-    .hs .case p { font-size: 1rem; }
+    .hs .case { flex: none; width: var(--slide-w); grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); scroll-snap-align: center; }
+    .hs .case p { font-size: clamp(1rem, .45vw + .6rem, 1.25rem); }
+    .hs .case h3 { font-size: clamp(1.7rem, 2.6vw, 3.4rem); }
+    .hs .case-org { font-size: clamp(.95rem, .4vw + .55rem, 1.15rem); }
+    .hs .fact b { font-size: clamp(1.6rem, 1.7vw, 2.2rem); }
+    .hs .case-media img { max-height: min(64vh, 780px); }
 
     /* Gepinnter Modus (Desktop): vertikales Scrollen bewegt die Projekte horizontal */
     .hs.pinned .hs-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 4.5rem; overflow: hidden; }
