@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Philipp Gross – Kommunikation, Video & Digitalprojekte</title>
   <meta name="description" content="Philipp Gross, Fachverantwortlicher Öffentlichkeitsarbeit bei Pro Senectute Thurgau. Kampagnen, Video & Animation, Print und Digitalprojekte an der Schnittstelle zur Technik." />
-  <meta name="theme-color" content="#14213D" />
+  <meta name="theme-color" content="#1F4229" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://flip1997ch.github.io/portfolio/" />
   <meta property="og:title" content="Philipp Gross – Kommunikation, Video & Digitalprojekte" />
@@ -21,15 +21,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:opsz,wght@14..32,400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #14213D;          /* Tinte – Hauptfläche */
-      --ink-2: #1B2B4F;        /* erhöhte Fläche */
-      --paper: #EDF0F5;        /* helle Lesefläche */
-      --on-ink: #E8ECF3;
-      --muted: #97A3BA;
-      --muted-dark: #56627A;
+      --ink: #1F4229;          /* Waldgrün aus Lebenslauf – Hauptfläche */
+      --ink-2: #264E32;        /* erhöhte Fläche */
+      --paper: #F4F4F0;        /* helle Lesefläche (wie Lebenslauf) */
+      --on-ink: #EEF2EC;
+      --muted: #A3B8A9;
+      --muted-dark: #5E6B60;
       --signal: #FFC53D;       /* Signalgelb – einziger Akzent */
-      --line: rgba(232, 236, 243, 0.14);
-      --line-dark: rgba(20, 33, 61, 0.14);
+      --line: rgba(238, 242, 236, 0.16);
+      --line-dark: rgba(31, 66, 41, 0.16);
       --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       --display: 'Inter Tight', 'Inter', 'Helvetica Neue', Arial, sans-serif;
       --pad: clamp(1.25rem, 4vw, 3.5rem);
@@ -63,7 +63,7 @@
       transition: background .3s, border-color .3s;
       border-bottom: 1px solid transparent;
     }
-    .nav.scrolled { background: rgba(20, 33, 61, .88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--line); }
+    .nav.scrolled { background: rgba(31, 66, 41, .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--line); }
     .nav-inner { display: flex; align-items: center; gap: 2rem; height: 4.5rem; }
     .nav-logo { font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: -.01em; }
     .nav-links { display: flex; gap: 1.75rem; list-style: none; margin-left: auto; }
@@ -106,7 +106,7 @@
     .btn-primary:hover { background: #ffd366; color: var(--ink); }
     .btn svg { flex: none; }
     .hero-portrait { position: relative; aspect-ratio: 4 / 5; isolation: isolate; }
-    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); border-radius: 4px; }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
     .hero-portrait::after {
       content: ''; position: absolute; left: -12px; bottom: -12px; width: 38%; height: 38%;
       background: var(--signal); z-index: -1; border-radius: 3px;
@@ -137,11 +137,11 @@
     /* ── FEATURED WORK ── */
     .case { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
     .case-media {
-      display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px;
+      display: block; width: fit-content; max-width: 100%; justify-self: start; overflow: hidden; border-radius: 4px;
       background: var(--ink-2); position: relative;
     }
-    .case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-    .case-media:hover img { transform: scale(1.03); }
+    .case-media img { display: block; width: auto; max-width: 100%; height: auto; max-height: min(58vh, 560px); transition: filter .4s; }
+    .case-media:hover img { filter: brightness(1.06); }
     .play {
       position: absolute; left: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: .45rem;
       background: var(--signal); color: var(--ink); font-size: .82rem; font-weight: 650;
@@ -177,10 +177,10 @@
     .filters .count { opacity: .6; margin-left: .3rem; font-size: .85em; }
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.75rem); margin-top: 2.5rem; }
     .card { text-align: left; display: block; width: 100%; }
-    .card-img { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; background: var(--ink); position: relative; }
-    .card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
-    .card:hover .card-img img { transform: scale(1.04); }
-    .card .play { left: .75rem; bottom: .75rem; }
+    .card-img { aspect-ratio: 1 / 1; overflow: hidden; border-radius: 4px; background: rgba(0, 0, 0, .18); position: relative; transition: background .3s; }
+    .card:hover .card-img { background: rgba(0, 0, 0, .28); }
+    .card-img img { position: absolute; inset: .75rem; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); object-fit: contain; }
+    .card .play { left: .75rem; bottom: .75rem; z-index: 1; }
     .card-title { font-weight: 650; font-size: 1.12rem; line-height: 1.25; margin-top: .9rem; }
     .card-org { font-size: .88rem; color: var(--muted); margin-top: .2rem; }
     .grid-note { margin-top: 3rem; color: var(--muted); font-size: .95rem; }
@@ -235,7 +235,7 @@
 
     /* ── MODAL ── */
     .modal-overlay {
-      position: fixed; inset: 0; z-index: 300; background: rgba(8, 14, 28, .78);
+      position: fixed; inset: 0; z-index: 300; background: rgba(12, 28, 17, .8);
       display: flex; align-items: center; justify-content: center; padding: 1.5rem;
       opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s;
     }
@@ -251,7 +251,7 @@
       display: grid; place-items: center; font-size: 1.1rem;
     }
     .modal-close:hover { background: var(--signal); color: var(--ink); }
-    .modal-img { background: #0c1528; }
+    .modal-img { background: #17331F; }
     .modal-img img, .modal-img video { width: 100%; height: auto; max-height: 60vh; object-fit: contain; }
     .modal-body { padding: clamp(1.5rem, 4vw, 2.75rem); }
     .modal-employer { color: var(--muted); font-size: .95rem; }
@@ -274,8 +274,6 @@
     .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
 
 
-    .case-media img { translate: 0 var(--py, 0px); scale: 1.12; transition: scale .6s cubic-bezier(.2,.8,.2,1); transform: none !important; }
-    .case-media:hover img { scale: 1.17; }
     .hero-portrait img { translate: 0 var(--py, 0px); }
 
 
@@ -292,7 +290,7 @@
       .btn, .nav-cta { transition: background .2s, color .2s, translate .25s cubic-bezier(.2,.8,.2,1); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .case-media img, .hero-portrait img { translate: none; }
+      .hero-portrait img { translate: none; }
     }
 
 
@@ -321,7 +319,6 @@
     .hs.pinned .hs-viewport { overflow: visible; scroll-snap-type: none; }
     .hs.pinned .hs-track { will-change: transform; }
 
-    .case-media img { translate: var(--px, 0px) var(--py, 0px); }
 
     @media (prefers-reduced-motion: no-preference) {
       .js .hs .case:not(.active) > div:last-child { opacity: 0; transition: opacity .35s ease; }
@@ -1366,7 +1363,6 @@
     slides.forEach((sl, k) => {
       const r = sl.getBoundingClientRect(), c = r.left + r.width / 2, d = Math.abs(c - cx);
       if (d < bestD) { bestD = d; best = k; }
-      if (motionOK) sl.querySelector('.case-media img').style.setProperty('--px', ((c - cx) / innerWidth * -70).toFixed(1) + 'px');
     });
     if (hs.getBoundingClientRect().top < innerHeight * 0.6) hsSetActive(best);
   }
