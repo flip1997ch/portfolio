@@ -58,6 +58,18 @@
 
     .nav-logo, .hero h1, .h2, .case h3, .fact b, .claim dt, .contact-links a, .modal-title, .hs-count { font-family: var(--display); }
 
+
+    /* ── SCROLLBAR (passend zum Grün) ── */
+    html { scrollbar-color: #4E7A5B var(--ink); scrollbar-width: thin; }
+    .modal, .lightbox { scrollbar-color: #4E7A5B var(--ink-2); scrollbar-width: thin; }
+    /* Safari und ältere Browser */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: #4E7A5B; border-radius: 999px; border: 2px solid var(--ink); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--signal); }
+    .modal::-webkit-scrollbar-track { background: var(--ink-2); }
+    .modal::-webkit-scrollbar-thumb { border-color: var(--ink-2); }
+
     /* ── NAV ── */
     .nav {
       position: fixed; inset: 0 0 auto 0; z-index: 100;
