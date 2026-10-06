@@ -1404,7 +1404,7 @@
     de: { problem: 'Ausgangslage', goal: 'Ziel', gallery: 'Entwürfe und Varianten', before: 'Vorher', after: 'Nachher', draft: 'Entwurf', final: 'Final', next: 'Nächstes Projekt', visit: 'Zur Kurssuche', zoom: 'Bild vergrössern', baLabel: 'Vorher-Nachher-Vergleich' },
     en: { problem: 'Background', goal: 'Goal', gallery: 'Drafts and variants', before: 'Before', after: 'After', draft: 'Draft', final: 'Final', next: 'Next project', visit: 'Visit course search', zoom: 'Enlarge image', baLabel: 'Before/after comparison' }
   };
-  let csObserver = null;
+  let csObserver = null, csLock = null, csLockT = null;
 
   function renderCaseStudy(id) {
     const base = PROJECTS[id], p = base[currentLang], c = base.cs[currentLang], u = CS_UI[currentLang];
@@ -1423,14 +1423,15 @@
 
     h += sec('start', `<div class="cs-two"><div><h4>${u.problem}</h4><p>${esc(c.problem)}</p></div><div><h4>${u.goal}</h4><p>${esc(c.goal)}</p></div></div>`);
     if (c.steps && c.steps.length) h += sec('process', `<ol class="cs-steps">${c.steps.map((s, i) => `
-      <li class="cs-step"><span class="cs-step-n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p>${s.img ? `<figure class="cs-fig"><button type="button" class="zoomable" data-zoom="${s.img}" aria-label="${u.zoom}"><img src="${s.img}" alt="${esc(s.cap || s.t)}" loading="lazy"></button>${s.cap ? `<figcaption>${esc(s.cap)}</figcaption>` : ''}</figure>` : ''}</div></li>`).join('')}</ol>`);
+      <li class="cs-step"><span class="cs-step-n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p>${s.img ? `<figure class="cs-fig"><button type="button" class="zoomable" data-zoom="${s.img}" aria-label="${u.zoom}"><img src="${s.img}" alt="${esc(s.cap || s.t)}" loading="lazy" onerror="this.closest('.cs-fig').remove()"></button>${s.cap ? `<figcaption>${esc(s.cap)}</figcaption>` : ''}</figure>` : ''}</div></li>`).join('')}</ol>`);
 
     let sol = '';
     if (c.features && c.features.length) sol += `<ul class="cs-features">${c.features.map(f => `<li><b>${esc(f[0])}</b><span>${esc(f[1])}</span></li>`).join('')}</ul>`;
-    if (c.ba) sol += `<div class="ba" style="--ba:50%"><img src="${c.ba[0]}" alt="${u.before}"><div class="ba-after"><img src="${c.ba[1]}" alt="${u.after}"></div><div class="ba-handle"></div>
-      <input type="range" min="0" max="100" value="50" aria-label="${u.baLabel}"></div><div class="ba-labels"><span>${u.before}</span><span>${u.after}</span></div>`;
+    // Fehlt ein Bild, verschwindet der ganze Vergleich statt kaputt angezeigt zu werden
+    if (c.ba) sol += `<div class="ba-wrap"><div class="ba" style="--ba:50%"><img src="${c.ba[0]}" alt="${u.before}" onerror="this.closest('.ba-wrap').remove()"><div class="ba-after"><img src="${c.ba[1]}" alt="${u.after}" onerror="this.closest('.ba-wrap').remove()"></div><div class="ba-handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="${u.baLabel}"></div><div class="ba-labels"><span>${u.before}</span><span>${u.after}</span></div></div>`;
     if (c.gallery && c.gallery.length) sol += `<h4 style="margin-top:2.5rem;font-weight:650">${u.gallery}</h4><div class="cs-gallery">${c.gallery.map(g => `
-      <figure><button type="button" class="zoomable" data-zoom="${g.img}" aria-label="${u.zoom}"><img src="${g.img}" alt="${esc(g.text)}" loading="lazy"></button><figcaption><span class="cs-tag ${g.typ === 'final' ? '' : 'draft'}">${g.typ === 'final' ? u.final : u.draft}</span>${esc(g.text)}</figcaption></figure>`).join('')}</div>`;
+      <figure><button type="button" class="zoomable" data-zoom="${g.img}" aria-label="${u.zoom}"><img src="${g.img}" alt="${esc(g.text)}" loading="lazy" onerror="this.closest('figure').remove()"></button><figcaption><span class="cs-tag ${g.typ === 'final' ? '' : 'draft'}">${g.typ === 'final' ? u.final : u.draft}</span>${esc(g.text)}</figcaption></figure>`).join('')}</div>`;
     if (sol) h += sec('solution', sol);
 
     if (c.results && c.results.length) h += sec('result', `<div class="cs-results">${c.results.map(r => `<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join('')}</div>${c.resultText ? `<p class="cs-text">${esc(c.resultText)}</p>` : ''}`);
@@ -1451,18 +1452,26 @@
     // Abschnitts-Navigation: weich scrollen und aktiven Abschnitt markieren
     body.querySelectorAll('[data-cs-link]').forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
+      // geklickten Abschnitt markieren und während des Scrollens festhalten
+      csLock = a.dataset.csLink;
+      body.querySelectorAll('[data-cs-link]').forEach(l => l.classList.toggle('active', l === a));
+      clearTimeout(csLockT); csLockT = setTimeout(() => { csLock = null; }, 1200);
       document.getElementById('cs-' + a.dataset.csLink).scrollIntoView({ behavior: motionOK ? 'smooth' : 'auto', block: 'start' });
     }));
-    if (csObserver) csObserver.disconnect();
-    csObserver = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        if (!en.isIntersecting) return;
-        en.target.classList.add('in');
-        const k = en.target.dataset.sec;
-        if (k) body.querySelectorAll('[data-cs-link]').forEach(a => a.classList.toggle('active', a.dataset.csLink === k));
-      });
-    }, { root: box, rootMargin: '-20% 0px -55% 0px' });
-    body.querySelectorAll('.cs-sec').forEach(el => csObserver.observe(el));
+    if (csObserver) box.removeEventListener('scroll', csObserver);
+    const secs = [...body.querySelectorAll('.cs-sec')], links = [...body.querySelectorAll('[data-cs-link]')];
+    csObserver = () => {
+      if (csLock) return;
+      const line = box.getBoundingClientRect().top + box.clientHeight * 0.3;
+      let cur = null;
+      secs.forEach(sc => { if (sc.getBoundingClientRect().top <= line) cur = sc.dataset.sec; });
+      if (box.scrollTop + box.clientHeight >= box.scrollHeight - 4 && secs.length) cur = secs[secs.length - 1].dataset.sec; // ganz unten: letzter Abschnitt
+      links.forEach(a => a.classList.toggle('active', a.dataset.csLink === cur));
+    };
+    box.addEventListener('scroll', csObserver, { passive: true });
+    box.addEventListener('wheel', () => { csLock = null; }, { passive: true });
+    box.addEventListener('touchstart', () => { csLock = null; }, { passive: true });
+    csObserver();
     // erster Abschnitt sofort sichtbar
     const first = body.querySelector('.cs-sec'); if (first) first.classList.add('in');
     const appear = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); }), { root: box, threshold: 0.1 });
