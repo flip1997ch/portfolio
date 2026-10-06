@@ -272,6 +272,74 @@
     .modal-img-placeholder { aspect-ratio: 16/9; display: grid; place-items: center; color: var(--muted); font-size: .85rem; }
 
 
+
+    /* ── FALLSTUDIE (erweitertes Detailfenster) ── */
+    #cs-body { display: none; }
+    .modal.cs { width: min(1180px, 100%); max-height: 94vh; }
+    .modal.cs #modal-img, .modal.cs .modal-body { display: none; }
+    .modal.cs #cs-body { display: block; }
+    .cs-hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.5rem, 4vw, 3rem); padding-top: clamp(3.5rem, 6vw, 4rem); }
+    .cs-hero img { width: 100%; height: auto; border-radius: 4px; }
+    .cs-org { color: var(--muted); }
+    .cs-title { font-family: var(--display); font-weight: 700; letter-spacing: -.035em; font-size: clamp(2rem, 4.2vw, 3.6rem); line-height: 1; margin: .5rem 0 1rem; }
+    .cs-lead { font-size: clamp(1.05rem, 1.3vw, 1.2rem); opacity: .9; }
+    .cs-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 clamp(1.5rem, 4vw, 3rem); }
+    .cs-facts div { padding: 1.1rem 1.25rem 1.1rem 0; }
+    .cs-facts div + div { padding-left: 1.25rem; border-left: 1px solid var(--line); }
+    .cs-facts dt { font-size: .85rem; color: var(--muted); }
+    .cs-facts dd { font-weight: 600; margin-top: .2rem; line-height: 1.35; }
+    .cs-nav { position: sticky; top: 0; z-index: 1; background: var(--ink-2); border-bottom: 1px solid var(--line); margin-top: 1.5rem; }
+    .cs-nav ul { list-style: none; display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(1.5rem, 4vw, 3rem); padding-right: 4rem; }
+    .cs-nav a { display: block; padding: 1rem 0; text-decoration: none; color: var(--muted); font-size: .95rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    .cs-nav a:hover { color: var(--on-ink); }
+    .cs-nav a.active { color: var(--on-ink); border-color: var(--signal); }
+    .cs-sec { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 0; scroll-margin-top: 3.5rem; }
+    .cs-sec h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: clamp(1.6rem, 2.6vw, 2.3rem); line-height: 1.05; margin-bottom: 1.5rem; }
+    .cs-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); }
+    .cs-two h4, .cs-step h4 { font-weight: 650; font-size: 1.1rem; margin-bottom: .4rem; }
+    .cs-two p, .cs-step p, .cs-text { opacity: .88; max-width: 40rem; }
+    .cs-steps { list-style: none; display: grid; gap: 0; }
+    .cs-step { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+    .cs-step-n { font-family: var(--display); font-weight: 700; font-size: 1.4rem; color: var(--signal); line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .cs-step img { margin-top: 1rem; border-radius: 4px; max-height: 420px; width: auto; max-width: 100%; }
+    .cs-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+    .cs-features li { padding: 1.1rem 1.25rem; background: rgba(0, 0, 0, .16); border-radius: 4px; }
+    .cs-features b { display: block; font-weight: 650; margin-bottom: .25rem; }
+    .cs-features span { opacity: .85; font-size: .95rem; }
+    .cs-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .cs-gallery figure { background: rgba(0, 0, 0, .16); border-radius: 4px; overflow: hidden; }
+    .cs-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: rgba(0, 0, 0, .12); }
+    .cs-gallery figcaption { padding: .7rem .9rem; font-size: .9rem; display: flex; gap: .5rem; align-items: baseline; }
+    .cs-tag { font-size: .75rem; font-weight: 650; padding: .1rem .5rem; border-radius: 999px; background: var(--signal); color: var(--ink); flex: none; }
+    .cs-tag.draft { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+    .ba { position: relative; overflow: hidden; border-radius: 4px; margin-top: 2rem; user-select: none; touch-action: pan-y; }
+    .ba img { display: block; width: 100%; height: auto; }
+    .ba-after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--ba, 50%)); }
+    .ba-after img { height: 100%; object-fit: cover; }
+    .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--ba, 50%); width: 3px; background: var(--signal); transform: translateX(-50%); pointer-events: none; }
+    .ba-handle::after { content: ''; position: absolute; top: 50%; left: 50%; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--signal); transform: translate(-50%, -50%); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+    .ba-labels { display: flex; justify-content: space-between; margin-top: .6rem; font-size: .9rem; color: var(--muted); }
+    .cs-results { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-bottom: 1.5rem; }
+    .cs-results b { display: block; font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.05; color: var(--signal); letter-spacing: -.02em; }
+    .cs-results span { color: var(--muted); font-size: .92rem; }
+    .cs-learn { border-left: 3px solid var(--signal); padding: .25rem 0 .25rem 1.25rem; font-size: 1.08rem; max-width: 44rem; }
+    .cs-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.5rem clamp(1.5rem, 4vw, 3rem) 2rem; border-top: 1px solid var(--line); }
+    .cs-next { display: inline-flex; align-items: center; gap: .6rem; font-weight: 650; text-align: right; }
+    .cs-next small { display: block; color: var(--muted); font-weight: 400; font-size: .85rem; }
+    .cs-next:hover { color: var(--signal); }
+    @media (prefers-reduced-motion: no-preference) {
+      .cs-anim { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+      .cs-anim.in { opacity: 1; transform: none; }
+    }
+    @media (max-width: 820px) {
+      .cs-hero, .cs-two { grid-template-columns: 1fr; }
+      .cs-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cs-facts div:nth-child(3) { padding-left: 0; border-left: 0; }
+      .cs-facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .cs-step { grid-template-columns: 2.5rem minmax(0, 1fr); }
+    }
+
     /* ── BEWEGUNG ── */
     .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
 
@@ -448,7 +516,7 @@
             <div class="fact"><b data-en="CHF 30,000">CHF 30'000</b><span>Budget</span></div>
             <div class="fact"><b data-en="May 2026">Mai 2026</b><span>Go-Live</span></div>
           </div>
-          <button type="button" class="link-open" data-open="kurssuche" data-en="Open project">Projekt öffnen</button>
+          <button type="button" class="link-open" data-open="kurssuche" data-en="Read case study">Fallstudie lesen</button>
         </div>
       </article>
 
@@ -1014,6 +1082,56 @@
     kurssuche: {
       img: 'assets/kurssuche.webp',
       link: 'https://www.pstg.ch/kurse',
+      cs: {
+        de: {
+          lead: 'Neue Kurssuche und Online-Anmeldung für Pro Senectute Thurgau – mit direkter Anbindung ans ERP Abacus, sodass Anmeldungen ohne manuelle Nachbearbeitung verarbeitet werden.',
+          facts: [['Rolle', 'Projektleitung, UX/UI-Design'], ['Dauer', '8 Monate, Go-Live Mai 2026'], ['Partner', 'Inware AG (Webshop), Customize AG (Abacus)'], ['Tools', 'Figma, Abacus']],
+          nav: { start: 'Ausgangslage', process: 'Vorgehen', solution: 'Lösung', result: 'Ergebnis', learn: 'Erkenntnisse' },
+          problem: 'Die bisherige Kurssuche war veraltet und unübersichtlich. Jede Online-Anmeldung musste im ERP von Hand nachbearbeitet werden – Aufwand für das Team und eine Fehlerquelle.',
+          goal: 'Kurse sollen schneller gefunden werden, und Anmeldungen sollen ohne manuelle Eingriffe direkt im ERP ankommen.',
+          steps: [
+            { t: 'Anforderungsanalyse', d: 'Anforderungen erhoben und so aufbereitet, dass Webshop-Entwicklung und ERP-Partner damit arbeiten konnten.' },
+            { t: 'UX/UI-Design in Figma', d: 'Suche, Sortierung und Kursseiten neu gestaltet und mit den Beteiligten abgestimmt.' },
+            { t: 'Umsetzung und Koordination', d: 'Koordination zwischen Inware AG (Webshop) und Customize AG (Abacus-Anbindung inklusive Adressabgleich).' },
+            { t: 'Abnahme und Go-Live', d: 'Test und Abnahme der Lösung, Go-Live im Mai 2026.' },
+            { t: 'Kommunikation zum Relaunch', d: 'Begleitkampagne über Website-Banner, Newsletter, animierte Instagram-Reels und LinkedIn, abgestimmt auf den Versand des gedruckten Kursprogramms.' }
+          ],
+          features: [
+            ['Fehlertolerante Suche', 'Findet Kurse auch bei Tippfehlern oder ungenauen Begriffen.'],
+            ['Neue Sortierung', 'Kurse lassen sich gezielter ordnen und filtern.'],
+            ['Ausführlichere Kursseiten', 'Mehr Informationen auf einen Blick, bevor man sich anmeldet.'],
+            ['Automatische Anmeldung', 'Anmeldungen landen mit Adressabgleich direkt im ERP, mit übersichtlichen Dashboards.']
+          ],
+          results: [['0', 'manuelle ERP-Eingriffe pro Anmeldung'], ['8 Monate', 'von der Analyse bis zum Go-Live'], ["CHF 30'000", 'Projektbudget']],
+          resultText: 'Die Anmeldungen laufen seit dem Go-Live vollautomatisch.',
+          learn: 'Für die Anmeldung braucht es neu ein Passwort. Für unsere ältere Zielgruppe ist das eine spürbare Hürde. Wir haben sie mit einer gezielten Kampagne abgefedert, unter anderem mit animierten Reels, die das Login Schritt für Schritt erklären. Heute würde ich solche Hürden früher mit Personen aus der Zielgruppe testen.',
+          gallery: [], ba: null
+        },
+        en: {
+          lead: 'New course search and online registration for Pro Senectute Thurgau – directly connected to the Abacus ERP, so registrations are processed without manual follow-up.',
+          facts: [['Role', 'Project lead, UX/UI design'], ['Duration', '8 months, go-live May 2026'], ['Partners', 'Inware AG (webshop), Customize AG (Abacus)'], ['Tools', 'Figma, Abacus']],
+          nav: { start: 'Background', process: 'Process', solution: 'Solution', result: 'Result', learn: 'Learnings' },
+          problem: 'The old course search was outdated and confusing. Every online registration had to be processed manually in the ERP – extra work for the team and a source of errors.',
+          goal: 'Courses should be easier to find, and registrations should reach the ERP without manual intervention.',
+          steps: [
+            { t: 'Requirements analysis', d: 'Gathered requirements and prepared them so the webshop developer and the ERP partner could work with them.' },
+            { t: 'UX/UI design in Figma', d: 'Redesigned search, sorting and course pages and aligned them with stakeholders.' },
+            { t: 'Implementation and coordination', d: 'Coordinated Inware AG (webshop) and Customize AG (Abacus integration including address matching).' },
+            { t: 'Acceptance and go-live', d: 'Testing and acceptance, go-live in May 2026.' },
+            { t: 'Relaunch communication', d: 'Supporting campaign via website banners, newsletter, animated Instagram reels and LinkedIn, timed with the printed course programme.' }
+          ],
+          features: [
+            ['Error-tolerant search', 'Finds courses even with typos or vague terms.'],
+            ['New sorting', 'Courses can be ordered and filtered more precisely.'],
+            ['Richer course pages', 'More information at a glance before registering.'],
+            ['Automatic registration', 'Registrations reach the ERP directly with address matching and clear dashboards.']
+          ],
+          results: [['0', 'manual ERP steps per registration'], ['8 months', 'from analysis to go-live'], ['CHF 30,000', 'project budget']],
+          resultText: 'Since go-live, registrations have been fully automated.',
+          learn: 'Registration now requires a password. For our older audience this is a noticeable hurdle. We cushioned it with a targeted campaign, including animated reels explaining the login step by step. Today I would test such hurdles earlier with people from the target group.',
+          gallery: [], ba: null
+        }
+      },
       de: {
         employer: 'Pro Senectute Thurgau · Projekt',
         title: 'Kurssuche 2.0',
@@ -1146,6 +1264,7 @@
   overlay.innerHTML = `
     <div class="modal" id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button class="modal-close" id="modal-close" aria-label="Schliessen">✕</button>
+      <div id="cs-body"></div>
       <div class="modal-img" id="modal-img"></div>
       <div class="modal-body">
         <p class="modal-employer" id="modal-employer"></p>
@@ -1158,12 +1277,34 @@
     </div>`;
   document.body.appendChild(overlay);
 
-  function openModal(id) {
+  function openModal(id, opts = {}) {
     const base = PROJECTS[id];
     if (!base) return;
-    if (!overlay.classList.contains('open')) lastFocus = document.activeElement;
+    const wasOpen = overlay.classList.contains('open');
+    if (!wasOpen) lastFocus = document.activeElement;
     currentModalId = id;
     const p = base[currentLang];
+    const box = document.getElementById('modal-box');
+
+    // Direktlink (#kurssuche) und Zurück-Taste
+    if (!opts.silent) {
+      if (wasOpen || opts.replace) history.replaceState({ modal: id }, '', '#' + id);
+      else history.pushState({ modal: id }, '', '#' + id);
+    }
+
+    box.classList.toggle('cs', !!base.cs);
+    box.setAttribute('aria-labelledby', base.cs ? 'modal-title-cs' : 'modal-title');
+    if (base.cs) {
+      document.getElementById('modal-img').innerHTML = '';
+      renderCaseStudy(id);
+      document.getElementById('modal-close').setAttribute('aria-label', UI[currentLang].close);
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      box.scrollTop = 0;
+      document.getElementById('modal-close').focus();
+      return;
+    }
+    document.getElementById('cs-body').innerHTML = '';
     const imgEl = document.getElementById('modal-img');
 
     if (base.youtube) {
@@ -1202,8 +1343,12 @@
     document.getElementById('modal-close').focus();
   }
 
-  function closeModal() {
+  function closeModal(fromHistory) {
+    if (!overlay.classList.contains('open')) return;
+    if (!fromHistory && history.state && history.state.modal) { history.back(); return; } // popstate schliesst
+    if (!fromHistory && location.hash) history.replaceState(null, '', location.pathname + location.search);
     overlay.classList.remove('open');
+    document.getElementById('cs-body').innerHTML = '';
     document.body.style.overflow = '';
     document.getElementById('modal-img').innerHTML = ''; // stoppt laufende Videos
     currentModalId = null;
@@ -1214,8 +1359,13 @@
     const t = e.target.closest('[data-open]');
     if (t) openModal(t.dataset.open);
   });
-  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-close').addEventListener('click', () => closeModal());
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  window.addEventListener('popstate', () => {
+    const id = location.hash.slice(1);
+    if (PROJECTS[id]) openModal(id, { silent: true });
+    else closeModal(true);
+  });
   document.addEventListener('keydown', e => {
     if (!overlay.classList.contains('open')) return;
     if (e.key === 'Escape') closeModal();
@@ -1225,6 +1375,83 @@
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
+  });
+
+
+  // ── FALLSTUDIE ──
+  const FEATURED = ['kurssuche', 'hesa26', 'oamdigital', 'instagram'];
+  const CS_UI = {
+    de: { problem: 'Ausgangslage', goal: 'Ziel', gallery: 'Entwürfe und Varianten', before: 'Vorher', after: 'Nachher', draft: 'Entwurf', final: 'Final', next: 'Nächstes Projekt', visit: 'Zur Kurssuche', baLabel: 'Vorher-Nachher-Vergleich' },
+    en: { problem: 'Background', goal: 'Goal', gallery: 'Drafts and variants', before: 'Before', after: 'After', draft: 'Draft', final: 'Final', next: 'Next project', visit: 'Visit course search', baLabel: 'Before/after comparison' }
+  };
+  let csObserver = null;
+
+  function renderCaseStudy(id) {
+    const base = PROJECTS[id], p = base[currentLang], c = base.cs[currentLang], u = CS_UI[currentLang];
+    const nextId = FEATURED[(FEATURED.indexOf(id) + 1) % FEATURED.length];
+    const navItems = [['start', 1], ['process', c.steps && c.steps.length], ['solution', (c.features && c.features.length) || (c.gallery && c.gallery.length) || c.ba],
+                      ['result', c.results && c.results.length], ['learn', c.learn]].filter(x => x[1]);
+    const sec = (key, inner) => `<section class="cs-sec cs-anim" id="cs-${key}" data-sec="${key}"><h3>${esc(c.nav[key])}</h3>${inner}</section>`;
+
+    let h = `
+      <header class="cs-hero">
+        <div><img src="${base.img}" alt="${esc(p.imgAlt)}"></div>
+        <div><p class="cs-org">${esc(p.employer.split(' · ')[0])}</p><h2 class="cs-title" id="modal-title-cs">${esc(p.title)}</h2><p class="cs-lead">${esc(c.lead)}</p></div>
+      </header>
+      <dl class="cs-facts">${c.facts.map(f => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>
+      <nav class="cs-nav" aria-label="${esc(p.title)}"><ul>${navItems.map(n => `<li><a href="#cs-${n[0]}" data-cs-link="${n[0]}">${esc(c.nav[n[0]])}</a></li>`).join('')}</ul></nav>`;
+
+    h += sec('start', `<div class="cs-two"><div><h4>${u.problem}</h4><p>${esc(c.problem)}</p></div><div><h4>${u.goal}</h4><p>${esc(c.goal)}</p></div></div>`);
+    if (c.steps && c.steps.length) h += sec('process', `<ol class="cs-steps">${c.steps.map((s, i) => `
+      <li class="cs-step"><span class="cs-step-n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p>${s.img ? `<img src="${s.img}" alt="${esc(s.t)}" loading="lazy">` : ''}</div></li>`).join('')}</ol>`);
+
+    let sol = '';
+    if (c.features && c.features.length) sol += `<ul class="cs-features">${c.features.map(f => `<li><b>${esc(f[0])}</b><span>${esc(f[1])}</span></li>`).join('')}</ul>`;
+    if (c.ba) sol += `<div class="ba" style="--ba:50%"><img src="${c.ba[0]}" alt="${u.before}"><div class="ba-after"><img src="${c.ba[1]}" alt="${u.after}"></div><div class="ba-handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="${u.baLabel}"></div><div class="ba-labels"><span>${u.before}</span><span>${u.after}</span></div>`;
+    if (c.gallery && c.gallery.length) sol += `<h4 style="margin-top:2.5rem;font-weight:650">${u.gallery}</h4><div class="cs-gallery">${c.gallery.map(g => `
+      <figure><img src="${g.img}" alt="${esc(g.text)}" loading="lazy"><figcaption><span class="cs-tag ${g.typ === 'final' ? '' : 'draft'}">${g.typ === 'final' ? u.final : u.draft}</span>${esc(g.text)}</figcaption></figure>`).join('')}</div>`;
+    if (sol) h += sec('solution', sol);
+
+    if (c.results && c.results.length) h += sec('result', `<div class="cs-results">${c.results.map(r => `<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join('')}</div>${c.resultText ? `<p class="cs-text">${esc(c.resultText)}</p>` : ''}`);
+    if (c.learn) h += sec('learn', `<p class="cs-learn">${esc(c.learn)}</p>`);
+
+    h += `<footer class="cs-foot">
+      ${base.link ? `<a href="${base.link}" target="_blank" rel="noopener" class="modal-link">${u.visit}<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H6M12 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>` : '<span></span>'}
+      <button type="button" class="cs-next" data-cs-next="${nextId}"><span><small>${u.next}</small>${esc(PROJECTS[nextId][currentLang].title)}</span>
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>`;
+
+    const body = document.getElementById('cs-body');
+    body.innerHTML = h;
+    const box = document.getElementById('modal-box');
+
+    // Vorher-Nachher-Regler
+    body.querySelectorAll('.ba input').forEach(r => r.addEventListener('input', () => r.parentElement.style.setProperty('--ba', r.value + '%')));
+    // Abschnitts-Navigation: weich scrollen und aktiven Abschnitt markieren
+    body.querySelectorAll('[data-cs-link]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('cs-' + a.dataset.csLink).scrollIntoView({ behavior: motionOK ? 'smooth' : 'auto', block: 'start' });
+    }));
+    if (csObserver) csObserver.disconnect();
+    csObserver = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        const k = en.target.dataset.sec;
+        if (k) body.querySelectorAll('[data-cs-link]').forEach(a => a.classList.toggle('active', a.dataset.csLink === k));
+      });
+    }, { root: box, rootMargin: '-20% 0px -55% 0px' });
+    body.querySelectorAll('.cs-sec').forEach(el => csObserver.observe(el));
+    // erster Abschnitt sofort sichtbar
+    const first = body.querySelector('.cs-sec'); if (first) first.classList.add('in');
+    const appear = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); }), { root: box, threshold: 0.1 });
+    body.querySelectorAll('.cs-anim').forEach(el => appear.observe(el));
+  }
+
+  document.addEventListener('click', e => {
+    const n = e.target.closest('[data-cs-next]');
+    if (n) { e.stopPropagation(); openModal(n.dataset.csNext, { replace: true }); }
   });
 
   // ── KONTAKT (zur Laufzeit zusammengesetzt, erschwert Scraping) ──
@@ -1480,7 +1707,7 @@
     });
     renderFilters();
     renderGrid();
-    if (currentModalId) openModal(currentModalId);
+    if (currentModalId) openModal(currentModalId, { silent: true });
   }
   document.getElementById('lang-de').addEventListener('click', () => applyLanguage('de'));
   document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
@@ -1488,6 +1715,7 @@
   if (motionOK) setupReveal();
   onFrame();
   hsLayout();
+  { const id = location.hash.slice(1); if (PROJECTS[id]) openModal(id, { silent: true }); }
 </script>
 </body>
 </html>
