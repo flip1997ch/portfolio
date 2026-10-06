@@ -301,14 +301,23 @@
     .cs-steps { list-style: none; display: grid; gap: 0; }
     .cs-step { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
     .cs-step-n { font-family: var(--display); font-weight: 700; font-size: 1.4rem; color: var(--signal); line-height: 1.2; font-variant-numeric: tabular-nums; }
-    .cs-step img { margin-top: 1rem; border-radius: 4px; max-height: 420px; width: auto; max-width: 100%; }
+    .cs-fig { margin-top: 1.1rem; }
+    .cs-fig img { border-radius: 4px; width: 100%; height: auto; }
+    .cs-fig figcaption { margin-top: .5rem; font-size: .88rem; color: var(--muted); }
+    .zoomable { display: block; width: 100%; cursor: zoom-in; border-radius: 4px; overflow: hidden; }
+    .zoomable img { transition: filter .3s; }
+    .zoomable:hover img { filter: brightness(1.05); }
+    .lightbox { position: fixed; inset: 0; z-index: 400; background: rgba(8, 18, 11, .94); display: grid; place-items: center; padding: 1.5rem; overflow: auto; cursor: zoom-out; opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox img { height: 92vh; height: 92svh; width: auto; max-width: 100%; object-fit: contain; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1rem; right: 1rem; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--signal); color: var(--ink); font-size: 1.1rem; display: grid; place-items: center; }
     .cs-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
     .cs-features li { padding: 1.1rem 1.25rem; background: rgba(0, 0, 0, .16); border-radius: 4px; }
     .cs-features b { display: block; font-weight: 650; margin-bottom: .25rem; }
     .cs-features span { opacity: .85; font-size: .95rem; }
     .cs-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; margin-top: 2rem; }
     .cs-gallery figure { background: rgba(0, 0, 0, .16); border-radius: 4px; overflow: hidden; }
-    .cs-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: rgba(0, 0, 0, .12); }
+    .cs-gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: rgba(0, 0, 0, .12); padding: .5rem; }
     .cs-gallery figcaption { padding: .7rem .9rem; font-size: .9rem; display: flex; gap: .5rem; align-items: baseline; }
     .cs-tag { font-size: .75rem; font-weight: 650; padding: .1rem .5rem; border-radius: 999px; background: var(--signal); color: var(--ink); flex: none; }
     .cs-tag.draft { background: transparent; color: var(--muted); border: 1px solid var(--line); }
@@ -1091,7 +1100,7 @@
           goal: 'Kurse sollen schneller gefunden werden, und Anmeldungen sollen ohne manuelle Eingriffe direkt im ERP ankommen.',
           steps: [
             { t: 'Anforderungsanalyse', d: 'Anforderungen erhoben und so aufbereitet, dass Webshop-Entwicklung und ERP-Partner damit arbeiten konnten.' },
-            { t: 'UX/UI-Design in Figma', d: 'Suche, Sortierung und Kursseiten neu gestaltet und mit den Beteiligten abgestimmt.' },
+            { t: 'UX/UI-Design in Figma', d: 'Suche, Sortierung und Kursseiten neu gestaltet und den ganzen Anmeldeprozess als klickbaren Prototyp aufgebaut: von der Kursübersicht über die Kursseite und die Kontrolle bis zur Bestätigung.', img: 'assets/kurssuche_flow.webp', cap: 'Figma-Prototyp mit Nutzerfluss: Jede Verbindung zeigt einen Klickpfad.' },
             { t: 'Umsetzung und Koordination', d: 'Koordination zwischen Inware AG (Webshop) und Customize AG (Abacus-Anbindung inklusive Adressabgleich).' },
             { t: 'Abnahme und Go-Live', d: 'Test und Abnahme der Lösung, Go-Live im Mai 2026.' },
             { t: 'Kommunikation zum Relaunch', d: 'Begleitkampagne über Website-Banner, Newsletter, animierte Instagram-Reels und LinkedIn, abgestimmt auf den Versand des gedruckten Kursprogramms.' }
@@ -1105,7 +1114,12 @@
           results: [['0', 'manuelle ERP-Eingriffe pro Anmeldung'], ['8 Monate', 'von der Analyse bis zum Go-Live'], ["CHF 30'000", 'Projektbudget']],
           resultText: 'Die Anmeldungen laufen seit dem Go-Live vollautomatisch.',
           learn: 'Für die Anmeldung braucht es neu ein Passwort. Für unsere ältere Zielgruppe ist das eine spürbare Hürde. Wir haben sie mit einer gezielten Kampagne abgefedert, unter anderem mit animierten Reels, die das Login Schritt für Schritt erklären. Heute würde ich solche Hürden früher mit Personen aus der Zielgruppe testen.',
-          gallery: [], ba: null
+          gallery: [
+            { img: 'assets/kurssuche_entwurf_1.webp', text: 'Kursübersicht mit Suche und Status (Anmelden, Warteliste, Ausgebucht)', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_2.webp', text: 'Kursseite mit Detailinformationen und Anmeldeformular', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_3.webp', text: 'Anmeldung kontrollieren', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_4.webp', text: 'Bestätigung der Anmeldung', typ: 'draft' }
+          ], ba: ['assets/kurssuche_alt.webp', 'assets/kurssuche.webp']
         },
         en: {
           lead: 'New course search and online registration for Pro Senectute Thurgau – directly connected to the Abacus ERP, so registrations are processed without manual follow-up.',
@@ -1115,7 +1129,7 @@
           goal: 'Courses should be easier to find, and registrations should reach the ERP without manual intervention.',
           steps: [
             { t: 'Requirements analysis', d: 'Gathered requirements and prepared them so the webshop developer and the ERP partner could work with them.' },
-            { t: 'UX/UI design in Figma', d: 'Redesigned search, sorting and course pages and aligned them with stakeholders.' },
+            { t: 'UX/UI design in Figma', d: 'Redesigned search, sorting and course pages and built the entire registration process as a clickable prototype: from the course overview to the course page, review and confirmation.', img: 'assets/kurssuche_flow.webp', cap: 'Figma prototype with user flow: each connection shows a click path.' },
             { t: 'Implementation and coordination', d: 'Coordinated Inware AG (webshop) and Customize AG (Abacus integration including address matching).' },
             { t: 'Acceptance and go-live', d: 'Testing and acceptance, go-live in May 2026.' },
             { t: 'Relaunch communication', d: 'Supporting campaign via website banners, newsletter, animated Instagram reels and LinkedIn, timed with the printed course programme.' }
@@ -1129,7 +1143,12 @@
           results: [['0', 'manual ERP steps per registration'], ['8 months', 'from analysis to go-live'], ['CHF 30,000', 'project budget']],
           resultText: 'Since go-live, registrations have been fully automated.',
           learn: 'Registration now requires a password. For our older audience this is a noticeable hurdle. We cushioned it with a targeted campaign, including animated reels explaining the login step by step. Today I would test such hurdles earlier with people from the target group.',
-          gallery: [], ba: null
+          gallery: [
+            { img: 'assets/kurssuche_entwurf_1.webp', text: 'Course overview with search and status (register, waiting list, fully booked)', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_2.webp', text: 'Course page with details and registration form', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_3.webp', text: 'Review registration', typ: 'draft' },
+            { img: 'assets/kurssuche_entwurf_4.webp', text: 'Registration confirmation', typ: 'draft' }
+          ], ba: ['assets/kurssuche_alt.webp', 'assets/kurssuche.webp']
         }
       },
       de: {
@@ -1367,6 +1386,7 @@
     else closeModal(true);
   });
   document.addEventListener('keydown', e => {
+    if (lightbox.classList.contains('open')) { if (e.key === 'Escape' || e.key === 'Tab') { e.preventDefault(); if (e.key === 'Escape') closeLightbox(); } return; }
     if (!overlay.classList.contains('open')) return;
     if (e.key === 'Escape') closeModal();
     if (e.key === 'Tab') { // Fokus im Dialog halten
@@ -1381,8 +1401,8 @@
   // ── FALLSTUDIE ──
   const FEATURED = ['kurssuche', 'hesa26', 'oamdigital', 'instagram'];
   const CS_UI = {
-    de: { problem: 'Ausgangslage', goal: 'Ziel', gallery: 'Entwürfe und Varianten', before: 'Vorher', after: 'Nachher', draft: 'Entwurf', final: 'Final', next: 'Nächstes Projekt', visit: 'Zur Kurssuche', baLabel: 'Vorher-Nachher-Vergleich' },
-    en: { problem: 'Background', goal: 'Goal', gallery: 'Drafts and variants', before: 'Before', after: 'After', draft: 'Draft', final: 'Final', next: 'Next project', visit: 'Visit course search', baLabel: 'Before/after comparison' }
+    de: { problem: 'Ausgangslage', goal: 'Ziel', gallery: 'Entwürfe und Varianten', before: 'Vorher', after: 'Nachher', draft: 'Entwurf', final: 'Final', next: 'Nächstes Projekt', visit: 'Zur Kurssuche', zoom: 'Bild vergrössern', baLabel: 'Vorher-Nachher-Vergleich' },
+    en: { problem: 'Background', goal: 'Goal', gallery: 'Drafts and variants', before: 'Before', after: 'After', draft: 'Draft', final: 'Final', next: 'Next project', visit: 'Visit course search', zoom: 'Enlarge image', baLabel: 'Before/after comparison' }
   };
   let csObserver = null;
 
@@ -1403,14 +1423,14 @@
 
     h += sec('start', `<div class="cs-two"><div><h4>${u.problem}</h4><p>${esc(c.problem)}</p></div><div><h4>${u.goal}</h4><p>${esc(c.goal)}</p></div></div>`);
     if (c.steps && c.steps.length) h += sec('process', `<ol class="cs-steps">${c.steps.map((s, i) => `
-      <li class="cs-step"><span class="cs-step-n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p>${s.img ? `<img src="${s.img}" alt="${esc(s.t)}" loading="lazy">` : ''}</div></li>`).join('')}</ol>`);
+      <li class="cs-step"><span class="cs-step-n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p>${s.img ? `<figure class="cs-fig"><button type="button" class="zoomable" data-zoom="${s.img}" aria-label="${u.zoom}"><img src="${s.img}" alt="${esc(s.cap || s.t)}" loading="lazy"></button>${s.cap ? `<figcaption>${esc(s.cap)}</figcaption>` : ''}</figure>` : ''}</div></li>`).join('')}</ol>`);
 
     let sol = '';
     if (c.features && c.features.length) sol += `<ul class="cs-features">${c.features.map(f => `<li><b>${esc(f[0])}</b><span>${esc(f[1])}</span></li>`).join('')}</ul>`;
     if (c.ba) sol += `<div class="ba" style="--ba:50%"><img src="${c.ba[0]}" alt="${u.before}"><div class="ba-after"><img src="${c.ba[1]}" alt="${u.after}"></div><div class="ba-handle"></div>
       <input type="range" min="0" max="100" value="50" aria-label="${u.baLabel}"></div><div class="ba-labels"><span>${u.before}</span><span>${u.after}</span></div>`;
     if (c.gallery && c.gallery.length) sol += `<h4 style="margin-top:2.5rem;font-weight:650">${u.gallery}</h4><div class="cs-gallery">${c.gallery.map(g => `
-      <figure><img src="${g.img}" alt="${esc(g.text)}" loading="lazy"><figcaption><span class="cs-tag ${g.typ === 'final' ? '' : 'draft'}">${g.typ === 'final' ? u.final : u.draft}</span>${esc(g.text)}</figcaption></figure>`).join('')}</div>`;
+      <figure><button type="button" class="zoomable" data-zoom="${g.img}" aria-label="${u.zoom}"><img src="${g.img}" alt="${esc(g.text)}" loading="lazy"></button><figcaption><span class="cs-tag ${g.typ === 'final' ? '' : 'draft'}">${g.typ === 'final' ? u.final : u.draft}</span>${esc(g.text)}</figcaption></figure>`).join('')}</div>`;
     if (sol) h += sec('solution', sol);
 
     if (c.results && c.results.length) h += sec('result', `<div class="cs-results">${c.results.map(r => `<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join('')}</div>${c.resultText ? `<p class="cs-text">${esc(c.resultText)}</p>` : ''}`);
@@ -1452,6 +1472,28 @@
   document.addEventListener('click', e => {
     const n = e.target.closest('[data-cs-next]');
     if (n) { e.stopPropagation(); openModal(n.dataset.csNext, { replace: true }); }
+  });
+
+
+  // Bild vergrössern
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.setAttribute('role', 'dialog'); lightbox.setAttribute('aria-modal', 'true');
+  lightbox.innerHTML = '<button type="button" class="lightbox-close" aria-label="Schliessen">✕</button><img alt="">';
+  document.body.appendChild(lightbox);
+  let lbReturn = null;
+  function openLightbox(src, alt) {
+    lbReturn = document.activeElement;
+    const img = lightbox.querySelector('img'); img.src = src; img.alt = alt || '';
+    lightbox.querySelector('.lightbox-close').setAttribute('aria-label', UI[currentLang].close);
+    lightbox.classList.add('open'); lightbox.scrollTop = 0;
+    lightbox.querySelector('.lightbox-close').focus();
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); if (lbReturn) lbReturn.focus(); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('click', e => {
+    const z = e.target.closest('[data-zoom]');
+    if (z) { e.stopPropagation(); openLightbox(z.dataset.zoom, z.querySelector('img') && z.querySelector('img').alt); }
   });
 
   // ── KONTAKT (zur Laufzeit zusammengesetzt, erschwert Scraping) ──
