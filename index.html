@@ -94,7 +94,7 @@
     .nav-cta:hover { background: #ffd366; }
 
     /* ── HERO ── */
-    .hero { min-height: min(100svh, 1000px); display: grid; align-items: center; padding: 6.5rem 0 clamp(2.5rem, 5vw, 4rem); position: relative; overflow: hidden; }
+    .hero { min-height: min(100svh, 720px); display: grid; align-items: center; padding: 6.5rem 0 clamp(2rem, 4vw, 3rem); position: relative; overflow: hidden; }
     .hero > .wrap { width: 100%; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(220px, 28vw, 400px); gap: clamp(1.5rem, 4vw, 4rem); align-items: end; }
     .hero h1 {
@@ -420,9 +420,13 @@
 
 
     /* ── HORIZONTALER PROJEKT-SLIDER ── */
-    #arbeiten { padding-bottom: clamp(3rem, 6vw, 5rem); }
-    .hs { margin-top: clamp(2rem, 4vw, 3rem); --slide-w: min(1640px, 86vw); }
-    .hs-bar { width: 100%; display: flex; align-items: center; gap: 1.5rem; margin-bottom: clamp(1.25rem, 3vh, 2rem); }
+    #arbeiten { padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+    #arbeiten:has(.hs.pinned) { padding-top: 0; }
+    .hs-head { width: 100%; margin-bottom: clamp(1.25rem, 3vh, 2.25rem); }
+    .hs-head .h2 { max-width: none; }
+    .hs-head .lead { margin-top: .6rem; }
+    .hs { --slide-w: min(1640px, 86vw); }
+    .hs-bar { width: 100%; display: flex; align-items: center; gap: 1.5rem; margin-bottom: clamp(.75rem, 2vh, 1.5rem); }
     .hs-count { font-weight: 700; font-size: 1.1rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.2rem; }
     .hs-count b { color: var(--on-ink); }
     .hs-nav { display: flex; gap: .5rem; margin-left: auto; }
@@ -445,9 +449,10 @@
     .hs .case-org { font-size: clamp(.95rem, .4vw + .55rem, 1.15rem); }
     .hs .fact b { font-size: clamp(1.6rem, 1.7vw, 2.2rem); }
     .hs .case-media img { max-height: min(64vh, 780px); }
+    .hs.pinned .case-media img { max-height: clamp(240px, calc(100svh - 25rem), 760px); }
 
     /* Gepinnter Modus (Desktop): vertikales Scrollen bewegt die Projekte horizontal */
-    .hs.pinned .hs-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 4.5rem; overflow: hidden; }
+    .hs.pinned .hs-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: calc(4.5rem + clamp(.5rem, 2vh, 1.5rem)); padding-bottom: 1rem; overflow: hidden; }
     .hs.pinned .hs-viewport { overflow: visible; scroll-snap-type: none; }
     .hs.pinned .hs-track { will-change: transform; }
 
@@ -461,6 +466,18 @@
       .js .hs .case.seen .case-media { clip-path: inset(0 0 0 0); }
       .js .hs .case > div:last-child > * { opacity: 0; transform: translateX(40px); transition: opacity .6s ease, transform .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(.25s + var(--k, 0) * 80ms); }
       .js .hs .case.seen > div:last-child > * { opacity: 1; transform: none; }
+    }
+
+    /* Niedrige Bildschirme: fixierter Bereich muss komplett ins Fenster passen */
+    @media (max-height: 860px) {
+      .hs.pinned .hs-head .lead { display: none; }
+      .hs.pinned .hs-head .h2 { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
+      .hs.pinned .hs-head { margin-bottom: .75rem; }
+      .hs.pinned .case h3 { font-size: clamp(1.5rem, 2.2vw, 2.1rem); margin: .3rem 0 .8rem; }
+      .hs.pinned .case p { font-size: .95rem; }
+      .hs.pinned .case p + p { margin-top: .5rem; }
+      .hs.pinned .case-facts { margin: 1rem 0; padding-top: .9rem; }
+      .hs.pinned .fact b { font-size: 1.35rem; }
     }
 
     /* ── RESPONSIVE ── */
@@ -541,13 +558,12 @@
 
 <!-- FEATURED -->
 <section id="arbeiten">
-  <div class="wrap">
-    <h2 class="h2" data-en="Four projects that show how I work">Vier Projekte, die zeigen, wie ich arbeite</h2>
-    <p class="lead" data-en="From the course search with ERP integration to the self-produced campaign film.">Von der Kurssuche mit ERP-Anbindung bis zum selbst produzierten Kampagnenfilm.</p>
-
-  </div>
   <div class="hs" id="hs">
     <div class="hs-sticky">
+      <div class="wrap hs-head">
+        <h2 class="h2" data-en="Four projects that show how I work">Vier Projekte, die zeigen, wie ich arbeite</h2>
+        <p class="lead" data-en="From the course search with ERP integration to the self-produced campaign film.">Von der Kurssuche mit ERP-Anbindung bis zum selbst produzierten Kampagnenfilm.</p>
+      </div>
       <div class="wrap hs-bar">
         <span class="hs-count" aria-live="polite"><b id="hs-cur">1</b> / 4</span>
         <div class="hs-nav">
@@ -1848,7 +1864,7 @@
   }
 
   function hsLayout() {
-    hsPinned = motionOK && innerWidth >= 900 && innerHeight >= 640;
+    hsPinned = motionOK && innerWidth >= 900 && innerHeight >= 680;
     hs.classList.toggle('pinned', hsPinned);
     if (hsPinned) {
       hsTrack.style.transform = '';
