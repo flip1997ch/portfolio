@@ -637,6 +637,7 @@
           <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau. I used to create and send each one by hand.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau. Früher habe ich jedes einzelne von Hand erstellt und verschickt.</p>
           <p data-en="Today the process runs largely automatically: deadlines are imported, ads are created with rule-based image selection and filed in a structured way, and email drafts are prepared with the responsible people in CC.">Heute läuft der Prozess weitgehend automatisch: Termine werden übernommen, Inserate mit Bildauswahl nach Logik erstellt und strukturiert abgelegt, Mail-Entwürfe mit den Zuständigen im CC vorbereitet.</p>
           <div class="case-facts">
+            <div class="fact"><b data-en="~15">~15</b><span data-en="ads per week">Inserate pro Woche</span></div>
             <div class="fact"><b data-en="½ day">½ Tag</b><span data-en="saved per week">pro Woche eingespart</span></div>
             <div class="fact"><b data-en="14 days">14 Tage</b><span data-en="always ready in advance">immer im Voraus bereit</span></div>
           </div>
@@ -947,7 +948,7 @@
           title: 'Automatisierter Inserate-Versand an Gemeindeblätter',
           lead: 'Jede Woche gehen Kursinserate an die Gemeindeblätter im Kanton Thurgau. Früher habe ich jedes Inserat von Hand erstellt und einzeln verschickt. Heute läuft der Prozess weitgehend automatisch, von der Termin-Liste bis zum fertigen Mail-Entwurf.',
           facts: [['Rolle', 'Konzept und Umsetzung'], ['Im Einsatz', 'Seit Oktober 2026, Lauf jeden Mittwochmorgen'], ['Ziel', 'Möglichst viele Gratis-Inserate für Kurse'], ['Tools', 'Power Automate, Excel, Word, Outlook, SharePoint, Claude']],
-          nav: { start: 'Ausgangslage', process: 'Vorgehen', solution: 'Lösung', result: 'Ergebnis' },
+          nav: { start: 'Ausgangslage', process: 'Vorgehen', solution: 'Lösung', result: 'Ergebnis', learn: 'Erkenntnisse' },
           problem: 'Jeden Montag kommt eine Liste mit den Redaktionsschlüssen der Gemeindeblätter. Für jeden Termin musste ich ein Inserat von Hand gestalten, ablegen und einzeln per Outlook verschicken. Das kostete jede Woche rund einen Vormittag.',
           goal: 'Möglichst viele Gratis-Inserate platzieren, ohne dass der Aufwand mit der Anzahl Gemeinden wächst. Die Inserate sollen immer für die nächsten 14 Tage bereitstehen.',
           steps: [
@@ -973,14 +974,15 @@
             ['Zuständige im CC', 'Die verantwortlichen Personen sind bei jeder Mail automatisch informiert.'],
             ['Warnung bei Sonderfällen', 'Kurse, die ein ungewöhnliches Inserat ergeben würden, werden markiert und von Hand angelegt.']
           ],
-          results: [['½ Tag', 'pro Woche eingespart, vorher jedes Inserat von Hand'], ['14 Tage', 'Inserate immer im Voraus bereit']],
-          resultText: 'Der Aufwand hängt nicht mehr von der Anzahl Gemeindeblätter ab. Ich prüfe die Entwürfe und klicke auf Senden, statt jedes Inserat selbst zu bauen.'
+          results: [['~15', 'Inserate pro Woche'], ['½ Tag', 'pro Woche eingespart, vorher jedes Inserat von Hand'], ['14 Tage', 'Inserate immer im Voraus bereit']],
+          resultText: 'Der Aufwand hängt nicht mehr von der Anzahl Gemeindeblätter ab, und die Fehlerquote ist auf ein Minimum gesunken. Ich prüfe die Entwürfe und klicke auf Senden, statt jedes Inserat selbst zu bauen.',
+          learn: 'Für den Ablauf habe ich mich neu in Power Automate eingearbeitet. Die wichtigste Erkenntnis: Saubere, strukturierte Daten sind die Grundlage für fehlerfreie Inserate. Als Nächstes soll der Ablauf bereichsübergreifend genutzt werden. Auch die Freiwilligenarbeit trägt künftig ihre Inserate ein, später kommen die Verdankungen der Herbstsammlung dazu.'
         },
         en: {
           title: 'Automated ad distribution to municipal newsletters',
           lead: 'Every week, course ads go out to the municipal newsletters in the canton of Thurgau. I used to create each ad by hand and send it individually. Today the process runs largely automatically, from the deadline list to the finished email draft.',
           facts: [['Role', 'Concept and implementation'], ['In use', 'Since October 2026, runs every Wednesday morning'], ['Goal', 'As many free ad placements for courses as possible'], ['Tools', 'Power Automate, Excel, Word, Outlook, SharePoint, Claude']],
-          nav: { start: 'Background', process: 'Process', solution: 'Solution', result: 'Result' },
+          nav: { start: 'Background', process: 'Process', solution: 'Solution', result: 'Result', learn: 'Learnings' },
           problem: 'Every Monday a list arrives with the editorial deadlines of the municipal newsletters. For each deadline I had to design an ad by hand, file it and send it individually via Outlook. That took about a morning every week.',
           goal: 'Place as many free ads as possible without the effort growing with the number of municipalities. Ads should always be ready for the next 14 days.',
           steps: [
@@ -1006,8 +1008,9 @@
             ['Responsible people in CC', 'The people in charge are automatically informed with every email.'],
             ['Warnings for special cases', 'Courses that would produce an unusual ad are flagged and created by hand.']
           ],
-          results: [['½ day', 'saved per week; every ad used to be made by hand'], ['14 days', 'ads always ready in advance']],
-          resultText: 'The effort no longer depends on the number of newsletters. I review the drafts and click send instead of building every ad myself.'
+          results: [['~15', 'ads per week'], ['½ day', 'saved per week; every ad used to be made by hand'], ['14 days', 'ads always ready in advance']],
+          resultText: 'The effort no longer depends on the number of newsletters, and the error rate has dropped to a minimum. I review the drafts and click send instead of building every ad myself.',
+          learn: 'For this workflow I learned Power Automate from scratch. The key lesson: clean, structured data is the foundation for error-free ads. The next step is to use the workflow across departments. The volunteering team will enter its own ads, and the thank-you notes for the autumn collection will follow later.'
         }
       },
       de: {
