@@ -952,7 +952,7 @@
           goal: 'Möglichst viele Gratis-Inserate platzieren, ohne dass der Aufwand mit der Anzahl Gemeinden wächst. Die Inserate sollen immer für die nächsten 14 Tage bereitstehen.',
           steps: [
             { t: 'Termine automatisch übernehmen', d: 'Ein Power-Automate-Flow legt den Montags-Anhang in SharePoint ab und überträgt Redaktionsschlüsse und Kontakte ins Status-Excel.' },
-            { t: 'Kurse zuordnen', d: 'Kolleg:innen tragen pro Termin die Kursnummer ein. Daraus entsteht automatisch der Link zur Kursseite.' },
+            { t: 'Kurse zuordnen', d: 'Kolleg:innen tragen pro Termin die Kursnummer ein. Daraus entsteht automatisch der Link zur Kursseite.', img: 'assets/inserate_status_excel.webp', cap: 'Status-Excel: pro Gemeindeblatt Redaktionsschluss, Erscheinungsdatum, Kurs und Status des Inserats.' },
             { t: 'Inserate erstellen', d: 'Mittwochs um 07:30 startet der Lauf. Kursdaten kommen direkt von der Kursseite, Datumsangaben werden je nach Kursart passend formatiert. Pro Gemeinde und Termin entsteht ein A4-Inserat mit allen Kursen.' },
             { t: 'Strukturiert ablegen', d: 'Jedes Inserat wird nach festem Schema benannt und abgelegt. Vor dem Erstellen prüft der Ablauf, ob es das Inserat schon gibt.' },
             { t: 'Versand vorbereiten', d: 'Für jede Redaktion entsteht ein Outlook-Entwurf mit Anhang, die zuständigen Personen stehen automatisch im CC. Nach dem Versand wechselt der Status im Excel auf «gesendet».' }
@@ -985,7 +985,7 @@
           goal: 'Place as many free ads as possible without the effort growing with the number of municipalities. Ads should always be ready for the next 14 days.',
           steps: [
             { t: 'Import deadlines automatically', d: 'A Power Automate flow saves the Monday attachment to SharePoint and transfers deadlines and contacts into the status spreadsheet.' },
-            { t: 'Assign courses', d: 'Colleagues enter a course number for each deadline. The link to the course page is generated automatically.' },
+            { t: 'Assign courses', d: 'Colleagues enter a course number for each deadline. The link to the course page is generated automatically.', img: 'assets/inserate_status_excel.webp', cap: 'Status spreadsheet: editorial deadline, publication date, course and ad status for each newsletter.' },
             { t: 'Create the ads', d: 'The run starts on Wednesdays at 07:30. Course details come straight from the course page, and dates are formatted to suit the type of course. One A4 ad with all courses is created per municipality and deadline.' },
             { t: 'File in a structured way', d: 'Every ad is named and filed according to a fixed scheme. Before creating an ad, the process checks whether it already exists.' },
             { t: 'Prepare sending', d: 'An Outlook draft with the attachment is created for each editor, with the responsible people automatically in CC. After sending, the status in the spreadsheet switches to "sent".' }
