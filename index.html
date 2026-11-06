@@ -628,21 +628,20 @@
       </article>
 
       <article class="case">
-        <button type="button" class="case-media" data-open="instagram" aria-label="Instagram-Kanal – Details öffnen">
-          <img src="assets/instagram_card.webp" alt="">
-          <span class="play"><svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l8-4.5-8-4.5z" fill="currentColor"/></svg>Reels</span>
+        <button type="button" class="case-media" data-open="inserate" aria-label="Automatisierter Inserate-Versand – Details öffnen">
+          <img src="assets/inserate_workflow.webp" alt="">
         </button>
         <div>
           <p class="case-org">Pro Senectute Thurgau</p>
-          <h3 data-en="Instagram channel built from scratch">Instagram-Kanal von null aufgebaut</h3>
-          <p data-en="Strategy, content planning and community building for an audience that is rarely addressed on Instagram: seniors.">Strategie, Redaktionsplanung und Community-Aufbau für eine Zielgruppe, die auf Instagram selten angesprochen wird: Seniorinnen und Senioren.</p>
-          <p data-en="Every reel is my own production – concept, filming, editing and sound.">Jedes Reel ist eine eigene Produktion – Konzept, Dreh, Schnitt und Ton.</p>
+          <h3 data-en="Automated ad distribution">Automatisierter Inserate-Versand</h3>
+          <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau. I used to create and send each one by hand.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau. Früher habe ich jedes einzelne von Hand erstellt und verschickt.</p>
+          <p data-en="Today the process runs largely automatically: deadlines are imported, ads are created with rule-based image selection and filed in a structured way, and email drafts are prepared with the responsible people in CC.">Heute läuft der Prozess weitgehend automatisch: Termine werden übernommen, Inserate mit Bildauswahl nach Logik erstellt und strukturiert abgelegt, Mail-Entwürfe mit den Zuständigen im CC vorbereitet.</p>
           <div class="case-facts">
-            <div class="fact"><b>570</b><span data-en="followers">Follower</span></div>
-            <div class="fact"><b data-en="10,000+">10'000+</b><span data-en="views">Aufrufe</span></div>
-            <div class="fact"><b data-en="7,300">7'300</b><span data-en="accounts reached">Konten erreicht</span></div>
+            <div class="fact"><b data-en="~15">~15</b><span data-en="ads per week">Inserate pro Woche</span></div>
+            <div class="fact"><b data-en="½ day">½ Tag</b><span data-en="saved per week">pro Woche eingespart</span></div>
+            <div class="fact"><b data-en="14 days">14 Tage</b><span data-en="always ready in advance">immer im Voraus bereit</span></div>
           </div>
-          <button type="button" class="link-open" data-open="instagram" data-en="Open project">Projekt öffnen</button>
+          <button type="button" class="link-open" data-open="inserate" data-en="Read case study">Fallstudie lesen</button>
         </div>
       </article>
         </div>
@@ -938,6 +937,96 @@
         imgAlt: 'Herbstsammlung Thurgau 2026',
         desc: 'Supported Pro Senectute Thurgau\'s 2026 autumn fundraising campaign (HESA26) with a cross-channel donation campaign: Instagram campaign, a dedicated landing page with donation call-to-action, and paid ads. Performance tracked via Google Analytics 4. AI tools were used for the campaign film – ElevenLabs for voiceover and Nano Banana for AI-generated video sequences, edited and finished in Adobe Premiere Pro.',
         tools: ['Meta Ads', 'Instagram', 'Google Analytics 4', 'ElevenLabs', 'Nano Banana', 'Adobe Premiere Pro'],
+        stats: []
+      }
+    },
+    inserate: {
+      img: 'assets/inserate_workflow.webp',
+      link: null,
+      cs: {
+        de: {
+          title: 'Automatisierter Inserate-Versand an Gemeindeblätter',
+          lead: 'Jede Woche gehen Kursinserate an die Gemeindeblätter im Kanton Thurgau. Früher habe ich jedes Inserat von Hand erstellt und einzeln verschickt. Heute läuft der Prozess weitgehend automatisch, von der Termin-Liste bis zum fertigen Mail-Entwurf.',
+          facts: [['Rolle', 'Konzept und Umsetzung'], ['Im Einsatz', 'Seit Oktober 2026, Lauf jeden Mittwochmorgen'], ['Ziel', 'Möglichst viele Gratis-Inserate für Kurse'], ['Tools', 'Power Automate, Excel, Word, Outlook, SharePoint, Claude']],
+          nav: { start: 'Ausgangslage', process: 'Vorgehen', solution: 'Lösung', result: 'Ergebnis', learn: 'Erkenntnisse' },
+          problem: 'Jeden Montag kommt eine Liste mit den Redaktionsschlüssen der Gemeindeblätter. Für jeden Termin musste ich ein Inserat von Hand gestalten, ablegen und einzeln per Outlook verschicken. Das kostete jede Woche rund einen Vormittag.',
+          goal: 'Möglichst viele Gratis-Inserate platzieren, ohne dass der Aufwand mit der Anzahl Gemeinden wächst. Die Inserate sollen immer für die nächsten 14 Tage bereitstehen.',
+          steps: [
+            { t: 'Termine automatisch übernehmen', d: 'Ein Power-Automate-Flow legt den Montags-Anhang in SharePoint ab und überträgt Redaktionsschlüsse und Kontakte ins Status-Excel.' },
+            { t: 'Kurse zuordnen', d: 'Kolleg:innen tragen pro Termin die Kursnummer ein. Daraus entsteht automatisch der Link zur Kursseite.', img: 'assets/inserate_status_excel.webp', cap: 'Status-Excel: pro Gemeindeblatt Redaktionsschluss, Erscheinungsdatum, Kurs und Status des Inserats.' },
+            { t: 'Inserate erstellen', d: 'Mittwochs um 07:30 startet der Lauf. Kursdaten kommen direkt von der Kursseite, Datumsangaben werden je nach Kursart passend formatiert. Pro Gemeinde und Termin entsteht ein A4-Inserat mit allen Kursen.' },
+            { t: 'Strukturiert ablegen', d: 'Jedes Inserat wird nach festem Schema benannt und abgelegt. Vor dem Erstellen prüft der Ablauf, ob es das Inserat schon gibt.' },
+            { t: 'Versand vorbereiten', d: 'Für jede Redaktion entsteht ein Outlook-Entwurf mit Anhang, die zuständigen Personen stehen automatisch im CC. Nach dem Versand wechselt der Status im Excel auf «gesendet».' }
+          ],
+          funnel: {
+            label: 'Ablauf pro Woche',
+            cols: [
+              [ { kind: 'Montag', title: 'Termin-Liste per Mail' } ],
+              [ { kind: 'Power Automate', title: 'Status-Excel mit Terminen und Kontakten' } ],
+              [ { kind: 'Mittwoch 07:30', title: 'Word-Inserate pro Gemeinde' } ],
+              [ { kind: 'Outlook', title: 'Mail-Entwürfe, Zuständige im CC', end: true } ]
+            ]
+          },
+          features: [
+            ['Bildauswahl nach Logik', 'Hat die Kursseite ein Bild, wird dieses verwendet, sonst ein passendes Bild aus dem Bildpool.'],
+            ['Datumslogik', 'Laufende Kurse erscheinen als «Jeden Dienstag», einzelne Termine mit Datum.'],
+            ['Strukturierte Ablage', 'Festes Benennungsschema und Prüfung auf bereits vorhandene Inserate.'],
+            ['Zuständige im CC', 'Die verantwortlichen Personen sind bei jeder Mail automatisch informiert.'],
+            ['Warnung bei Sonderfällen', 'Kurse, die ein ungewöhnliches Inserat ergeben würden, werden markiert und von Hand angelegt.']
+          ],
+          results: [['~15', 'Inserate pro Woche'], ['½ Tag', 'pro Woche eingespart, vorher jedes Inserat von Hand'], ['14 Tage', 'Inserate immer im Voraus bereit']],
+          resultText: 'Der Aufwand hängt nicht mehr von der Anzahl Gemeindeblätter ab, und die Fehlerquote ist auf ein Minimum gesunken. Ich prüfe die Entwürfe und klicke auf Senden, statt jedes Inserat selbst zu bauen.',
+          learn: 'Für den Ablauf habe ich mich neu in Power Automate eingearbeitet. Die wichtigste Erkenntnis: Saubere, strukturierte Daten sind die Grundlage für fehlerfreie Inserate. Als Nächstes soll der Ablauf bereichsübergreifend genutzt werden. Auch die Freiwilligenarbeit trägt künftig ihre Inserate ein, später kommen die Verdankungen der Herbstsammlung dazu.'
+        },
+        en: {
+          title: 'Automated ad distribution to municipal newsletters',
+          lead: 'Every week, course ads go out to the municipal newsletters in the canton of Thurgau. I used to create each ad by hand and send it individually. Today the process runs largely automatically, from the deadline list to the finished email draft.',
+          facts: [['Role', 'Concept and implementation'], ['In use', 'Since October 2026, runs every Wednesday morning'], ['Goal', 'As many free ad placements for courses as possible'], ['Tools', 'Power Automate, Excel, Word, Outlook, SharePoint, Claude']],
+          nav: { start: 'Background', process: 'Process', solution: 'Solution', result: 'Result', learn: 'Learnings' },
+          problem: 'Every Monday a list arrives with the editorial deadlines of the municipal newsletters. For each deadline I had to design an ad by hand, file it and send it individually via Outlook. That took about a morning every week.',
+          goal: 'Place as many free ads as possible without the effort growing with the number of municipalities. Ads should always be ready for the next 14 days.',
+          steps: [
+            { t: 'Import deadlines automatically', d: 'A Power Automate flow saves the Monday attachment to SharePoint and transfers deadlines and contacts into the status spreadsheet.' },
+            { t: 'Assign courses', d: 'Colleagues enter a course number for each deadline. The link to the course page is generated automatically.', img: 'assets/inserate_status_excel.webp', cap: 'Status spreadsheet: editorial deadline, publication date, course and ad status for each newsletter.' },
+            { t: 'Create the ads', d: 'The run starts on Wednesdays at 07:30. Course details come straight from the course page, and dates are formatted to suit the type of course. One A4 ad with all courses is created per municipality and deadline.' },
+            { t: 'File in a structured way', d: 'Every ad is named and filed according to a fixed scheme. Before creating an ad, the process checks whether it already exists.' },
+            { t: 'Prepare sending', d: 'An Outlook draft with the attachment is created for each editor, with the responsible people automatically in CC. After sending, the status in the spreadsheet switches to "sent".' }
+          ],
+          funnel: {
+            label: 'Weekly flow',
+            cols: [
+              [ { kind: 'Monday', title: 'Deadline list by email' } ],
+              [ { kind: 'Power Automate', title: 'Status spreadsheet with deadlines and contacts' } ],
+              [ { kind: 'Wednesday 07:30', title: 'Word ads per municipality' } ],
+              [ { kind: 'Outlook', title: 'Email drafts, responsible people in CC', end: true } ]
+            ]
+          },
+          features: [
+            ['Rule-based image selection', 'If the course page has an image, it is used; otherwise a suitable image from the image pool.'],
+            ['Date logic', 'Ongoing courses appear as "Every Tuesday", single sessions with their dates.'],
+            ['Structured filing', 'A fixed naming scheme and a check for ads that already exist.'],
+            ['Responsible people in CC', 'The people in charge are automatically informed with every email.'],
+            ['Warnings for special cases', 'Courses that would produce an unusual ad are flagged and created by hand.']
+          ],
+          results: [['~15', 'ads per week'], ['½ day', 'saved per week; every ad used to be made by hand'], ['14 days', 'ads always ready in advance']],
+          resultText: 'The effort no longer depends on the number of newsletters, and the error rate has dropped to a minimum. I review the drafts and click send instead of building every ad myself.',
+          learn: 'For this workflow I learned Power Automate from scratch. The key lesson: clean, structured data is the foundation for error-free ads. The next step is to use the workflow across departments. The volunteering team will enter its own ads, and the thank-you notes for the autumn collection will follow later.'
+        }
+      },
+      de: {
+        employer: 'Pro Senectute Thurgau · Automation',
+        title: 'Automatisierter Inserate-Versand',
+        imgAlt: 'Ablauf des Inserate-Workflows',
+        desc: 'Wöchentlicher Versand von Kursinseraten an die Gemeindeblätter im Kanton Thurgau, weitgehend automatisiert. Spart rund einen halben Arbeitstag pro Woche.',
+        tools: ['Power Automate', 'Excel', 'Word', 'Outlook', 'SharePoint', 'Claude'],
+        stats: []
+      },
+      en: {
+        employer: 'Pro Senectute Thurgau · Automation',
+        title: 'Automated Ad Distribution',
+        imgAlt: 'Flow of the ad workflow',
+        desc: 'Weekly distribution of course ads to the municipal newsletters in the canton of Thurgau, largely automated. Saves about half a working day per week.',
+        tools: ['Power Automate', 'Excel', 'Word', 'Outlook', 'SharePoint', 'Claude'],
         stats: []
       }
     },
@@ -1430,6 +1519,7 @@
     { id: 'zeitschrift',      cat: 'print',    thumb: 'assets/cover_psintern_1.webp' },
     { id: 'plakatierung',     cat: 'print',    thumb: 'assets/plakatierung_1.webp' },
     { id: 'lerneinheiten',    cat: 'digital',  thumb: 'assets/lerneinheit_video_bzwu.webp' },
+    { id: 'instagram',        cat: 'digital',  thumb: 'assets/instagram_card.webp' },
     { id: 'newsletter',       cat: 'digital',  thumb: 'assets/newsletter.webp' },
     { id: 'kantonskarte',     cat: 'digital',  thumb: 'assets/kantonskarte.webp' },
     { id: 'websiteoam',       cat: 'digital',  thumb: 'assets/website_oam.webp' },
@@ -1602,7 +1692,7 @@
 
 
   // ── FALLSTUDIE ──
-  const FEATURED = ['kurssuche', 'hesa26', 'oamdigital', 'instagram'];
+  const FEATURED = ['kurssuche', 'hesa26', 'oamdigital', 'inserate'];
   const CS_UI = {
     de: { problem: 'Ausgangslage', goal: 'Ziel', gallery: 'Entwürfe und Varianten', before: 'Vorher', after: 'Nachher', draft: 'Entwurf', final: 'Final', next: 'Nächstes Projekt', visit: 'Zur Website', zoom: 'Bild vergrössern', baLabel: 'Vorher-Nachher-Vergleich' },
     en: { problem: 'Background', goal: 'Goal', gallery: 'Drafts and variants', before: 'Before', after: 'After', draft: 'Draft', final: 'Final', next: 'Next project', visit: 'Visit website', zoom: 'Enlarge image', baLabel: 'Before/after comparison' }
