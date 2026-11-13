@@ -173,14 +173,14 @@
     .case p { color: var(--on-ink); opacity: .85; max-width: 34rem; }
     .case p + p { margin-top: .75rem; }
     .case-facts { display: flex; flex-wrap: wrap; gap: 1.5rem 2.25rem; margin: 1.75rem 0; padding-top: 1.25rem; border-top: 1px solid var(--line); }
-    .fact b { display: block; font-weight: 700; font-size: 1.0625rem; line-height: 1.3; color: var(--signal); }
+    .fact b { display: block; font-weight: 700; font-size: 1.0625rem; line-height: 1.3; color: var(--on-ink); }
     .fact span { font-size: var(--t-s); color: var(--muted); }
     .link-open {
       display: inline-flex; align-items: center; gap: .5rem; font-weight: 650;
       padding-bottom: 2px; border-bottom: 2px solid var(--signal);
     }
     .link-open:hover { color: var(--signal); }
-    .case p + .link-open { margin-top: 1.75rem; }
+    .case p + .link-open { margin-top: 1.25rem; }
 
     /* ── MORE WORK ── */
     .more { background: var(--ink-2); }
@@ -277,7 +277,7 @@
     .modal-desc { max-width: 42rem; opacity: .9; }
     .modal-stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1.75rem; }
     .modal-stats:empty { display: none; }
-    .modal-stat-num { font-weight: 700; font-size: 1.0625rem; color: var(--signal); line-height: 1.1; }
+    .modal-stat-num { font-weight: 700; font-size: 1.0625rem; color: var(--on-ink); line-height: 1.1; }
     .modal-stat-label { font-size: .88rem; color: var(--muted); }
     .modal-tools { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.75rem; }
     .tool-tag { font-size: .82rem; padding: .25rem .65rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
@@ -318,7 +318,7 @@
     .cs-two p, .cs-step p, .cs-text { opacity: .88; max-width: 40rem; }
     .cs-steps { list-style: none; display: grid; gap: 0; }
     .cs-step { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
-    .cs-step-n { font-family: var(--display); font-weight: 700; font-size: 1.0625rem; color: var(--signal); line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .cs-step-n { font-family: var(--display); font-weight: 700; font-size: 1.0625rem; color: var(--muted); line-height: 1.2; font-variant-numeric: tabular-nums; }
     .cs-fig { margin-top: 1.1rem; }
     .cs-fig img { border-radius: 4px; width: 100%; height: auto; }
     .cs-fig figcaption { margin-top: .5rem; font-size: .88rem; color: var(--muted); }
@@ -345,7 +345,7 @@
     .fn-title { font-weight: 650; line-height: 1.3; margin: .15rem 0 .35rem; }
     .fn-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .78rem; color: var(--muted); word-break: break-all; display: block; margin-bottom: .4rem; }
     .fn-metrics { list-style: none; display: grid; gap: .15rem; font-size: .88rem; opacity: .9; }
-    .fn-metrics b { color: var(--signal); font-weight: 650; font-variant-numeric: tabular-nums; }
+    .fn-metrics b { color: var(--on-ink); font-weight: 650; font-variant-numeric: tabular-nums; }
     .fn-track { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 3rem; margin-top: 1rem; padding-top: .9rem; border-top: 1px dashed var(--line); }
     .fn-track div { font-size: .82rem; color: var(--muted); }
     .fn-track b { display: block; color: var(--on-ink); font-weight: 600; font-size: .85rem; }
@@ -380,7 +380,7 @@
     .ba-labels { display: flex; justify-content: space-between; margin-top: .5rem; font-size: .88rem; color: var(--muted); }
     .ba-note { margin-top: 1rem; font-size: .88rem; color: var(--muted); }
     .cs-results { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-bottom: 1.5rem; }
-    .cs-results b { display: block; font-family: var(--display); font-weight: 700; font-size: var(--t-l); line-height: 1.05; color: var(--signal); letter-spacing: -.02em; }
+    .cs-results b { display: block; font-family: var(--display); font-weight: 700; font-size: 1.0625rem; line-height: 1.3; color: var(--on-ink); letter-spacing: -.02em; }
     .cs-results span { color: var(--muted); font-size: .92rem; }
     .cs-learn { border-left: 3px solid var(--signal); padding: .25rem 0 .25rem 1.25rem; font-size: 1.0625rem; max-width: 44rem; }
     .cs-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.5rem clamp(1.5rem, 4vw, 3rem) 2rem; border-top: 1px solid var(--line); }
@@ -457,6 +457,9 @@
       .hero-grid { gap: 1.25rem; }
       .case, .feat-list .case, .feat-list .case:nth-child(even), .profile-grid, .cv-grid { grid-template-columns: 1fr; }
       .feat-list .case:nth-child(even) > .case-media { order: 0; justify-self: start; }
+      .feat-list .case { gap: 1.1rem; align-items: start; }
+      .feat-list .case + .case { padding-top: clamp(2.5rem, 7vw, 3.5rem); border-top: 1px solid var(--line); }
+      .feat-list { gap: clamp(2.5rem, 7vw, 3.5rem); }
       .modal-overlay { padding: 0; }
       .modal { max-height: 100svh; height: 100%; border-radius: 0; }
     }
@@ -531,13 +534,7 @@
         <div>
           <p class="case-org">Pro Senectute Thurgau</p>
           <h3>Kurssuche 2.0</h3>
-          <p data-en="The old course search was confusing, and every registration needed manual follow-up in the ERP.">Die alte Kurssuche war unübersichtlich, jede Anmeldung musste im ERP manuell nachbearbeitet werden.</p>
-          <p data-en="I led the project from requirements analysis and UX design in Figma to acceptance, coordinating the webshop developer and the Abacus partner. Registrations now run fully automatically.">Ich leitete das Projekt von der Anforderungsanalyse über das UX-Design in Figma bis zur Abnahme und koordinierte Webshop-Entwicklung und Abacus-Partner. Anmeldungen laufen heute vollautomatisch.</p>
-          <div class="case-facts">
-            <div class="fact"><b data-en="8 months">8 Monate</b><span data-en="project duration">Projektdauer</span></div>
-            <div class="fact"><b data-en="CHF 30,000">CHF 30'000</b><span>Budget</span></div>
-            <div class="fact"><b data-en="May 2026">Mai 2026</b><span>Go-Live</span></div>
-          </div>
+          <p data-en="The old course search was confusing, and every registration needed manual follow-up in the ERP. I led the project with a budget of CHF 30,000 from requirements to go-live and coordinated the webshop developer and the Abacus partner. Registrations now run fully automatically.">Die alte Kurssuche war unübersichtlich, jede Anmeldung musste im ERP nachbearbeitet werden. Ich leitete das Projekt mit einem Budget von CHF 30'000 von der Anforderung bis zum Go-live und koordinierte Webshop-Entwicklung und Abacus-Partner. Heute laufen die Anmeldungen vollautomatisch.</p>
           <button type="button" class="link-open" data-open="kurssuche" data-en="Read case study">Fallstudie lesen</button>
         </div>
       </article>
@@ -550,12 +547,7 @@
         <div>
           <p class="case-org">Pro Senectute Thurgau</p>
           <h3 data-en="Herbstsammlung 2026 fundraising campaign">Spendenkampagne Herbstsammlung 2026</h3>
-          <p data-en="A personal story that previously existed only as text and image – told on video for the first time and run as Meta Ads on Facebook and Instagram, targeted strictly at the canton of Thurgau.">Eine persönliche Geschichte, die es bisher nur als Text und Bild gab – erstmals als Video erzählt und als Meta Ads auf Facebook und Instagram ausgespielt, streng auf den Kanton Thurgau begrenzt.</p>
-          <p data-en="I produced the campaign film myself: AI voiceover with ElevenLabs, AI-generated sequences with Nano Banana, editing in Premiere Pro.">Den Kampagnenfilm habe ich selbst produziert: KI-Vertonung mit ElevenLabs, KI-generierte Sequenzen mit Nano Banana, Schnitt in Premiere Pro.</p>
-          <div class="case-facts">
-            <div class="fact"><b>407</b><span data-en="page views (previous year: 115)">Seitenaufrufe (Vorjahr: 115)</span></div>
-            <div class="fact"><b>40 %</b><span data-en="hook rate, first video">Hook-Rate erstes Video</span></div>
-          </div>
+          <p data-en="A personal story that previously existed only as text and image, told on video for the first time and run as Meta Ads in the canton of Thurgau. I produced the film myself, with AI voiceover, AI-generated sequences and editing in Premiere Pro. The autumn collection pages then had 407 views instead of 115.">Eine persönliche Geschichte, die es bisher nur als Text und Bild gab, habe ich erstmals als Video erzählt und als Meta Ads im Kanton Thurgau ausgespielt. Den Film habe ich selbst produziert, mit KI-Stimme, KI-generierten Sequenzen und Schnitt in Premiere Pro. Die Herbstsammlungs-Seiten hatten danach 407 statt 115 Aufrufe.</p>
           <button type="button" class="link-open" data-open="hesa26" data-en="Watch film &amp; case study">Film &amp; Fallstudie</button>
         </div>
       </article>
@@ -566,14 +558,8 @@
         </button>
         <div>
           <p class="case-org">open art museum</p>
-          <h3 data-en="oam digital – the collection online">oam digital – die Sammlung online</h3>
-          <p data-en="A public web platform that pulls artworks, exhibitions and artist biographies from the internal museum database via API.">Eine öffentliche Webplattform, die Werke, Ausstellungen und Biografien per API direkt aus der internen Museumsdatenbank bezieht.</p>
-          <p data-en="Project lead for one year: requirements with stakeholders, interface design in Figma, coordination of the development partner, supervision of an intern.">Projektleitung über ein Jahr: Anforderungen mit Stakeholdern, Interface-Design in Figma, Koordination der Entwicklungspartnerin, Betreuung einer Praktikantin.</p>
-          <div class="case-facts">
-            <div class="fact"><b data-en="5,248">5'248</b><span data-en="digital works">digitale Werke</span></div>
-            <div class="fact"><b>368</b><span data-en="artists">Künstler:innen</span></div>
-            <div class="fact"><b data-en="15,000+">15'000+</b><span data-en="records prepared">Datensätze aufbereitet</span></div>
-          </div>
+          <h3 data-en="oam digital, the collection online">oam digital, die Sammlung online</h3>
+          <p data-en="A public web platform that pulls artworks, exhibitions and biographies from the museum database via API. I led the project for a year, from requirements and interface design in Figma to coordinating development. Today 5,248 works are publicly accessible.">Eine öffentliche Webplattform, die Werke, Ausstellungen und Biografien per API direkt aus der Museumsdatenbank bezieht. Ich leitete das Projekt ein Jahr lang, von den Anforderungen über das Interface-Design in Figma bis zur Koordination der Entwicklung. Heute sind 5'248 Werke öffentlich zugänglich.</p>
           <button type="button" class="link-open" data-open="oamdigital" data-en="Open project">Projekt öffnen</button>
         </div>
       </article>
@@ -585,13 +571,7 @@
         <div>
           <p class="case-org">Pro Senectute Thurgau</p>
           <h3 data-en="Automated ad distribution">Automatisierter Inserate-Versand</h3>
-          <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau. I used to create and send each one by hand.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau. Früher habe ich jedes einzelne von Hand erstellt und verschickt.</p>
-          <p data-en="Today the process runs largely automatically: deadlines are imported, ads are created with rule-based image selection and filed in a structured way, and email drafts are prepared with the responsible people in CC.">Heute läuft der Prozess weitgehend automatisch: Termine werden übernommen, Inserate mit Bildauswahl nach Logik erstellt und strukturiert abgelegt, Mail-Entwürfe mit den Zuständigen im CC vorbereitet.</p>
-          <div class="case-facts">
-            <div class="fact"><b data-en="~15">~15</b><span data-en="ads per week">Inserate pro Woche</span></div>
-            <div class="fact"><b data-en="½ day">½ Tag</b><span data-en="saved per week">pro Woche eingespart</span></div>
-            <div class="fact"><b data-en="14 days">14 Tage</b><span data-en="always ready in advance">immer im Voraus bereit</span></div>
-          </div>
+          <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau. I used to create each one by hand; today the process runs largely automatically, from the dates to the finished email draft. That saves half a working day every week.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau. Früher habe ich jedes einzeln von Hand erstellt, heute läuft der Prozess weitgehend automatisch, von den Terminen bis zum fertigen Mail-Entwurf. Das spart jede Woche einen halben Arbeitstag.</p>
           <button type="button" class="link-open" data-open="inserate" data-en="Read case study">Fallstudie lesen</button>
         </div>
       </article>
