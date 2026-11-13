@@ -458,28 +458,30 @@
     /* ── PROJEKTLISTE ── */
     .plist { list-style: none; margin-top: clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
     .plist li { border-top: 1px solid var(--line); }
-    .plist-row { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto 1.5rem; align-items: center; gap: 1.5rem; padding: clamp(1.25rem, 2.4vw, 1.9rem) 0; text-align: left; color: var(--on-ink); transition: opacity .3s; }
-    .plist-title { font-family: var(--display); font-weight: 700; font-size: var(--t-l); line-height: 1.2; letter-spacing: -.02em; }
-    .plist-meta { display: flex; gap: 1.5rem; font-size: var(--t-s); color: var(--muted); text-align: right; }
-    .plist-org { min-width: 11rem; }
-    .plist-arrow { color: var(--signal); transition: transform .35s; }
+    .plist-row { width: 100%; display: grid; grid-template-columns: clamp(96px, 11vw, 150px) minmax(0, 1fr) 1.5rem; grid-template-rows: auto auto; column-gap: clamp(1rem, 2.5vw, 2rem); row-gap: .3rem; align-items: center; padding: clamp(1rem, 2vw, 1.4rem) 0; text-align: left; color: var(--on-ink); }
+    .plist-thumb { grid-row: 1 / 3; aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; background: rgba(0, 0, 0, .18); }
+    .plist-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .plist-title { grid-column: 2; align-self: end; font-family: var(--display); font-weight: 700; font-size: var(--t-l); line-height: 1.2; letter-spacing: -.02em; }
+    .plist-meta { grid-column: 2; align-self: start; font-size: var(--t-s); color: var(--muted); }
+    .plist-cat::before { content: ' · '; }
+    .plist-arrow { grid-column: 3; grid-row: 1 / 3; color: var(--signal); transition: transform .35s; }
     .plist-row:hover .plist-title { color: #fff; }
     .plist-row[aria-expanded="true"] .plist-arrow { transform: rotate(180deg); }
     .plist-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.8,.2,1); }
     .plist-panel.open { grid-template-rows: 1fr; }
     .plist-panel:not(.open) .plist-panel-in { visibility: hidden; transition: visibility 0s .45s; }
-    .plist-panel-in { overflow: hidden; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+    .plist-panel-in { overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); padding-left: calc(clamp(96px, 11vw, 150px) + clamp(1rem, 2.5vw, 2rem)); }
     .plist-panel.open .plist-panel-in { padding-bottom: clamp(1.5rem, 3vw, 2.25rem); }
     .plist-img { display: block; border-radius: 4px; overflow: hidden; }
     .plist-img img { display: block; width: 100%; height: auto; }
     .plist-body p { color: var(--on-ink); opacity: .86; max-width: 34rem; }
     .plist-body .link-open { margin-top: 1rem; }
     @media (max-width: 820px) {
-      .plist-row { grid-template-columns: minmax(0, 1fr) 1.25rem; gap: .35rem 1rem; }
-      .plist-meta { grid-column: 1; grid-row: 2; text-align: left; gap: .5rem; }
-      .plist-org { display: none; }
-      .plist-panel-in { grid-template-columns: 1fr; gap: 1rem; }
-      .plist-arrow { grid-column: 2; grid-row: 1 / 3; }
+      .plist-row { grid-template-columns: 64px minmax(0, 1fr) 1.25rem; }
+      .plist-cat { display: block; }
+      .plist-cat::before { content: none; }
+      .plist-title { font-size: 1.25rem; }
+      .plist-panel-in { padding-left: 0; }
     }
     .scroll-cue { transition: opacity .4s; }
     .scroll-cue.gone { opacity: 0; pointer-events: none; }
@@ -571,13 +573,13 @@
   <div class="wrap">
     <div class="feat-head">
         <h2 class="h2" data-en="Four projects that show how I work">Vier Projekte, die zeigen, wie ich arbeite</h2>
-        <p class="lead" data-en="From the course search with ERP integration to the self-produced campaign film.">Von der Kurssuche mit ERP-Anbindung bis zum selbst produzierten Kampagnenfilm.</p>
     </div>
     <ul class="plist">
       <li>
         <button type="button" class="plist-row" aria-expanded="false" aria-controls="pp-kurssuche" id="pr-kurssuche">
+          <span class="plist-thumb" aria-hidden="true"><img src="assets/kurssuche.webp" alt="" loading="lazy"></span>
           <span class="plist-title" data-en="Course Search 2.0">Kurssuche 2.0</span>
-          <span class="plist-meta"><span data-en="Project lead, web">Projektleitung, Web</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <span class="plist-meta"><span data-en="Course search with registration straight into the ERP">Kurssuche mit Anmeldung direkt ins ERP</span><span class="plist-cat" data-en="Project lead, web">Projektleitung, Web</span></span>
           <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="plist-panel" id="pp-kurssuche" role="region" aria-labelledby="pr-kurssuche">
@@ -586,14 +588,14 @@
               <p data-en="The old course search was confusing, and every registration needed manual follow-up in the ERP. I led the project with a budget of CHF 30,000 through to go-live; registrations now run fully automatically.">Die alte Kurssuche war unübersichtlich, jede Anmeldung musste im ERP nachbearbeitet werden. Ich leitete das Projekt mit einem Budget von CHF 30'000 bis zum Go-live, heute laufen die Anmeldungen vollautomatisch.</p>
               <button type="button" class="link-open" data-open="kurssuche" data-en="Read case study">Fallstudie lesen</button>
             </div>
-            <button type="button" class="plist-img" data-open="kurssuche" tabindex="-1" aria-hidden="true"><img src="assets/kurssuche.webp" alt="" loading="lazy"></button>
           </div>
         </div>
       </li>
       <li>
         <button type="button" class="plist-row" aria-expanded="false" aria-controls="pp-hesa26" id="pr-hesa26">
+          <span class="plist-thumb" aria-hidden="true"><img src="assets/hesa26.webp" alt="" loading="lazy"></span>
           <span class="plist-title" data-en="Autumn fundraising campaign">Spendenkampagne Herbstsammlung</span>
-          <span class="plist-meta"><span data-en="Campaign, video">Kampagne, Video</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <span class="plist-meta"><span data-en="Fundraising film as a Meta Ads campaign">Spendenfilm als Meta-Ads-Kampagne</span><span class="plist-cat" data-en="Campaign, video">Kampagne, Video</span></span>
           <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="plist-panel" id="pp-hesa26" role="region" aria-labelledby="pr-hesa26">
@@ -602,14 +604,14 @@
               <p data-en="A story that previously existed only as text and image, told on video for the first time and run as Meta Ads in the canton of Thurgau. I produced the film myself; the autumn collection pages then had 407 views instead of 115.">Eine Geschichte, die es bisher nur als Text und Bild gab, habe ich erstmals als Video erzählt und als Meta Ads im Kanton Thurgau ausgespielt. Den Film habe ich selbst produziert, die Herbstsammlungs-Seiten hatten danach 407 statt 115 Aufrufe.</p>
               <button type="button" class="link-open" data-open="hesa26" data-en="Film and case study">Film und Fallstudie</button>
             </div>
-            <button type="button" class="plist-img" data-open="hesa26" tabindex="-1" aria-hidden="true"><img src="assets/hesa26.webp" alt="" loading="lazy"></button>
           </div>
         </div>
       </li>
       <li>
         <button type="button" class="plist-row" aria-expanded="false" aria-controls="pp-oamdigital" id="pr-oamdigital">
+          <span class="plist-thumb" aria-hidden="true"><img src="assets/website_oam_digital.webp" alt="" loading="lazy"></span>
           <span class="plist-title" data-en="oam digital, the collection online">oam digital, die Sammlung online</span>
-          <span class="plist-meta"><span data-en="Project lead, platform">Projektleitung, Plattform</span><span class="plist-org">open art museum</span></span>
+          <span class="plist-meta"><span data-en="The museum collection as a web platform">Museumssammlung als Webplattform</span><span class="plist-cat" data-en="Project lead, platform">Projektleitung, Plattform</span></span>
           <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="plist-panel" id="pp-oamdigital" role="region" aria-labelledby="pr-oamdigital">
@@ -618,14 +620,14 @@
               <p data-en="A public web platform that pulls artworks, exhibitions and biographies from the museum database via API. I led the project for a year; today 5,248 works are publicly accessible.">Eine öffentliche Webplattform, die Werke, Ausstellungen und Biografien per API direkt aus der Museumsdatenbank bezieht. Ich leitete das Projekt ein Jahr lang, heute sind 5'248 Werke öffentlich zugänglich.</p>
               <button type="button" class="link-open" data-open="oamdigital" data-en="Open project">Projekt öffnen</button>
             </div>
-            <button type="button" class="plist-img" data-open="oamdigital" tabindex="-1" aria-hidden="true"><img src="assets/website_oam_digital.webp" alt="" loading="lazy"></button>
           </div>
         </div>
       </li>
       <li>
         <button type="button" class="plist-row" aria-expanded="false" aria-controls="pp-inserate" id="pr-inserate">
+          <span class="plist-thumb" aria-hidden="true"><img src="assets/inserate_workflow.webp" alt="" loading="lazy"></span>
           <span class="plist-title" data-en="Automated ad distribution">Automatisierter Inserate-Versand</span>
-          <span class="plist-meta"><span data-en="Automation, processes">Automatisierung, Prozesse</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <span class="plist-meta"><span data-en="Course ads to municipal newsletters, automated">Kursinserate automatisch an Gemeindeblätter</span><span class="plist-cat" data-en="Automation, processes">Automatisierung, Prozesse</span></span>
           <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="plist-panel" id="pp-inserate" role="region" aria-labelledby="pr-inserate">
@@ -634,7 +636,6 @@
               <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau; I used to create each one by hand. Today the process runs largely automatically and saves half a working day every week.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau, früher habe ich jedes einzeln von Hand erstellt. Heute läuft der Prozess weitgehend automatisch und spart jede Woche einen halben Arbeitstag.</p>
               <button type="button" class="link-open" data-open="inserate" data-en="Read case study">Fallstudie lesen</button>
             </div>
-            <button type="button" class="plist-img" data-open="inserate" tabindex="-1" aria-hidden="true"><img src="assets/inserate_workflow.webp" alt="" loading="lazy"></button>
           </div>
         </div>
       </li>
