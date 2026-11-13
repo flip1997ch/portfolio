@@ -446,6 +446,33 @@
     .tl-more summary::after { content: '+'; font-weight: 700; }
     .tl-more[open] summary::after { content: '–'; }
     .tl-more[open] summary { margin-bottom: .4rem; }
+    /* ── PROJEKTLISTE ── */
+    .plist { list-style: none; margin-top: clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+    .plist li { border-top: 1px solid var(--line); }
+    .plist-row { width: 100%; display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto 1.5rem; align-items: center; gap: 1.5rem; padding: clamp(1.25rem, 2.4vw, 1.9rem) 0; text-align: left; color: var(--on-ink); transition: opacity .3s; }
+    .plist-n { font-size: var(--t-s); color: var(--muted); font-variant-numeric: tabular-nums; }
+    .plist-title { font-family: var(--display); font-weight: 700; font-size: var(--t-l); line-height: 1.2; letter-spacing: -.02em; }
+    .plist-meta { display: flex; gap: 1.5rem; font-size: var(--t-s); color: var(--muted); text-align: right; }
+    .plist-org { min-width: 11rem; }
+    .plist-arrow { color: var(--signal); transition: transform .3s; }
+    .plist-row:hover .plist-arrow, .plist-row:focus-visible .plist-arrow { transform: translateX(4px); }
+    .plist:hover .plist-row { opacity: .45; }
+    .plist:hover .plist-row:hover { opacity: 1; }
+    .plist-preview { position: fixed; left: 0; top: 0; width: clamp(240px, 24vw, 360px); pointer-events: none; z-index: 40; opacity: 0; transform: translate3d(-999px, -999px, 0); transition: opacity .25s; border-radius: 4px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
+    .plist-preview.on { opacity: 1; }
+    .plist-preview img { display: block; width: 100%; height: auto; }
+    @media (hover: none), (pointer: coarse) { .plist-preview { display: none; } .plist:hover .plist-row { opacity: 1; } }
+    @media (max-width: 820px) {
+      .plist-row { grid-template-columns: minmax(0, 1fr) 1.25rem; gap: .35rem 1rem; }
+      .plist-n { display: none; }
+      .plist-meta { grid-column: 1; grid-row: 2; text-align: left; gap: .5rem; }
+      .plist-meta > span + span::before { content: '·'; margin-right: .5rem; }
+      .plist-org { min-width: 0; }
+      .plist-arrow { grid-column: 2; grid-row: 1 / 3; }
+    }
+    .scroll-cue { transition: opacity .4s; }
+    .scroll-cue.gone { opacity: 0; pointer-events: none; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -535,56 +562,41 @@
         <h2 class="h2" data-en="Four projects that show how I work">Vier Projekte, die zeigen, wie ich arbeite</h2>
         <p class="lead" data-en="From the course search with ERP integration to the self-produced campaign film.">Von der Kurssuche mit ERP-Anbindung bis zum selbst produzierten Kampagnenfilm.</p>
     </div>
-    <div class="feat-list">
-      <article class="case">
-        <button type="button" class="case-media" data-open="kurssuche" aria-label="Kurssuche 2.0 – Details öffnen">
-          <img src="assets/kurssuche.webp" alt="">
+    <ul class="plist">
+      <li>
+        <button type="button" class="plist-row" data-open="kurssuche" data-preview="assets/kurssuche.webp">
+          <span class="plist-n">01</span>
+          <span class="plist-title" data-en="Course Search 2.0">Kurssuche 2.0</span>
+          <span class="plist-meta"><span data-en="Project lead, web">Projektleitung, Web</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div>
-          <p class="case-org">Pro Senectute Thurgau</p>
-          <h3>Kurssuche 2.0</h3>
-          <p data-en="The old course search was confusing, and every registration needed manual follow-up in the ERP. I led the project with a budget of CHF 30,000 from requirements to go-live and coordinated the webshop developer and the Abacus partner. Registrations now run fully automatically.">Die alte Kurssuche war unübersichtlich, jede Anmeldung musste im ERP nachbearbeitet werden. Ich leitete das Projekt mit einem Budget von CHF 30'000 von der Anforderung bis zum Go-live und koordinierte Webshop-Entwicklung und Abacus-Partner. Heute laufen die Anmeldungen vollautomatisch.</p>
-          <button type="button" class="link-open" data-open="kurssuche" data-en="Read case study">Fallstudie lesen</button>
-        </div>
-      </article>
-
-      <article class="case">
-        <button type="button" class="case-media" data-open="hesa26" aria-label="Herbstsammlung Thurgau 2026 – Video und Details öffnen">
-          <img src="assets/hesa26.webp" alt="">
-          <span class="play"><svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l8-4.5-8-4.5z" fill="currentColor"/></svg><span data-en="Watch film">Film ansehen</span></span>
+      </li>
+      <li>
+        <button type="button" class="plist-row" data-open="hesa26" data-preview="assets/hesa26.webp">
+          <span class="plist-n">02</span>
+          <span class="plist-title" data-en="Autumn fundraising campaign">Spendenkampagne Herbstsammlung</span>
+          <span class="plist-meta"><span data-en="Campaign, video">Kampagne, Video</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div>
-          <p class="case-org">Pro Senectute Thurgau</p>
-          <h3 data-en="Herbstsammlung 2026 fundraising campaign">Spendenkampagne Herbstsammlung 2026</h3>
-          <p data-en="A personal story that previously existed only as text and image, told on video for the first time and run as Meta Ads in the canton of Thurgau. I produced the film myself, with AI voiceover, AI-generated sequences and editing in Premiere Pro. The autumn collection pages then had 407 views instead of 115.">Eine persönliche Geschichte, die es bisher nur als Text und Bild gab, habe ich erstmals als Video erzählt und als Meta Ads im Kanton Thurgau ausgespielt. Den Film habe ich selbst produziert, mit KI-Stimme, KI-generierten Sequenzen und Schnitt in Premiere Pro. Die Herbstsammlungs-Seiten hatten danach 407 statt 115 Aufrufe.</p>
-          <button type="button" class="link-open" data-open="hesa26" data-en="Watch film &amp; case study">Film &amp; Fallstudie</button>
-        </div>
-      </article>
-
-      <article class="case">
-        <button type="button" class="case-media" data-open="oamdigital" aria-label="oam digital – Details öffnen">
-          <img src="assets/website_oam_digital.webp" alt="">
+      </li>
+      <li>
+        <button type="button" class="plist-row" data-open="oamdigital" data-preview="assets/website_oam_digital.webp">
+          <span class="plist-n">03</span>
+          <span class="plist-title" data-en="oam digital, the collection online">oam digital, die Sammlung online</span>
+          <span class="plist-meta"><span data-en="Project lead, platform">Projektleitung, Plattform</span><span class="plist-org">open art museum</span></span>
+          <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div>
-          <p class="case-org">open art museum</p>
-          <h3 data-en="oam digital, the collection online">oam digital, die Sammlung online</h3>
-          <p data-en="A public web platform that pulls artworks, exhibitions and biographies from the museum database via API. I led the project for a year, from requirements and interface design in Figma to coordinating development. Today 5,248 works are publicly accessible.">Eine öffentliche Webplattform, die Werke, Ausstellungen und Biografien per API direkt aus der Museumsdatenbank bezieht. Ich leitete das Projekt ein Jahr lang, von den Anforderungen über das Interface-Design in Figma bis zur Koordination der Entwicklung. Heute sind 5'248 Werke öffentlich zugänglich.</p>
-          <button type="button" class="link-open" data-open="oamdigital" data-en="Open project">Projekt öffnen</button>
-        </div>
-      </article>
-
-      <article class="case">
-        <button type="button" class="case-media" data-open="inserate" aria-label="Automatisierter Inserate-Versand – Details öffnen">
-          <img src="assets/inserate_workflow.webp" alt="">
+      </li>
+      <li>
+        <button type="button" class="plist-row" data-open="inserate" data-preview="assets/inserate_workflow.webp">
+          <span class="plist-n">04</span>
+          <span class="plist-title" data-en="Automated ad distribution">Automatisierter Inserate-Versand</span>
+          <span class="plist-meta"><span data-en="Automation, processes">Automatisierung, Prozesse</span><span class="plist-org">Pro Senectute Thurgau</span></span>
+          <svg class="plist-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div>
-          <p class="case-org">Pro Senectute Thurgau</p>
-          <h3 data-en="Automated ad distribution">Automatisierter Inserate-Versand</h3>
-          <p data-en="Every week, course ads go out to the municipal newsletters in Thurgau. I used to create each one by hand; today the process runs largely automatically, from the dates to the finished email draft. That saves half a working day every week.">Jede Woche gehen Kursinserate an die Gemeindeblätter im Thurgau. Früher habe ich jedes einzeln von Hand erstellt, heute läuft der Prozess weitgehend automatisch, von den Terminen bis zum fertigen Mail-Entwurf. Das spart jede Woche einen halben Arbeitstag.</p>
-          <button type="button" class="link-open" data-open="inserate" data-en="Read case study">Fallstudie lesen</button>
-        </div>
-      </article>
-    </div>
+      </li>
+    </ul>
+    <div class="plist-preview" id="plist-preview" aria-hidden="true"><img alt=""></div>
   </div>
 </section>
 
@@ -1779,7 +1791,11 @@
 
   // ── NAV: Hintergrund beim Scrollen, aktiver Abschnitt ──
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  const cue = document.querySelector('.scroll-cue');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    if (cue) cue.classList.toggle('gone', window.scrollY > 40);
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
   const navLinks = [...document.querySelectorAll('.nav-links a')];
@@ -1813,7 +1829,7 @@
   // Einblenden beim Scrollen
   function setupReveal() {
     const groups = ['.h2', '.lead', '.profile-text p', '.claim', '.skills > div',
-                    '.tl-item', '.cv-download', '.contact-lead', '.contact-links a', '.hero-meta', '.feat-list .case', '.more-head .filters'];
+                    '.tl-item', '.cv-download', '.contact-lead', '.contact-links a', '.hero-meta', '.plist li', '.more-head .filters'];
     groups.forEach(sel => {
       document.querySelectorAll(sel).forEach(el => {
         el.classList.add('rv');
@@ -1884,6 +1900,29 @@
   }
 
 
+
+  // ── PROJEKTLISTE: Vorschaubild folgt dem Mauszeiger ──
+  (() => {
+    const box = document.getElementById('plist-preview');
+    if (!box || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const img = box.querySelector('img');
+    const still = !window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    let x = 0, y = 0, cx = 0, cy = 0, raf = 0;
+    const loop = () => {
+      cx += (x - cx) * (still ? 1 : .18); cy += (y - cy) * (still ? 1 : .18);
+      box.style.transform = `translate3d(${cx + 24}px, ${cy - box.offsetHeight / 2}px, 0)`;
+      raf = box.classList.contains('on') ? requestAnimationFrame(loop) : 0;
+    };
+    document.querySelectorAll('.plist-row').forEach(r => {
+      r.addEventListener('mouseenter', e => {
+        img.src = r.dataset.preview; x = cx = e.clientX; y = cy = e.clientY;
+        box.classList.add('on'); if (!raf) raf = requestAnimationFrame(loop);
+      });
+      r.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
+      r.addEventListener('mouseleave', () => box.classList.remove('on'));
+    });
+    window.addEventListener('scroll', () => box.classList.remove('on'), { passive: true });
+  })();
   // ── SPRACHE ──
   document.querySelectorAll('[data-en]').forEach(el => { el.dataset.de = el.innerHTML; });
 
