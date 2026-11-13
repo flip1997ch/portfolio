@@ -99,7 +99,7 @@
     .nav-where:empty { display: none !important; }
 
     /* ── HERO ── */
-    .hero { display: grid; align-items: center; padding: clamp(7rem, 12vw, 9.5rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+    .hero { display: grid; align-items: center; padding: clamp(7rem, 12vw, 9.5rem) 0 clamp(1rem, 2vw, 1.5rem); position: relative; overflow: hidden; }
     .hero > .wrap { width: 100%; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(200px, 22vw, 320px); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
     .hero h1 {
@@ -116,8 +116,8 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
     .cv-text { display: inline-flex; align-items: center; gap: .4rem; color: var(--on-ink); opacity: .86; font-size: 1.0625rem; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .25em; }
     .cv-text:hover { opacity: 1; text-decoration-color: var(--signal); }
-    .scroll-cue { display: flex; justify-content: center; width: 3rem; margin: clamp(2.5rem, 6vw, 4rem) auto 0; padding: .5rem 0; color: var(--muted); transition: color .2s; }
-    .scroll-cue:hover { color: var(--on-ink); }
+    .scroll-cue { display: flex; justify-content: center; width: 3rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; padding: .5rem 0; color: var(--signal); transition: opacity .2s; }
+    .scroll-cue:hover { opacity: .8; }
     .scroll-cue svg { animation: cue 2.2s cubic-bezier(.45, 0, .55, 1) infinite; }
     @keyframes cue { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
     @media (prefers-reduced-motion: reduce) { .scroll-cue svg { animation: none; } }
@@ -431,7 +431,7 @@
 
 
     /* ── HAUPTPROJEKTE (untereinander) ── */
-    #arbeiten { padding: clamp(4rem, 8vw, 7rem) 0 clamp(4rem, 8vw, 7rem); }
+    #arbeiten { padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(4rem, 8vw, 7rem); }
     .feat-head .h2 { max-width: none; }
     .feat-head .lead { margin-top: .6rem; }
     .feat-list { display: grid; gap: clamp(3.5rem, 7vw, 6rem); margin-top: clamp(3rem, 6vw, 5rem); }
