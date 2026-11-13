@@ -1871,7 +1871,7 @@
 
   // Einblenden beim Scrollen
   function setupReveal() {
-    const groups = ['.h2', '.lead', '.profile-text p', '.claim', '.skills > div',
+    const groups = ['.h2', '.lead', '.cv-col h3', '.profile-text p', '.claim', '.skills > div',
                     '.tl-item', '.cv-download', '.contact-lead', '.contact-links a', '.hero-meta', '.plist li', '.more-head .filters'];
     groups.forEach(sel => {
       document.querySelectorAll(sel).forEach(el => {
@@ -1883,6 +1883,16 @@
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => {
         if (!en.isIntersecting) return;
+        // Abschnittstitel zuerst: Inhalte warten, bis der Titel ihres Abschnitts da ist
+        const h2 = en.target.closest('section')?.querySelector('.h2');
+        if (h2 && h2 !== en.target) {
+          if (!h2.classList.contains('in')) { h2.classList.add('in'); h2._inAt = performance.now(); }
+          const wait = Math.max(0, 0.3 - (performance.now() - (h2._inAt || 0)) / 1000);
+          if (wait > 0) {
+            const base = parseFloat(en.target.style.getPropertyValue('--d')) || 0;
+            en.target.style.setProperty('--d', (base + wait).toFixed(2) + 's');
+          }
+        } else if (en.target.matches('.h2') && !en.target._inAt) en.target._inAt = performance.now();
         en.target.classList.add('in');
         en.target.querySelectorAll('.fact b').forEach(countUp);
         io.unobserve(en.target);
