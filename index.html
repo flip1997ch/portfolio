@@ -434,6 +434,12 @@
     .feat-list .case h3 { font-size: clamp(1.9rem, 3vw, 3rem); }
     .feat-list .case p { font-size: clamp(1rem, .3vw + .85rem, 1.15rem); }
 
+    .tl-more { margin-top: .4rem; }
+    .tl-more summary { cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--ink); list-style: none; display: inline-flex; align-items: center; gap: .35rem; border-bottom: 1.5px solid var(--signal); }
+    .tl-more summary::-webkit-details-marker { display: none; }
+    .tl-more summary::after { content: '+'; font-weight: 700; }
+    .tl-more[open] summary::after { content: '–'; }
+    .tl-more[open] summary { margin-bottom: .4rem; }
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -680,13 +686,18 @@
             <ul>
               <li data-en="Project lead Course Search 2.0: 8 months, budget CHF 30,000, coordinating web shop development and Abacus partner">Projektleitung Kurssuche 2.0: 8 Monate, Budget CHF 30'000, Koordination von Webshop-Entwicklung und Abacus-Partner</li>
               <li data-en="Campaigns across website, social media, newsletter and print">Umsetzung von Kampagnen über Website, Social Media, Newsletter und Print</li>
-              <li data-en="Planning, running and optimising Meta Ads campaigns">Konzeption, Schaltung und Optimierung von Meta-Ads-Kampagnen</li>
-              <li data-en="Data-driven development of video creatives based on hook and play-through rate">Datenbasierte Weiterentwicklung von Video-Creatives anhand von Hook- und Play-Through-Rate</li>
-              <li data-en="Campaign tracking in GA4 with custom events">Kampagnen-Tracking in GA4 mit benutzerdefinierten Ereignissen</li>
               <li data-en="Automating recurring communication processes with AI tools">Automatisierung wiederkehrender Kommunikationsprozesse mit KI-Tools</li>
-              <li data-en="Contact person for AI questions and data protection in projects, e.g. assessing the PHP security vulnerability">Ansprechperson für KI-Fragen und Datenschutz in Projekten, u.&nbsp;a. Abklärung der PHP-Sicherheitslücke</li>
-              <li data-en="Editing and designing the staff magazine">Redaktion und Gestaltung der Mitarbeitendenzeitschrift</li>
             </ul>
+            <details class="tl-more">
+              <summary data-en="Show more">Mehr anzeigen</summary>
+              <ul>
+                <li data-en="Planning, running and optimising Meta Ads campaigns">Konzeption, Schaltung und Optimierung von Meta-Ads-Kampagnen</li>
+                <li data-en="Data-driven development of video creatives based on hook and play-through rate">Datenbasierte Weiterentwicklung von Video-Creatives anhand von Hook- und Play-Through-Rate</li>
+                <li data-en="Campaign tracking in GA4 with custom events">Kampagnen-Tracking in GA4 mit benutzerdefinierten Ereignissen</li>
+                <li data-en="Contact person for AI questions and data protection in projects, e.g. assessing the PHP security vulnerability">Ansprechperson für KI-Fragen und Datenschutz in Projekten, u.&nbsp;a. Abklärung der PHP-Sicherheitslücke</li>
+                <li data-en="Editing and designing the staff magazine">Redaktion und Gestaltung der Mitarbeitendenzeitschrift</li>
+              </ul>
+            </details>
           </div>
         </div>
         <div class="tl-item">
