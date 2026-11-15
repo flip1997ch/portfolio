@@ -285,14 +285,24 @@
     .modal-overlay.open .modal { transform: none; opacity: 1; }
     .modal.dragging { transition: none; }
     .modal-bar {
-      position: sticky; top: 0; z-index: 3; height: 3.5rem; display: flex; align-items: center; gap: 1rem;
-      padding: 0 .75rem 0 clamp(1.5rem, 4vw, 3rem); background: rgba(38, 78, 50, .86);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s;
+      position: sticky; top: 0; z-index: 3; height: 3.5rem; display: flex; align-items: stretch; gap: 0;
+      padding: 0 .75rem 0 clamp(1.5rem, 4vw, 3rem); background: var(--ink-2); border-bottom: 1px solid transparent; transition: border-color .3s;
     }
+    .modal-bar::after { content: ''; position: absolute; left: 0; right: 0; top: calc(100% + 1px); height: 28px; background: linear-gradient(var(--ink-2), rgba(38, 78, 50, 0)); pointer-events: none; opacity: 0; transition: opacity .3s; }
     .modal.scrolled .modal-bar { border-color: var(--line); }
+    .modal.scrolled .modal-bar::after { opacity: 1; }
     .modal-grab { display: none; }
-    .modal-bar-title { flex: 1; min-width: 0; font-weight: 650; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s; }
-    .modal.scrolled .modal-bar-title { opacity: 1; transform: none; }
+    .modal-bar-title { align-self: center; flex: 0 1 auto; max-width: 0; min-width: 0; font-weight: 650; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0; transition: opacity .3s, max-width .4s cubic-bezier(.2,.8,.2,1), margin .4s cubic-bezier(.2,.8,.2,1); }
+    .modal.scrolled .modal-bar-title { opacity: 1; max-width: 22rem; margin-right: 1.75rem; }
+    .modal-close { margin-left: 1rem; }
+    .modal-tabs { flex: 1; min-width: 0; display: flex; }
+    .modal-tabs:empty { visibility: hidden; }
+    .modal-tabs ul { list-style: none; display: flex; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; }
+    .modal-tabs ul::-webkit-scrollbar { display: none; }
+    .modal-tabs a { display: flex; align-items: center; height: 100%; text-decoration: none; color: var(--muted); font-size: .92rem; white-space: nowrap; border-bottom: 2px solid transparent; padding-top: 2px; transition: color .2s, border-color .2s; }
+    .modal-tabs a:hover { color: var(--on-ink); }
+    .modal-tabs a.active { color: var(--on-ink); border-color: var(--signal); }
+    .modal-close { align-self: center; }
     .modal-close {
       flex: none; width: 2.25rem; height: 2.25rem; border-radius: 999px; background: rgba(255, 255, 255, .08); color: var(--on-ink);
       display: grid; place-items: center; transition: background .2s, color .2s, transform .2s;
@@ -335,12 +345,7 @@
     .cs-facts div + div { padding-left: 1.25rem; border-left: 1px solid var(--line); }
     .cs-facts dt { font-size: .85rem; color: var(--muted); }
     .cs-facts dd { font-weight: 600; margin-top: .2rem; line-height: 1.35; }
-    .cs-nav { position: sticky; top: 3.5rem; z-index: 2; background: var(--ink-2); border-bottom: 1px solid var(--line); margin-top: 1.5rem; }
-    .cs-nav ul { list-style: none; display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(1.5rem, 4vw, 3rem); }
-    .cs-nav a { display: block; padding: 1rem 0; text-decoration: none; color: var(--muted); font-size: .95rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
-    .cs-nav a:hover { color: var(--on-ink); }
-    .cs-nav a.active { color: var(--on-ink); border-color: var(--signal); }
-    .cs-sec { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 0; scroll-margin-top: 7.5rem; }
+    .cs-sec { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 0; scroll-margin-top: 5rem; }
     .cs-sec h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: var(--t-l); line-height: 1.2; margin-bottom: 1.5rem; }
     .cs-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); }
     .cs-two h4, .cs-step h4 { font-weight: 650; font-size: 1.0625rem; margin-bottom: .4rem; }
@@ -487,6 +492,8 @@
     .plist-img img { display: block; width: 100%; height: auto; }
     .plist-body p { color: var(--on-ink); opacity: .86; max-width: 34rem; }
     .plist-body .link-open { margin-top: 1rem; }
+    .plist-panel.open .plist-panel-in { cursor: pointer; }
+    .plist-panel.open:hover .link-open { color: var(--signal); }
     @media (max-width: 820px) {
       .plist-row { grid-template-columns: 64px minmax(0, 1fr) 1.25rem; }
       .plist-cat { display: block; }
@@ -496,6 +503,7 @@
     }
     .scroll-cue { transition: opacity .4s; }
     .scroll-cue.gone { opacity: 0; pointer-events: none; }
+    @media (min-width: 821px) and (hover: hover) { .scroll-cue { display: none; } }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
@@ -523,9 +531,9 @@
       .feat-list { gap: clamp(2.5rem, 7vw, 3.5rem); }
       .modal-overlay { padding: 0; align-items: flex-end; }
       .modal, .modal.cs { width: 100%; height: calc(100% - .75rem); max-height: none; border-radius: 18px 18px 0 0; clip-path: inset(0 round 18px 18px 0 0); transform: translateY(100%); opacity: 1; }
-      .modal-bar { padding-left: 1.25rem; height: 3.75rem; }
+      .modal-bar { padding: .5rem .5rem 0 1.25rem; height: 4rem; gap: 1rem; }
+      .modal-bar-title, .modal.scrolled .modal-bar-title { display: none; }
       .modal-grab { display: block; position: absolute; left: 50%; top: .45rem; width: 2.5rem; height: 5px; margin-left: -1.25rem; border-radius: 999px; background: rgba(255, 255, 255, .28); }
-      .cs-nav { top: 3.75rem; }
     }
     @media (max-width: 560px) {
       .grid { grid-template-columns: 1fr; }
@@ -738,9 +746,8 @@
 </section>
 
 <!-- LEBENSLAUF -->
-<section class="light" id="lebenslauf" style="padding-top:0">
+<section class="light" id="lebenslauf" style="padding-top:clamp(2rem,4vw,3rem)">
   <div class="wrap">
-    <div style="border-top:1px solid var(--line-dark);padding-top:clamp(3rem,6vw,5rem)"></div>
     <h2 class="h2" data-en="Experience &amp; education">Erfahrung &amp; Ausbildung</h2>
     <div class="cv-grid">
       <div class="cv-col">
@@ -1611,6 +1618,7 @@
       <div class="modal-bar" id="modal-bar">
         <span class="modal-grab" aria-hidden="true"></span>
         <p class="modal-bar-title" id="modal-bar-title" aria-hidden="true"></p>
+        <nav class="modal-tabs" id="modal-tabs"></nav>
         <button class="modal-close" id="modal-close" aria-label="Schliessen"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
       </div>
       <div id="cs-body"></div>
@@ -1685,6 +1693,7 @@
 
   // Weitere Arbeiten: gleicher Aufbau wie die Fallstudien, nur ohne Abschnitte
   function renderSimple(id) {
+    document.getElementById('modal-tabs').innerHTML = '';
     const base = PROJECTS[id], p = base[currentLang], u = CS_UI[currentLang];
     const ids = CARDS.map(c => c.id), nextId = ids[(ids.indexOf(id) + 1) % ids.length];
     const [org, kind] = p.employer.split(' · ');
@@ -1727,6 +1736,7 @@
       if (overlay.classList.contains('open')) return;
       document.getElementById('cs-body').innerHTML = '';
       document.getElementById('modal-img').innerHTML = '';
+      document.getElementById('modal-tabs').innerHTML = '';
     }, 400);
     currentModalId = null;
     if (lastFocus) lastFocus.focus();
@@ -1777,7 +1787,10 @@
         <div><p class="cs-org">${esc(p.employer.split(' · ')[0])}</p><h2 class="cs-title" id="modal-title-cs">${esc(c.title || p.title)}</h2><p class="cs-lead">${esc(c.lead)}</p></div>
       </header>
       <dl class="cs-facts">${c.facts.map(f => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>
-      <nav class="cs-nav" aria-label="${esc(p.title)}"><ul>${navItems.map(n => `<li><a href="#cs-${n[0]}" data-cs-link="${n[0]}">${esc(c.nav[n[0]])}</a></li>`).join('')}</ul></nav>`;
+`;
+    const tabs = document.getElementById('modal-tabs');
+    tabs.setAttribute('aria-label', p.title);
+    tabs.innerHTML = `<ul>${navItems.map(n => `<li><a href="#cs-${n[0]}" data-cs-link="${n[0]}">${esc(c.nav[n[0]])}</a></li>`).join('')}</ul>`;
 
     h += sec('start', `<div class="cs-two"><div><h4>${u.problem}</h4><p>${esc(c.problem)}</p></div><div><h4>${u.goal}</h4><p>${esc(c.goal)}</p></div></div>`);
     if (c.steps && c.steps.length) h += sec('process', `<ol class="cs-steps">${c.steps.map((s, i) => `
@@ -1821,16 +1834,16 @@
     // Vorher-Nachher-Regler
     body.querySelectorAll('.ba input').forEach(r => r.addEventListener('input', () => r.parentElement.style.setProperty('--ba', r.value + '%')));
     // Abschnitts-Navigation: weich scrollen und aktiven Abschnitt markieren
-    body.querySelectorAll('[data-cs-link]').forEach(a => a.addEventListener('click', e => {
+    tabs.querySelectorAll('[data-cs-link]').forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       // geklickten Abschnitt markieren und während des Scrollens festhalten
       csLock = a.dataset.csLink;
-      body.querySelectorAll('[data-cs-link]').forEach(l => l.classList.toggle('active', l === a));
+      tabs.querySelectorAll('[data-cs-link]').forEach(l => l.classList.toggle('active', l === a));
       clearTimeout(csLockT); csLockT = setTimeout(() => { csLock = null; }, 1200);
       document.getElementById('cs-' + a.dataset.csLink).scrollIntoView({ behavior: motionOK ? 'smooth' : 'auto', block: 'start' });
     }));
     if (csObserver) box.removeEventListener('scroll', csObserver);
-    const secs = [...body.querySelectorAll('.cs-sec')], links = [...body.querySelectorAll('[data-cs-link]')];
+    const secs = [...body.querySelectorAll('.cs-sec')], links = [...tabs.querySelectorAll('[data-cs-link]')];
     csObserver = () => {
       if (csLock) return;
       const line = box.getBoundingClientRect().top + box.clientHeight * 0.3;
@@ -2008,6 +2021,11 @@
 
 
 
+  // ── PROJEKTLISTE: Klick ins geöffnete Feld öffnet die Fallstudie ──
+  document.querySelectorAll('.plist-panel').forEach(panel => {
+    const id = panel.id.replace('pp-', '');
+    panel.addEventListener('click', e => { if (!e.target.closest('[data-open], a')) openModal(id); });
+  });
   // ── PROJEKTLISTE: Akkordeon, immer nur ein Projekt offen ──
   document.querySelectorAll('.plist-row').forEach(row => {
     row.addEventListener('click', () => {
