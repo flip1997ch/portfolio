@@ -272,13 +272,13 @@
     .modal-overlay {
       position: fixed; inset: 0; z-index: 300; background: rgba(8, 20, 12, .55);
       -webkit-backdrop-filter: blur(10px) saturate(120%); backdrop-filter: blur(10px) saturate(120%);
-      display: flex; align-items: center; justify-content: center; padding: 2rem;
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
       opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s;
     }
     .modal-overlay.open { opacity: 1; visibility: visible; transition: opacity .35s ease, visibility 0s; }
     .modal {
-      background: var(--ink-2); color: var(--on-ink); width: min(920px, 100%); max-height: calc(100vh - 4rem); overflow-y: auto; overscroll-behavior: contain;
-      border-radius: 16px; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+      background: var(--ink-2); color: var(--on-ink); width: min(1280px, 100%); height: calc(100vh - 3rem); height: calc(100dvh - 3rem); overflow-y: auto; overscroll-behavior: contain;
+      border-radius: 16px; clip-path: inset(0 round 16px); outline: none; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
       transform: translateY(28px) scale(.985); opacity: .6;
       transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .35s ease;
     }
@@ -321,7 +321,6 @@
 
     /* ── FALLSTUDIE (erweitertes Detailfenster) ── */
     #cs-body { display: none; }
-    .modal.cs { width: min(1180px, 100%); }
     .modal.cs #modal-img, .modal.cs .modal-body { display: none; }
     .modal.cs #cs-body { display: block; }
     .cs-hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.5rem, 4vw, 3rem); padding-top: clamp(.5rem, 2vw, 1.5rem); }
@@ -331,7 +330,7 @@
     .cs-org { color: var(--muted); }
     .cs-title { font-family: var(--display); font-weight: 700; letter-spacing: -.035em; font-size: var(--t-xl); line-height: 1.05; margin: .5rem 0 1rem; }
     .cs-lead { font-size: 1.0625rem; opacity: .9; }
-    .cs-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 clamp(1.5rem, 4vw, 3rem); }
+    .cs-facts { display: grid; grid-template-columns: repeat(var(--fc, 4), minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 clamp(1.5rem, 4vw, 3rem); }
     .cs-facts div { padding: 1.1rem 1.25rem 1.1rem 0; }
     .cs-facts div + div { padding-left: 1.25rem; border-left: 1px solid var(--line); }
     .cs-facts dt { font-size: .85rem; color: var(--muted); }
@@ -415,6 +414,13 @@
     .cs-next { display: inline-flex; align-items: center; gap: .6rem; font-weight: 650; text-align: right; }
     .cs-next small { display: block; color: var(--muted); font-weight: 400; font-size: .85rem; }
     .cs-next:hover { color: var(--signal); }
+    .cs-next { margin-left: auto; }
+    .cs-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .cs-links:empty { display: none; }
+    .cs-media { display: block; max-width: 100%; max-height: min(68vh, 640px); width: auto; height: auto; margin: 0 auto; border-radius: 4px; }
+    .cs-hero .zoomable img { max-height: min(68vh, 640px); width: 100%; object-fit: contain; }
+    .cs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .cs-pair img { width: 100%; height: auto; border-radius: 4px; }
     @media (prefers-reduced-motion: no-preference) {
       .cs-anim { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
       .cs-anim.in { opacity: 1; transform: none; }
@@ -516,7 +522,7 @@
       .feat-list .case + .case { padding-top: clamp(2.5rem, 7vw, 3.5rem); border-top: 1px solid var(--line); }
       .feat-list { gap: clamp(2.5rem, 7vw, 3.5rem); }
       .modal-overlay { padding: 0; align-items: flex-end; }
-      .modal, .modal.cs { width: 100%; height: calc(100% - .75rem); max-height: none; border-radius: 18px 18px 0 0; transform: translateY(100%); opacity: 1; }
+      .modal, .modal.cs { width: 100%; height: calc(100% - .75rem); max-height: none; border-radius: 18px 18px 0 0; clip-path: inset(0 round 18px 18px 0 0); transform: translateY(100%); opacity: 1; }
       .modal-bar { padding-left: 1.25rem; height: 3.75rem; }
       .modal-grab { display: block; position: absolute; left: 50%; top: .45rem; width: 2.5rem; height: 5px; margin-left: -1.25rem; border-radius: 999px; background: rgba(255, 255, 255, .28); }
       .cs-nav { top: 3.75rem; }
@@ -1597,7 +1603,7 @@
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
   overlay.innerHTML = `
-    <div class="modal" id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <div class="modal-bar" id="modal-bar">
         <span class="modal-grab" aria-hidden="true"></span>
         <p class="modal-bar-title" id="modal-bar-title" aria-hidden="true"></p>
@@ -1662,55 +1668,47 @@
     clearTimeout(closeT);
     box.classList.remove('scrolled');
     document.getElementById('modal-bar-title').textContent = (base.cs && base.cs[currentLang].title) || p.title;
-    box.classList.toggle('cs', !!base.cs);
-    box.setAttribute('aria-labelledby', base.cs ? 'modal-title-cs' : 'modal-title');
-    if (base.cs) {
-      document.getElementById('modal-img').innerHTML = '';
-      renderCaseStudy(id);
-      document.getElementById('modal-close').setAttribute('aria-label', UI[currentLang].close);
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      box.scrollTop = 0;
-      document.getElementById('modal-close').focus();
-      return;
-    }
-    document.getElementById('cs-body').innerHTML = '';
-    const imgEl = document.getElementById('modal-img');
-
-    if (base.youtube) {
-      imgEl.innerHTML = `<div style="position:relative;width:100%;padding-top:56.25%;">
-        <iframe src="https://www.youtube-nocookie.com/embed/${base.youtube}" title="${esc(p.title)}"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-          style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe></div>`;
-    } else if (base.video) {
-      imgEl.innerHTML = `<video src="${base.video}" autoplay loop muted playsinline></video>`;
-    } else if (base.img2) {
-      imgEl.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;">
-        <img src="${base.img}" alt="${esc(p.imgAlt)}"><img src="${base.img2}" alt="${esc(p.imgAlt)} 2"></div>`;
-    } else {
-      imgEl.innerHTML = `<img src="${base.img}" alt="${esc(p.imgAlt)}">`;
-    }
-
-    document.getElementById('modal-employer').textContent = p.employer;
-    document.getElementById('modal-title').textContent = p.title;
-    document.getElementById('modal-desc').textContent = p.desc;
-    document.getElementById('modal-stats').innerHTML = (p.stats || []).map(s => `
-      <div><div class="modal-stat-num">${esc(s.num)}</div><div class="modal-stat-label">${esc(s.label)}</div></div>`).join('');
-    document.getElementById('modal-tools').innerHTML = p.tools.map(t => `<span class="tool-tag">${esc(t)}</span>`).join('');
-
-    let links = '';
-    if (base.link) links += `<a href="${base.link}" target="_blank" rel="noopener" class="modal-link">${UI[currentLang].visit}
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H6M12 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>`;
-    if (base.download) links += `<a href="${base.download.file}" download class="modal-link secondary">${esc(p.downloadLabel)}
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v8M7 10l-3-3M7 10l3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
-    document.getElementById('modal-link-wrap').innerHTML = links;
-
+    box.classList.add('cs');
+    box.setAttribute('aria-labelledby', 'modal-title-cs');
+    document.getElementById('modal-img').innerHTML = '';
+    if (base.cs) renderCaseStudy(id); else renderSimple(id);
     document.getElementById('modal-close').setAttribute('aria-label', UI[currentLang].close);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
-    document.getElementById('modal-box').scrollTop = 0;
-    document.getElementById('modal-close').focus();
+    box.scrollTop = 0;
+    box.focus({ preventScroll: true });
+  }
+
+  // Weitere Arbeiten: gleicher Aufbau wie die Fallstudien, nur ohne Abschnitte
+  function renderSimple(id) {
+    const base = PROJECTS[id], p = base[currentLang], u = CS_UI[currentLang];
+    const ids = CARDS.map(c => c.id), nextId = ids[(ids.indexOf(id) + 1) % ids.length];
+    const [org, kind] = p.employer.split(' · ');
+    let media;
+    if (base.youtube) media = `<div class="cs-video"><iframe src="https://www.youtube-nocookie.com/embed/${base.youtube}" title="${esc(p.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`;
+    else if (base.video) media = `<video class="cs-media" src="${base.video}" autoplay loop muted playsinline></video>`;
+    else if (base.img2) media = `<div class="cs-pair"><img src="${base.img}" alt="${esc(p.imgAlt)}"><img src="${base.img2}" alt="${esc(p.imgAlt)} 2"></div>`;
+    else media = `<button type="button" class="zoomable" data-zoom="${base.img}" aria-label="${u.zoom}"><img src="${base.img}" alt="${esc(p.imgAlt)}"></button>`;
+    const hasTools = p.tools && p.tools.length;
+    const facts = [
+      ...(kind && !/^Proje[kc]t$/.test(kind) ? [[currentLang === 'en' ? 'Type' : 'Art', kind]] : []),
+      ...(p.stats || []).slice(0, 4 - (kind && !/^Proje[kc]t$/.test(kind) ? 1 : 0) - (hasTools ? 1 : 0)).map(st => [st.label, st.num]),
+      ...(hasTools ? [['Tools', p.tools.join(', ')]] : [])
+    ];
+    let links = '';
+    if (base.link) links += `<a href="${base.link}" target="_blank" rel="noopener" class="modal-link">${u.visit}<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H6M12 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>`;
+    if (base.download) links += `<a href="${base.download.file}" download class="modal-link secondary">${esc(p.downloadLabel)}<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v8M7 10l-3-3M7 10l3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+    document.getElementById('cs-body').innerHTML = `
+      <header class="cs-hero">
+        <div>${media}</div>
+        <div><p class="cs-org">${esc(org)}</p><h2 class="cs-title" id="modal-title-cs">${esc(p.title)}</h2><p class="cs-lead">${esc(p.desc)}</p></div>
+      </header>
+      ${facts.length ? `<dl class="cs-facts" style="--fc:${Math.min(facts.length, 4)}">${facts.map(f => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>` : ''}
+      <footer class="cs-foot">
+        <div class="cs-links">${links}</div>
+        <button type="button" class="cs-next" data-cs-next="${nextId}"><span><small>${u.next}</small>${esc(PROJECTS[nextId][currentLang].title)}</span>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </footer>`;
   }
 
   function closeModal(fromHistory) {
