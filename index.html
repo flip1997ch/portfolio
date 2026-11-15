@@ -862,8 +862,8 @@
     <h2 class="h2" data-en="Let's talk.">Lassen Sie uns sprechen.</h2>
     <p class="contact-lead" data-en="For questions about my projects or a conversation, you can reach me directly.">Für Fragen zu meinen Projekten oder ein Gespräch erreichen Sie mich direkt.</p>
     <div class="contact-links">
-      <a href="#" class="contact-email"><span data-en="Email">E-Mail</span><small class="email-text"></small></a>
-      <a href="#" class="contact-phone"><span data-en="Phone">Telefon</span><small class="phone-text"></small></a>
+      <a href="#kontakt" class="contact-email" role="button"><span data-en="Email">E-Mail</span><small class="email-text"></small></a>
+      <a href="#kontakt" class="contact-phone" role="button"><span data-en="Phone">Telefon</span><small class="phone-text"></small></a>
       <a href="https://www.linkedin.com/in/philipp-gross-41510a234/" target="_blank" rel="noopener"><span>LinkedIn</span><small data-en="View profile">Profil ansehen</small></a>
     </div>
   </div>
@@ -1889,14 +1889,22 @@
     if (z) { e.stopPropagation(); openLightbox(z.dataset.zoom, z.querySelector('img') && z.querySelector('img').alt); }
   });
 
-  // ── KONTAKT (zur Laufzeit zusammengesetzt, erschwert Scraping) ──
+  // ── KONTAKT: kodiert gespeichert, Link erst beim Klick ──
   (function () {
-    const mail = ['philipp', '.', 'gross'].join('') + '@' + ['bluewin', '.', 'ch'].join('');
-    const digits = ['076', '724', '29', '49'];
-    document.querySelectorAll('.contact-email').forEach(el => { el.href = 'mailto:' + mail; });
-    document.querySelectorAll('.email-text').forEach(el => { el.textContent = mail; });
-    document.querySelectorAll('.contact-phone').forEach(el => { el.href = 'tel:+41' + digits.join('').slice(1); });
-    document.querySelectorAll('.phone-text').forEach(el => { el.textContent = digits.join(' '); });
+    const dec = v => [...atob(v)].map(c => String.fromCharCode(c.charCodeAt(0) ^ 0x5A)).reverse().join('');
+    const M = 'Mjl0NDMtPy82OBopKTUoPXQqKjM2MzIq', T = 'Y25jaG5obWxtag==';
+    const show = () => {
+      document.querySelectorAll('.email-text').forEach(el => { el.textContent = dec(M); });
+      document.querySelectorAll('.phone-text').forEach(el => { const d = dec(T); el.textContent = [d.slice(0, 3), d.slice(3, 6), d.slice(6, 8), d.slice(8)].join(' '); });
+    };
+    // Erst anzeigen, wenn der Kontaktbereich in Sichtweite kommt
+    const box = document.querySelector('.contact-links');
+    if (box && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { show(); io.disconnect(); } }, { rootMargin: '200px' });
+      io.observe(box);
+    } else show();
+    document.querySelectorAll('.contact-email').forEach(el => el.addEventListener('click', e => { e.preventDefault(); location.href = 'mailto:' + dec(M); }));
+    document.querySelectorAll('.contact-phone').forEach(el => el.addEventListener('click', e => { e.preventDefault(); location.href = 'tel:+41' + dec(T).slice(1); }));
   })();
 
   // ── NAV: Hintergrund beim Scrollen, aktiver Abschnitt ──
