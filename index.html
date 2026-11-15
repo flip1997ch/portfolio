@@ -120,7 +120,7 @@
     .scroll-cue:hover { opacity: .8; }
     .scroll-cue svg { animation: cue 2.2s cubic-bezier(.45, 0, .55, 1) infinite; }
     @keyframes cue { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-    @media (prefers-reduced-motion: reduce) { .scroll-cue svg { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .scroll-cue svg { animation: none; } .modal { transition: opacity .2s; transform: none !important; } }
     .btn {
       display: inline-flex; align-items: center; gap: .55rem;
       padding: .85rem 1.4rem; border-radius: 999px;
@@ -270,22 +270,35 @@
 
     /* ── MODAL ── */
     .modal-overlay {
-      position: fixed; inset: 0; z-index: 300; background: rgba(12, 28, 17, .8);
-      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
-      opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s;
+      position: fixed; inset: 0; z-index: 300; background: rgba(8, 20, 12, .55);
+      -webkit-backdrop-filter: blur(10px) saturate(120%); backdrop-filter: blur(10px) saturate(120%);
+      display: flex; align-items: center; justify-content: center; padding: 2rem;
+      opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s;
     }
-    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-overlay.open { opacity: 1; visibility: visible; transition: opacity .35s ease, visibility 0s; }
     .modal {
-      background: var(--ink-2); color: var(--on-ink); width: min(920px, 100%); max-height: 92vh; overflow-y: auto;
-      border-radius: 6px; position: relative; transform: translateY(16px); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+      background: var(--ink-2); color: var(--on-ink); width: min(920px, 100%); max-height: calc(100vh - 4rem); overflow-y: auto; overscroll-behavior: contain;
+      border-radius: 16px; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+      transform: translateY(28px) scale(.985); opacity: .6;
+      transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .35s ease;
     }
-    .modal-overlay.open .modal { transform: none; }
+    .modal-overlay.open .modal { transform: none; opacity: 1; }
+    .modal.dragging { transition: none; }
+    .modal-bar {
+      position: sticky; top: 0; z-index: 3; height: 3.5rem; display: flex; align-items: center; gap: 1rem;
+      padding: 0 .75rem 0 clamp(1.5rem, 4vw, 3rem); background: rgba(38, 78, 50, .86);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s;
+    }
+    .modal.scrolled .modal-bar { border-color: var(--line); }
+    .modal-grab { display: none; }
+    .modal-bar-title { flex: 1; min-width: 0; font-weight: 650; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s; }
+    .modal.scrolled .modal-bar-title { opacity: 1; transform: none; }
     .modal-close {
-      position: sticky; top: .75rem; float: right; margin: .75rem .75rem 0 0; z-index: 2;
-      width: 2.5rem; height: 2.5rem; border-radius: 999px; background: var(--ink); color: var(--on-ink);
-      display: grid; place-items: center; font-size: 1.1rem;
+      flex: none; width: 2.25rem; height: 2.25rem; border-radius: 999px; background: rgba(255, 255, 255, .08); color: var(--on-ink);
+      display: grid; place-items: center; transition: background .2s, color .2s, transform .2s;
     }
     .modal-close:hover { background: var(--signal); color: var(--ink); }
+    .modal-close:active { transform: scale(.94); }
     .modal-img { background: #17331F; }
     .modal-img img, .modal-img video { width: 100%; height: auto; max-height: 60vh; object-fit: contain; }
     .modal-body { padding: clamp(1.5rem, 4vw, 2.75rem); }
@@ -308,10 +321,10 @@
 
     /* ── FALLSTUDIE (erweitertes Detailfenster) ── */
     #cs-body { display: none; }
-    .modal.cs { width: min(1180px, 100%); max-height: 94vh; }
+    .modal.cs { width: min(1180px, 100%); }
     .modal.cs #modal-img, .modal.cs .modal-body { display: none; }
     .modal.cs #cs-body { display: block; }
-    .cs-hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.5rem, 4vw, 3rem); padding-top: clamp(3.5rem, 6vw, 4rem); }
+    .cs-hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.5rem, 4vw, 3rem); padding-top: clamp(.5rem, 2vw, 1.5rem); }
     .cs-hero img { width: 100%; height: auto; border-radius: 4px; }
     .cs-video { position: relative; aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden; background: #000; }
     .cs-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -323,12 +336,12 @@
     .cs-facts div + div { padding-left: 1.25rem; border-left: 1px solid var(--line); }
     .cs-facts dt { font-size: .85rem; color: var(--muted); }
     .cs-facts dd { font-weight: 600; margin-top: .2rem; line-height: 1.35; }
-    .cs-nav { position: sticky; top: 0; z-index: 1; background: var(--ink-2); border-bottom: 1px solid var(--line); margin-top: 1.5rem; }
-    .cs-nav ul { list-style: none; display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(1.5rem, 4vw, 3rem); padding-right: 4rem; }
+    .cs-nav { position: sticky; top: 3.5rem; z-index: 2; background: var(--ink-2); border-bottom: 1px solid var(--line); margin-top: 1.5rem; }
+    .cs-nav ul { list-style: none; display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(1.5rem, 4vw, 3rem); }
     .cs-nav a { display: block; padding: 1rem 0; text-decoration: none; color: var(--muted); font-size: .95rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
     .cs-nav a:hover { color: var(--on-ink); }
     .cs-nav a.active { color: var(--on-ink); border-color: var(--signal); }
-    .cs-sec { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 0; scroll-margin-top: 3.5rem; }
+    .cs-sec { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 0; scroll-margin-top: 7.5rem; }
     .cs-sec h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: var(--t-l); line-height: 1.2; margin-bottom: 1.5rem; }
     .cs-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); }
     .cs-two h4, .cs-step h4 { font-weight: 650; font-size: 1.1rem; margin-bottom: .4rem; }
@@ -502,8 +515,11 @@
       .feat-list .case { gap: 1.1rem; align-items: start; }
       .feat-list .case + .case { padding-top: clamp(2.5rem, 7vw, 3.5rem); border-top: 1px solid var(--line); }
       .feat-list { gap: clamp(2.5rem, 7vw, 3.5rem); }
-      .modal-overlay { padding: 0; }
-      .modal { max-height: 100svh; height: 100%; border-radius: 0; }
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal, .modal.cs { width: 100%; height: calc(100% - .75rem); max-height: none; border-radius: 18px 18px 0 0; transform: translateY(100%); opacity: 1; }
+      .modal-bar { padding-left: 1.25rem; height: 3.75rem; }
+      .modal-grab { display: block; position: absolute; left: 50%; top: .45rem; width: 2.5rem; height: 5px; margin-left: -1.25rem; border-radius: 999px; background: rgba(255, 255, 255, .28); }
+      .cs-nav { top: 3.75rem; }
     }
     @media (max-width: 560px) {
       .grid { grid-template-columns: 1fr; }
@@ -1576,7 +1592,11 @@
   overlay.className = 'modal-overlay';
   overlay.innerHTML = `
     <div class="modal" id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" id="modal-close" aria-label="Schliessen">✕</button>
+      <div class="modal-bar" id="modal-bar">
+        <span class="modal-grab" aria-hidden="true"></span>
+        <p class="modal-bar-title" id="modal-bar-title" aria-hidden="true"></p>
+        <button class="modal-close" id="modal-close" aria-label="Schliessen"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </div>
       <div id="cs-body"></div>
       <div class="modal-img" id="modal-img"></div>
       <div class="modal-body">
@@ -1589,6 +1609,34 @@
       </div>
     </div>`;
   document.body.appendChild(overlay);
+  let closeT = null;
+  const modalBox = document.getElementById('modal-box');
+  modalBox.addEventListener('scroll', () => modalBox.classList.toggle('scrolled', modalBox.scrollTop > 160), { passive: true });
+
+  // Auf dem Handy: Fenster nach unten wischen zum Schliessen
+  (() => {
+    let y0 = null, dy = 0, t0 = 0;
+    modalBox.addEventListener('touchstart', e => {
+      if (modalBox.scrollTop > 0 && !e.target.closest('.modal-bar')) { y0 = null; return; }
+      y0 = e.touches[0].clientY; dy = 0; t0 = performance.now();
+    }, { passive: true });
+    modalBox.addEventListener('touchmove', e => {
+      if (y0 === null) return;
+      dy = e.touches[0].clientY - y0;
+      if (dy <= 0) { modalBox.classList.remove('dragging'); modalBox.style.transform = ''; return; }
+      if (e.cancelable) e.preventDefault();
+      modalBox.classList.add('dragging');
+      modalBox.style.transform = `translateY(${dy}px)`;
+    }, { passive: false });
+    modalBox.addEventListener('touchend', () => {
+      if (y0 === null) return;
+      const fast = dy > 40 && dy / (performance.now() - t0) > .6;
+      modalBox.classList.remove('dragging');
+      modalBox.style.transform = '';
+      if (dy > 120 || fast) closeModal();
+      y0 = null; dy = 0;
+    });
+  })();
 
   function openModal(id, opts = {}) {
     const base = PROJECTS[id];
@@ -1605,6 +1653,9 @@
       else history.pushState({ modal: id }, '', '#' + id);
     }
 
+    clearTimeout(closeT);
+    box.classList.remove('scrolled');
+    document.getElementById('modal-bar-title').textContent = (base.cs && base.cs[currentLang].title) || p.title;
     box.classList.toggle('cs', !!base.cs);
     box.setAttribute('aria-labelledby', base.cs ? 'modal-title-cs' : 'modal-title');
     if (base.cs) {
@@ -1661,9 +1712,14 @@
     if (!fromHistory && history.state && history.state.modal) { history.back(); return; } // popstate schliesst
     if (!fromHistory && location.hash) history.replaceState(null, '', location.pathname + location.search);
     overlay.classList.remove('open');
-    document.getElementById('cs-body').innerHTML = '';
     document.body.style.overflow = '';
-    document.getElementById('modal-img').innerHTML = ''; // stoppt laufende Videos
+    document.querySelectorAll('#modal-box iframe, #modal-box video').forEach(v => v.remove()); // stoppt laufende Videos sofort
+    clearTimeout(closeT);
+    closeT = setTimeout(() => { // Inhalt erst nach der Ausblende-Animation leeren
+      if (overlay.classList.contains('open')) return;
+      document.getElementById('cs-body').innerHTML = '';
+      document.getElementById('modal-img').innerHTML = '';
+    }, 400);
     currentModalId = null;
     if (lastFocus) lastFocus.focus();
   }
